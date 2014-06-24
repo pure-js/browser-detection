@@ -1,18 +1,9 @@
-/*== Variables ==*/
+// Import variables
+@import 'old-browser__variables';
 
-$very-light-gray-mostly-white: #f9f9f9;
-$very-light-gray: #f0f0f0;  //#f2f2f2
-$light-gray: #c2c2c2; //#cccccc
-$dark-moderate-blue: #3d5b7f;
+// Import mixins
+@import 'old-browser__mixins';
 
-
-/*== Mixins ==*/
-
-@mixin transform($angle) {
-  transform: $angle;
-  -ms-transform: $angle; /* IE 9 */
-  -webkit-transform: $angle; /* Opera, Chrome, and Safari */
-}
 
 
 /*== Common styles ==*/

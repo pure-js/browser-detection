@@ -22,8 +22,6 @@
             $warningBoxName.on('click', $closeBtnName, function(e) {
                 e.preventDefault();
 
-                console.log('as');
-
                 if(!sessionStorage.getItem('browser')) {
                     sessionStorage.setItem('browser','1');
                 }
