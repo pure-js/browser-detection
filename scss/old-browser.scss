@@ -1,0 +1,144 @@
+/*== Variables ==*/
+
+$very-light-gray-mostly-white: #f9f9f9;
+$very-light-gray: #f0f0f0;  //#f2f2f2
+$light-gray: #c2c2c2; //#cccccc
+$dark-moderate-blue: #3d5b7f;
+
+
+/*== Mixins ==*/
+
+@mixin transform($angle) {
+  transform: $angle;
+  -ms-transform: $angle; /* IE 9 */
+  -webkit-transform: $angle; /* Opera, Chrome, and Safari */
+}
+
+
+/*== Common styles ==*/
+
+.hide {
+  display: none;
+}
+
+.glyphicon-remove {
+  cursor: pointer;
+  @include transform(rotate(45deg));
+
+  &:hover {
+    opacity: .55;
+  }
+
+  &:before {
+    content: "+";
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+
+.container {
+  width: 940px;
+  margin: 0 auto;
+}
+
+.left {
+  float: left;
+}
+
+.old-browser-warning {
+  background: $very-light-gray-mostly-white;
+  border: 1px solid $very-light-gray;
+  border-radius: 4px;
+  box-shadow: 0 4px 0 $very-light-gray;
+  overflow: hidden;
+  transition: background .25s, border .25s, box-shadow .25s;
+
+  &:hover {
+    background: $very-light-gray;
+    box-shadow: 0 4px 0 $light-gray;
+  }
+
+  &__left-side {
+    float: left;
+    margin: 10px 30px 10px 20px;
+    width: 421px;
+  }
+
+  &__right-side {
+    float: left;
+    width: 404px;
+    margin: 17px 0 10px 20px;
+  }
+
+  &__glyphicon-remove {
+    color: $light-gray;
+    float: right;
+    margin: -5px 15px 0 0;
+    rotation: 45deg;
+  }
+
+  &__img-link {
+    display: inline-block;
+    transition: opacity .45s;
+    margin: 10px 0 0 0;
+    height: 100px;
+    width: 97px;
+
+    &:hover {
+      opacity: .55;
+    }
+  }
+
+  &__text {
+    color: black;
+    font-size: 13px;
+    margin: 1em 0;
+  }
+
+  &__link {
+    color: black;
+    margin: 0 0 0 5px;
+    border-bottom: 1px solid black;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: none;
+    }
+  }
+}
+
+.text-primary {
+  color: $dark-moderate-blue;
+}
+
+
+/*-- Need to be removed --*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial,sans-serif;
+}
+
+
+/*-- Personal styles --*/
+
+.browser-sprite {
+  background: url('../img/old-browser/browser-sprite.png') no-repeat;
+}
+
+.browser-chrome {
+  background-position: 0 0;
+}
+
+.browser-firefox {
+  background-position: -101px 0;
+}
+
+.browser-ie {
+  background-position: -199px 0;
+}
+
+.browser-opera {
+  background-position: -298px 0;
+}
