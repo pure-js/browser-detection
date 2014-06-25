@@ -4,35 +4,45 @@
 
         var defaults = {
             once: 'No',
-            //supportingBrowsers: ['Firefox = 27', 'Chrome= 30', 'Opera = 15',  'IE= 10'],
             warningBoxName: '.old-browser-warning',
             closeBtnName: '#close-old-browser-warning',
             duration: 1200,
-            easing: 'swing'
+            easing: 'swing',
+
+            browsers: {
+                Firefox: 27,
+                Chrome: 30,
+                Opera: 15,
+                IE: 10
+            }
         };
+
 
         return this.each(function() {
 
-            var settings   = $.extend( {}, defaults, options),
+            var settings = $.extend( {}, defaults, options),
                 $once = settings.once,
-                //$supportingBrowsers  = settings.supportingBrowsers,
                 $warningBoxName = $(settings.warningBoxName, this),
                 $closeBtnName = settings.closeBtnName,
                 $duration = settings.duration,
                 $easing = settings.easing;
 
+
             $warningBoxName.hide();
+
 
             // Old browser warning close button
             $warningBoxName.on('click', $closeBtnName, function(e) {
                 e.preventDefault();
 
+                // Check if parameter is setup we will save user press close button
                 if($once == 'Yes') {
                     sessionStorage.setItem('DoNotShowMeItAgain', 'Yes');
                 }
 
                 $warningBoxName.fadeToggle($duration, $easing);
             });
+
 
             // Detecting version of using browser
             var browserDetect = (function () {
@@ -51,31 +61,23 @@
                 return M;
             })();
 
-            // Custom browser settings
-            var browsers = {
-                Firefox: 27,
-                Chrome: 30,
-                Opera: 15,
-                IE: 10
-            };
-
-
+            
             var checkBrowser = function(takesBrowsers) {
                 var storage = sessionStorage.getItem('DoNotShowMeItAgain');
 
+                // Check if user press close button
                 if(storage == 'Yes') {
                     return false
                 }
 
-                for(var name in browsers) {
+                // If version of browser more old you will see window
+                for(var name in takesBrowsers) {
                     if(browserDetect.indexOf(name) != -1 && takesBrowsers[name] > browserDetect[1]) {
                         $warningBoxName.show();
                         break;
                     }
                 }
-            };
-
-            checkBrowser(browsers);
+            }(settings.browsers);
         });
     };
 }(jQuery));
