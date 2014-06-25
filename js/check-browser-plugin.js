@@ -61,7 +61,7 @@
                 return M;
             })();
 
-            
+
             var checkBrowser = function(takesBrowsers) {
                 var storage = sessionStorage.getItem('DoNotShowMeItAgain');
 
