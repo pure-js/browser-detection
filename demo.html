@@ -3,9 +3,16 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Check browser plugin demonstration</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- Styles for design of warning block -->
     <link rel="stylesheet" href="scss/old-browser.css">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <!-- Add jquery -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Add plugin Check browser -->
     <script src="js/check-browser-plugin.js"></script>
+    <!-- Own main javascript file -->
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -14,12 +21,12 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div class=" old-browser-warning">
+            <div class="old-browser-warning">
                 <div class="old-browser-warning__left-side">
                     <h3 class="text-primary h3">Warning!</h3>
-                    <p class="old-browser-warning__text">You используете устаревшую версию браузера. Это может привести к неисправности и некорректному отображению и работе сайта.</p>
-                    <p class="old-browser-warning__text">For комфортной работы скачайте с официального сайта последнюю версию удобного для вас браузера.</p>
-                    <p class="old-browser-warning__text">Ознакомьтесь с нашими<a href="http://estp-sro.ru/faq/" class="old-browser-warning__link">рекомендациями</a>.</p>
+                    <p class="old-browser-warning__text">You use oldest version of a browser. It may be a reason of incorrect work and view of a website.</p>
+                    <p class="old-browser-warning__text">For comfortable work, please download latest version of a browser convenient for you from official website.</p>
+                    <p class="old-browser-warning__text">Please read our<a href="#" class="old-browser-warning__link">documentation</a>.</p>
                 </div>
 
                 <div class="old-browser-warning__right-side">
@@ -29,11 +36,13 @@
                     <a href="http://www.opera.com/ru" target="_blank" class="old-browser-warning__img-link browser-sprite browser-opera" title="Opera"></a>
                 </div>
 
-                <i id="close-old-browser-warning" class="glyphicon glyphicon-remove old-browser-warning__glyphicon-remove" title="Close"></i>
+                <i id="close-old-browser-warning" class="icon-remove" title="Close"></i>
             </div>
 
         </div>
     </div>
+
+
 </main>
 
 </body>

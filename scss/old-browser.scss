@@ -8,34 +8,6 @@
 
 /*== Common styles ==*/
 
-.hide {
-  display: none;
-}
-
-.glyphicon-remove {
-  cursor: pointer;
-  @include transform(rotate(45deg));
-
-  &:hover {
-    opacity: .55;
-  }
-
-  &:before {
-    content: "+";
-    font-size: 40px;
-    font-weight: bold;
-  }
-}
-
-.container {
-  width: 940px;
-  margin: 0 auto;
-}
-
-.left {
-  float: left;
-}
-
 .old-browser-warning {
   background: $very-light-gray-mostly-white;
   border: 1px solid $very-light-gray;
@@ -58,14 +30,25 @@
   &__right-side {
     float: left;
     width: 404px;
-    margin: 17px 0 10px 20px;
+    margin: 48px 0 10px 20px;
   }
 
   &__glyphicon-remove {
+    cursor: pointer;
+    @include transform(rotate(45deg));
     color: $light-gray;
     float: right;
     margin: -5px 15px 0 0;
-    rotation: 45deg;
+
+    &:hover {
+      opacity: .55;
+    }
+
+    &:before {
+      content: "+";
+      font-size: 40px;
+      font-weight: bold;
+    }
   }
 
   &__img-link {
@@ -98,17 +81,26 @@
   }
 }
 
-.text-primary {
-  color: $dark-moderate-blue;
+.icon-remove {
+  cursor: pointer;
+  @include transform(rotate(45deg));
+  color: $light-gray;
+  float: right;
+  margin: -5px 15px 0 0;
+
+  &:hover {
+    opacity: .55;
+  }
+
+  &:before {
+    content: "+";
+    font-size: 40px;
+    font-weight: bold;
+  }
 }
 
-
-/*-- Need to be removed --*/
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: Arial,sans-serif;
+.text-primary {
+  color: $dark-moderate-blue;
 }
 
 

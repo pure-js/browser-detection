@@ -1,30 +1,6 @@
 /*== Variables ==*/
 /*== Mixins ==*/
 /*== Common styles ==*/
-.hide {
-  display: none; }
-
-.glyphicon-remove {
-  cursor: pointer;
-  transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  /* IE 9 */
-  -webkit-transform: rotate(45deg);
-  /* Opera, Chrome, and Safari */ }
-  .glyphicon-remove:hover {
-    opacity: .55; }
-  .glyphicon-remove:before {
-    content: "+";
-    font-size: 40px;
-    font-weight: bold; }
-
-.container {
-  width: 940px;
-  margin: 0 auto; }
-
-.left {
-  float: left; }
-
 .old-browser-warning {
   background: #f9f9f9;
   border: 1px solid #f0f0f0;
@@ -42,12 +18,23 @@
   .old-browser-warning__right-side {
     float: left;
     width: 404px;
-    margin: 17px 0 10px 20px; }
+    margin: 48px 0 10px 20px; }
   .old-browser-warning__glyphicon-remove {
+    cursor: pointer;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Opera, Chrome, and Safari */
     color: #c2c2c2;
     float: right;
-    margin: -5px 15px 0 0;
-    rotation: 45deg; }
+    margin: -5px 15px 0 0; }
+    .old-browser-warning__glyphicon-remove:hover {
+      opacity: .55; }
+    .old-browser-warning__glyphicon-remove:before {
+      content: "+";
+      font-size: 40px;
+      font-weight: bold; }
   .old-browser-warning__img-link {
     display: inline-block;
     transition: opacity .45s;
@@ -68,14 +55,25 @@
     .old-browser-warning__link:hover {
       border-bottom: none; }
 
+.icon-remove {
+  cursor: pointer;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Opera, Chrome, and Safari */
+  color: #c2c2c2;
+  float: right;
+  margin: -5px 15px 0 0; }
+  .icon-remove:hover {
+    opacity: .55; }
+  .icon-remove:before {
+    content: "+";
+    font-size: 40px;
+    font-weight: bold; }
+
 .text-primary {
   color: #3d5b7f; }
-
-/*-- Need to be removed --*/
-* {
-  margin: 0;
-  padding: 0;
-  font-family: Arial,sans-serif; }
 
 /*-- Personal styles --*/
 .browser-sprite {
