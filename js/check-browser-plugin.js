@@ -3,8 +3,8 @@
     $.fn.checkBrowser = function(options) {
 
         var defaults = {
-            onlyOnce: false,
-            supportingBrowsers: 'all',
+            once: 'No',
+            //supportingBrowsers: ['Firefox = 27', 'Chrome= 30', 'Opera = 15',  'IE= 10'],
             warningBoxName: '.old-browser-warning',
             closeBtnName: '#close-old-browser-warning',
             duration: 1200,
@@ -14,19 +14,21 @@
         return this.each(function() {
 
             var settings   = $.extend( {}, defaults, options),
-                $onlyOnce = settings.onlyOnce,
-                $supportingBrowsers  = $(settings.supportingBrowsers, this),
+                $once = settings.once,
+                //$supportingBrowsers  = settings.supportingBrowsers,
                 $warningBoxName = $(settings.warningBoxName, this),
                 $closeBtnName = settings.closeBtnName,
                 $duration = settings.duration,
                 $easing = settings.easing;
 
+            $warningBoxName.hide();
+
             // Old browser warning close button
             $warningBoxName.on('click', $closeBtnName, function(e) {
                 e.preventDefault();
 
-                if(!sessionStorage.getItem('browser')) {
-                    sessionStorage.setItem('browser','1');
+                if($once == 'Yes') {
+                    sessionStorage.setItem('DoNotShowMeItAgain', 'Yes');
                 }
 
                 $warningBoxName.fadeToggle($duration, $easing);
@@ -58,15 +60,16 @@
             };
 
 
-            var checkBrowser = function(browsers) {
+            var checkBrowser = function(takesBrowsers) {
+                var storage = sessionStorage.getItem('DoNotShowMeItAgain');
 
-                var storage = sessionStorage.getItem('browser');
-
-                if(storage && storage == '1') return false;
+                if(storage == 'Yes') {
+                    return false
+                }
 
                 for(var name in browsers) {
-                    if(browserDetect.indexOf(name) != -1 && browsers[name] > browserDetect[1]) {
-                        $warningBox.show();
+                    if(browserDetect.indexOf(name) != -1 && takesBrowsers[name] > browserDetect[1]) {
+                        $warningBoxName.show();
                         break;
                     }
                 }

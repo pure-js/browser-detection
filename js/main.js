@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('body').checkBrowser({
-        onlyOnce: true,
+        once: 'No',
         duration: 1000
     });
 });
