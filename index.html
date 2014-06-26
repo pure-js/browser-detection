@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- Styles for design of warning block -->
     <link rel="stylesheet" href="scss/old-browser.css">
+    <!-- SyntaxHighlighter style -->
+    <link rel="stylesheet" href="css/prism.css">
 
     <!-- Add jquery -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -14,10 +16,12 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!-- Add plugin Check browser -->
     <script src="js/check-browser-plugin.js"></script>
+    <!-- Syntax highlighter Prism js -->
+    <script src="js/prism.js"></script>
     <!-- Own main javascript file -->
     <script src="js/main.js"></script>
 </head>
-<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="70">
+<body data-spy="scroll" data-target="#bs-example-navbar-collapse-1" data-offset="170">
 <header class="header">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -52,12 +56,12 @@
         <div class="col-md-12">
             <h1 id="home">The check browser version plugin</h1>
             <p>Latest version is 1.0.0</p>
+            <p>You can use default view of this plugin look like so (See under) or create himself warning block</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-
             <div class="old-browser-warning">
                 <div class="old-browser-warning__left-side">
                     <h3 class="text-primary h3">Warning!</h3>
@@ -75,134 +79,47 @@
 
                 <i id="close-old-browser-warning" class="icon-remove" title="Close"></i>
             </div>
-
         </div>
     </div>
 
     <div class="row">
-        <h2>HTML Generator</h2>
+        <div class="col-md-12">
+            <p>For begin you need check - you use jquery or not use? If you not add jquery plugin - you need do it</p>
+            <p>And inicialize plugin</p>
+            <pre>
+                <code class="language-javascript">
+$(document).ready(function () {
+    $('body').checkBrowser();
+});
+                </code>
+            </pre>
 
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
+            <p>All supported params:</p>
 
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
+            <pre>
+                <code class="language-javascript">
+$(document).ready(function () {
+    $('body').checkBrowser({
+        once: 'No',
+        warningBoxName: '.old-browser-warning',
+        closeBtnName: '#close-old-browser-warning',
+        duration: 1200,
+        easing: 'swing',
 
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
-    </div>
+        browsers: {
+            Firefox: 27,
+            Chrome: 30,
+            Opera: 15,
+            IE: 10
+        }
+    });
+});
+                </code>
+            </pre>
 
-    <div class="row">
-        <h2 id="examples">HTML Generator</h2>
-
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
-
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
-
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
-    </div>
-
-    <div class="row">
-        <h2>HTML Generator</h2>
-
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
-
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
-
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
-    </div>
-
-    <div class="row">
-        <h2 id="options">HTML Generator</h2>
-
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
-
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
-
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
-    </div>
-
-    <div class="row">
-        <h2>HTML Generator</h2>
-
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
-
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
-
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
-    </div>
-
-    <div class="row">
-        <h2>HTML Generator</h2>
-
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
-
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
-
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
-    </div>
-
-    <div class="row">
-        <h2 id="faq">HTML Generator</h2>
-
-        <p>Use this HTML generator to generate HTML code for your own website or blog. Use the toolbar to:</p>
-
-        <ul>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Create <strong>bold</strong> or <em>italic</em> text.</li>
-            <li>Change the <span style="color:#800000;">text color</span></li>
-            <li>Change the <span style="font-family:comic sans ms,cursive;">font family</span> or <span style="font-size:12px;">font size</span></li>
-            <li>Create <a href="http://www.html.am/html-codes/links/">hyperlinks</a></li>
-            <li>Create a bulleted list...</li>
-            <li>...and much more!</li>
-        </ul>
-
-        <p>To view the source code, click on the &quot;Source&quot; button above (on the left).</p>
+            <code class="language-javascript">once: 'No'</code>
+            <p>In this option you can change amount of show</p>
+        </div>
     </div>
 </main>
 

@@ -15,6 +15,7 @@
   box-shadow: 0 4px 0 $very-light-gray;
   overflow: hidden;
   transition: background .25s, border .25s, box-shadow .25s;
+  margin: 0 0 20px 0;
 
   &:hover {
     background: $very-light-gray;

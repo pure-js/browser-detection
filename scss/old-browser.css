@@ -7,7 +7,8 @@
   border-radius: 4px;
   box-shadow: 0 4px 0 #f0f0f0;
   overflow: hidden;
-  transition: background .25s, border .25s, box-shadow .25s; }
+  transition: background .25s, border .25s, box-shadow .25s;
+  margin: 0 0 20px 0; }
   .old-browser-warning:hover {
     background: #f0f0f0;
     box-shadow: 0 4px 0 #c2c2c2; }
