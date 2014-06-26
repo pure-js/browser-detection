@@ -117,8 +117,61 @@ $(document).ready(function () {
                 </code>
             </pre>
 
-            <code class="language-javascript">once: 'No'</code>
+
             <p>In this option you can change amount of show</p>
+
+            <pre>
+                <code class="language-javascript">
+$('body').checkBrowser({
+    once: 'No'
+});
+                </code>
+            </pre>
+
+            <pre>
+                <code class="language-javascript">
+$('body').checkBrowser({
+    warningBoxName: '.old-browser-warning'
+});
+                </code>
+            </pre>
+
+            <pre>
+                <code class="language-javascript">
+$('body').checkBrowser({
+    closeBtnName: '#close-old-browser-warning'
+});
+                </code>
+            </pre>
+
+            <pre>
+                <code class="language-javascript">
+$('body').checkBrowser({
+    duration: 1200
+});
+                </code>
+            </pre>
+
+            <pre>
+                <code class="language-javascript">
+$('body').checkBrowser({
+    easing: 'swing'
+});
+                </code>
+            </pre>
+
+            <pre>
+                <code class="language-javascript">
+$('body').checkBrowser({
+    browsers: {
+        Firefox: 27,
+        Chrome: 30,
+        Opera: 15,
+        IE: 10
+    }
+});
+                </code>
+            </pre>
         </div>
     </div>
 </main>
