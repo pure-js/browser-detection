@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $('body').checkBrowser({
-        once: 'Yes',
-        duration: 1000,
-        browsers: {
-            Chrome: 39
-        }
-    });
+  $('body').checkBrowser({
+    once: 'Yes',
+    duration: 1000,
+    browsers: {
+      Chrome: 39
+    }
+  });
 });
