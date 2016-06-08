@@ -1,0 +1,23 @@
+{
+  "name": "check-browser",
+  "description": "script to check browser version",
+  "main": "src/check-browser.js",
+  "authors": [
+    "IamEmpty"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "js"
+  ],
+  "homepage": "https://github.com/iamempty/check-browser",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "prism": "^1.5.1"
+  }
+}
