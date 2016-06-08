@@ -3,7 +3,7 @@ $(document).ready(function () {
     once: 'Yes',
     duration: 1000,
     browsers: {
-      Chrome: 39
+      Chrome: 52
     }
   });
 });
