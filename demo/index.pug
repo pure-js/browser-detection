@@ -4,21 +4,21 @@ html(lang='en')
     meta(charset='utf-8')
     title Check browser plugin demonstration
     //- Latest compiled and minified Bootstrap CSS
-    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
     //- Styles for design of warning block
     link(rel='stylesheet', href='old-browser.css')
     //- SyntaxHighlighter style
-    link(rel='stylesheet', href='css/prism.css')
+    link(rel='stylesheet', href='prism.css')
     //- Add jquery
-    script(src='//code.jquery.com/jquery-1.11.0.min.js')
+    script(src='https://code.jquery.com/jquery-1.11.0.min.js')
     //- Latest compiled and minified Bootstrap JavaScript
-    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
+    script(src='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     //- Add plugin Check browser
-    script(src='js/check-browser-plugin.js')
+    script(src='check-browser.js')
     //- Syntax highlighter Prism js
-    script(src='js/prism.js')
+    script(src='prism.js')
     //- Own main javascript file
-    script(src='js/main.js')
+    script(src='main.js')
   body(data-spy='scroll', data-target='#bs-example-navbar-collapse-1', data-offset='170')
     header.header
       nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
@@ -40,24 +40,20 @@ html(lang='en')
               //- Provides extra visual weight and identifies the primary action in a set of buttons
               li
                 button.navbar-btn.btn.btn-primary(type='button') Download
-          //- .navbar-collapse
-        //- .container-fluid
+
     main.container
       .row
         .col-md-12
           h1#home The check browser version plugin
           p Latest version is 1.0.0
-          p
-            | You can use default view of this plugin look like so (See under) or create himself warning block
+          p You can use default view of this plugin look like so (See under) or create himself warning block
       .row
         .col-md-12
           .old-browser-warning
             .old-browser-warning__left-side
               h3.text-primary.h3 Warning!
-              p.old-browser-warning__text
-                | You use the oldest version of a browser. It may be a reason of incorrect work and view of a website.
-              p.old-browser-warning__text
-                | For comfortable work, please download latest version of a browser convenient for you from official website.
+              p.old-browser-warning__text You use the oldest version of a browser. It may be a reason of incorrect work and view of a website.
+              p.old-browser-warning__text For comfortable work, please download latest version of a browser convenient for you from official website.
               p.old-browser-warning__text
                 | Please read our
                 a.old-browser-warning__link(href='#') documentation
@@ -70,24 +66,66 @@ html(lang='en')
             i#close-old-browser-warning.icon-remove(title='Close')
       .row
         .col-md-12
-          p
-            | For begin you need check - you use jquery or not use? If you not add jquery plugin - you need do it
+          p For begin you need check - you use jquery or not use? If you not add jquery plugin - you need do it
           p And inicialize plugin
-          pre.
-            \n
+          pre
+            code.language-javascript.
+              $(document).ready(function () {
+                $('body').checkBrowser();
+              });
+
           p All supported params:
-          pre.
-            \n
+          pre
+            code.language-javascript.
+              $(document).ready(function () {
+                $('body').checkBrowser({
+                  once: 'No',
+                  warningBoxName: '.old-browser-warning',
+                  closeBtnName: '#close-old-browser-warning',
+                  duration: 1200,
+                  easing: 'swing',
+
+                  browsers: {
+                    Firefox: 27,
+                    Chrome: 30,
+                    Opera: 15,
+                    IE: 10
+                  }
+                });
+              });
           p In this option you can change amount of show
-          pre.
-            \n
-          pre.
-            \n
-          pre.
-            \n
-          pre.
-            \n
-          pre.
-            \n
-          pre.
-            \n
+          pre
+            code.language-javascript.
+              $('body').checkBrowser({
+                once: 'No'
+              });
+          pre
+            code.language-javascript.
+              $('body').checkBrowser({
+                warningBoxName: '.old-browser-warning'
+              });
+          pre
+            code.language-javascript.
+              $('body').checkBrowser({
+                closeBtnName: '#close-old-browser-warning'
+              });
+          pre
+            code.language-javascript.
+              $('body').checkBrowser({
+                duration: 1200
+              });
+          pre
+            code.language-javascript.
+              $('body').checkBrowser({
+                easing: 'swing'
+              });
+          pre
+            code.language-javascript.
+              $('body').checkBrowser({
+                browsers: {
+                  Firefox: 27,
+                  Chrome: 30,
+                  Opera: 15,
+                  IE: 10
+                }
+              });

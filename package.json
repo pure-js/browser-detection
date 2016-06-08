@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pug": "pug demo --out build",
     "stylus": "stylus stylesheets/old-browser.styl -o build",
-    "build": "npm run pug && npm run stylus"
+    "copy1": "cp bower_components/prism/prism.js build",
+    "copy2": "cp bower_components/prism/themes/prism.css build",
+    "copy3": "cp src/check-browser.js build",
+    "copy4": "cp demo/js/main.js build",
+    "build": "npm run pug && npm run stylus && npm run copy1 && npm run copy2 && npm run copy3 && npm run copy4"
   },
   "repository": {
     "type": "git",
