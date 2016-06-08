@@ -1,12 +1,12 @@
 doctype html
-html
-  head(lang='en')
-    meta(charset='UTF-8')
+html(lang='en')
+  head
+    meta(charset='utf-8')
     title Check browser plugin demonstration
     //- Latest compiled and minified Bootstrap CSS
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
     //- Styles for design of warning block
-    link(rel='stylesheet', href='scss/old-browser.css')
+    link(rel='stylesheet', href='old-browser.css')
     //- SyntaxHighlighter style
     link(rel='stylesheet', href='css/prism.css')
     //- Add jquery
@@ -27,9 +27,9 @@ html
           .navbar-header
             button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
               span.sr-only Toggle navigation
-              span.icon-bar
-              span.icon-bar
-              span.icon-bar
+              - var n = 0
+              while n < 3
+                span.icon-bar= n++
             a.navbar-brand(href='#') Browser Version
           //- Collect the nav links, forms, and other content for toggling
           #bs-example-navbar-collapse-1.collapse.navbar-collapse

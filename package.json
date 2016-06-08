@@ -4,7 +4,10 @@
   "description": "script to check browser version",
   "main": "README.md",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pug": "pug demo --out build",
+    "stylus": "stylus stylesheets/old-browser.styl -o build",
+    "build": "npm run pug && npm run stylus"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,8 @@
   },
   "homepage": "https://github.com/IamEmpty/check-browser#readme",
   "devDependencies": {
-    "jshint": "^2.8.0"
+    "jshint": "^2.8.0",
+    "pug": "^2.0.0-beta2",
+    "stylus": "^0.54.5"
   }
 }

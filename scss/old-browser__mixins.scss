@@ -1,7 +1,0 @@
-/*== Mixins ==*/
-
-@mixin transform($angle) {
-  transform: $angle;
-  -ms-transform: $angle; /* IE 9 */
-  -webkit-transform: $angle; /* Opera, Chrome, and Safari */
-}
