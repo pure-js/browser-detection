@@ -1,11 +1,11 @@
 'use strict';
 
-var checkBrowser = function(options = defaults) {
+var checkBrowser = function(options) {
 
   var defaults = {
     once: true,
     warningBox: '.old-browser-warning',
-    closeBtnName: '#close-old-browser-warning',
+    closeBtn: '#close-old-browser-warning',
     duration: 1200,
     easing: 'swing',
     browsers: {
@@ -17,24 +17,26 @@ var checkBrowser = function(options = defaults) {
   };
 
   var $once = defaults.once,
-    $warningBox = defaults.warningBox,
-    $closeBtnName = defaults.closeBtnName,
+    $warningBox = document.querySelector(defaults.warningBox),
+    $closeBtn = document.querySelector(defaults.closeBtn),
     $duration = defaults.duration,
-    $easing = defaults.easing;
+    $easing = defaults.easing,
+    $browsers = defaults.browsers;
 
-  document.querySelector($warningBox).addClass('hide');
+  $warningBox.classList.add('hide');
 
   // Old browser warning close button
-  document.querySelector($warningBox).on('click', $closeBtnName, function(e) {
-    e.preventDefault();
+  $closeBtn.onclick = hidePopUp();
 
+  function hidePopUp() {
     // Check if parameter is setup we will save user press close button
-    if($once === true) {
+    if($once) {
       sessionStorage.setItem('DoNotShowMeItAgain', 'true');
     }
 
-    document.querySelector($warningBox).fadeToggle($duration, $easing);
-  });
+    // TODO: write fadeToggle alternative
+    $warningBox.classList.add('hide');
+  };
 
 
   // Detecting browser version
@@ -55,7 +57,7 @@ var checkBrowser = function(options = defaults) {
     M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
 
     if ((tem = ua.match(/version\/(\d+)/i)) !== null) M.splice(1, 1, tem[1]);
-    
+
     return M;
   })();
 
@@ -75,5 +77,5 @@ var checkBrowser = function(options = defaults) {
         break;
       }
     }
-  }(settings.browsers);
+  }($browsers);
 };
