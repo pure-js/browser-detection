@@ -2,7 +2,7 @@
   "name": "check-browser",
   "version": "0.0.1",
   "description": "script to check browser version",
-  "main": "README.md",
+  "main": "src/check-browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pug": "pug demo --out build",
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IamEmpty/check-browser.git"
+    "url": "git+https://github.com/pure-js/check-browser.git"
   },
   "keywords": [
     "js"
   ],
-  "author": "IamEmpty",
+  "author": "pure-js",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IamEmpty/check-browser/issues"
+    "url": "https://github.com/pure-js/check-browser/issues"
   },
-  "homepage": "https://github.com/IamEmpty/check-browser#readme",
+  "homepage": "https://github.com/pure-js/check-browser#readme",
   "devDependencies": {
     "jshint": "^2.8.0",
     "pug": "^2.0.0-beta2",

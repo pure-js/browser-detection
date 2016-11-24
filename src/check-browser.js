@@ -1,32 +1,30 @@
-'use strict';
+const defaults = {
+  once: true,
+  warningBox: '.old-browser-warning',
+  closeBtn: '#close-old-browser-warning',
+  duration: 1200,
+  easing: 'swing',
+  browsers: {
+    Firefox: 27,
+    Chrome: 30,
+    Opera: 15,
+    IE: 11
+  }
+};
 
-var checkBrowser = function(options) {
+function checkBrowser(
+  once = defaults.once,
+  warningBox = document.querySelector(defaults.warningBox),
+  closeBtn = document.querySelector(defaults.closeBtn),
+  duration = defaults.duration,
+  easing = defaults.easing,
+  browsers = defaults.browsers) {
+  'use strict';
 
-  var defaults = {
-    once: true,
-    warningBox: '.old-browser-warning',
-    closeBtn: '#close-old-browser-warning',
-    duration: 1200,
-    easing: 'swing',
-    browsers: {
-      Firefox: 27,
-      Chrome: 30,
-      Opera: 15,
-      IE: 11
-    }
-  };
-
-  var $once = defaults.once,
-    $warningBox = document.querySelector(defaults.warningBox),
-    $closeBtn = document.querySelector(defaults.closeBtn),
-    $duration = defaults.duration,
-    $easing = defaults.easing,
-    $browsers = defaults.browsers;
-
-  $warningBox.classList.add('hide');
+  warningBox.classList.add('hide');
 
   // Old browser warning close button
-  $closeBtn.onclick = hidePopUp();
+  closeBtn.onclick = hidePopUp();
 
   function hidePopUp() {
     // Check if parameter is setup we will save user press close button
@@ -34,14 +32,12 @@ var checkBrowser = function(options) {
       sessionStorage.setItem('DoNotShowMeItAgain', 'true');
     }
 
-    // TODO: write fadeToggle alternative
-    $warningBox.classList.add('hide');
-  };
-
+    warningBox.classList.add('hide');
+  }
 
   // Detecting browser version
-  var browserDetect = (function () {
-    var ua = navigator.userAgent, tem,
+  let browserDetect = (function () {
+    let ua = navigator.userAgent, tem,
       M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 
     if (/trident/i.test(M[1])) {
@@ -63,7 +59,7 @@ var checkBrowser = function(options) {
 
 
   var checkBrowser = function(takesBrowsers) {
-    var storage = sessionStorage.getItem('DoNotShowMeItAgain');
+    let storage = sessionStorage.getItem('DoNotShowMeItAgain');
 
     // Check if user press close button
     if(storage === 'true') {
@@ -71,11 +67,11 @@ var checkBrowser = function(options) {
     }
 
     // If version of browser more old you will see window
-    for(var name in takesBrowsers) {
-      if(browserDetect.indexOf(name) != -1 && takesBrowsers[name] > browserDetect[1]) {
-        $warningBox.show();
+    for(let name in takesBrowsers) {
+      if(browserDetect.indexOf(name) !== -1 && takesBrowsers[name] > browserDetect[1]) {
+        warningBox.show();
         break;
       }
     }
-  }($browsers);
+  }(browsers);
 };
