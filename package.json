@@ -2,33 +2,32 @@
   "name": "check-browser",
   "version": "0.0.1",
   "description": "script to check browser version",
-  "main": "README.md",
+  "main": "src/check-browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pug": "pug demo --out build",
-    "stylus": "stylus stylesheets/old-browser.styl -o build",
-    "copy1": "cp bower_components/prism/prism.js build",
-    "copy2": "cp bower_components/prism/themes/prism.css build",
-    "copy3": "cp src/check-browser.js build",
-    "copy4": "cp demo/js/main.js build",
-    "build": "npm run pug && npm run stylus && npm run copy1 && npm run copy2 && npm run copy3 && npm run copy4"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IamEmpty/check-browser.git"
+    "url": "git+https://github.com/pure-js/check-browser.git"
   },
   "keywords": [
     "js"
   ],
-  "author": "IamEmpty",
+  "author": "pure-js",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IamEmpty/check-browser/issues"
+    "url": "https://github.com/pure-js/check-browser/issues"
   },
-  "homepage": "https://github.com/IamEmpty/check-browser#readme",
+  "homepage": "https://github.com/pure-js/check-browser#readme",
   "devDependencies": {
+    "del": "^2.2.2",
+    "gulp-load-plugins": "^1.4.0",
     "jshint": "^2.8.0",
-    "pug": "^2.0.0-beta2",
-    "stylus": "^0.54.5"
+    "require-dir": "^0.3.1"
+  },
+  "dependencies": {
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-pug": "^3.1.0",
+    "gulp-stylus": "^2.6.0"
   }
 }

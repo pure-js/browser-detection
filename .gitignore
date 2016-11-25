@@ -9,3 +9,6 @@ bower_components
 
 # Build
 build
+
+# OSX
+.DS_store
