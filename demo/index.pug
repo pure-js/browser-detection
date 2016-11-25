@@ -37,71 +37,63 @@ html(lang='en')
           h1#home The check browser version plugin
           p Latest version is 1.0.0
           p You can use default view of this plugin look like so (See under) or create himself warning block
-      .row
-        .col-md-12
-          .old-browser-warning
-            .old-browser-warning__left-side
-              h3.text-primary.h3 Warning!
-              p.old-browser-warning__text You use the oldest version of a browser. It may be a reason of incorrect work and view of a website.
-              p.old-browser-warning__text For comfortable work, please download latest version of a browser convenient for you from official website.
-              p.old-browser-warning__text
-                | Please read our
-                a.old-browser-warning__link(href='#') documentation
-                | .
-            .old-browser-warning__right-side
-              a.old-browser-warning__img-link.browser-sprite.browser-chrome(href='https://www.google.com/intl/ru/chrome/browser/', target='_blank', title='Chrome')
-              a.old-browser-warning__img-link.browser-sprite.browser-firefox(href='http://www.mozilla.org/ru/firefox/new/', target='_blank', title='Firefox')
-              a.old-browser-warning__img-link.browser-sprite.browser-ie(href='http://windows.microsoft.com/ru-ru/internet-explorer/download-ie', target='_blank', title='Internet Explorer')
-              a.old-browser-warning__img-link.browser-sprite.browser-opera(href='http://www.opera.com/ru', target='_blank', title='Opera')
-            i#close-old-browser-warning.icon-remove(title='Close')
+      .old-browser-warning
+        .old-browser-warning__left-side
+          h3.text-primary.h3 Warning!
+          p.old-browser-warning__text You use the oldest version of a browser. It may be a reason of incorrect work and view of a website.
+          p.old-browser-warning__text For comfortable work, please download latest version of a browser convenient for you from official website.
+          p.old-browser-warning__text
+            | Please read our
+            a.old-browser-warning__link(href='#') documentation
+            | .
+        .old-browser-warning__right-side
+          a.old-browser-warning__img-link.browser-sprite.browser-chrome(href='https://www.google.com/intl/ru/chrome/browser/', target='_blank', title='Chrome')
+          a.old-browser-warning__img-link.browser-sprite.browser-firefox(href='http://www.mozilla.org/ru/firefox/new/', target='_blank', title='Firefox')
+          a.old-browser-warning__img-link.browser-sprite.browser-ie(href='http://windows.microsoft.com/ru-ru/internet-explorer/download-ie', target='_blank', title='Internet Explorer')
+          a.old-browser-warning__img-link.browser-sprite.browser-opera(href='http://www.opera.com/ru', target='_blank', title='Opera')
+        i#close-old-browser-warning.icon-remove(title='Close')
       .row
         .col-md-12
           p For begin you need check - you use jquery or not use? If you not add jquery plugin - you need do it
           p And inicialize plugin
           pre
             code.language-javascript.
-              $(document).ready(function () {
-                $('body').checkBrowser();
-              });
-
+              checkBrowser();
           p All supported params:
           pre
             code.language-javascript.
-              $(document).ready(function () {
-                $('body').checkBrowser({
-                  once: 'No',
-                  warningBoxName: '.old-browser-warning',
-                  closeBtnName: '#close-old-browser-warning',
-                  duration: 1200,
-                  easing: 'swing',
-
-                  browsers: {
-                    Firefox: 27,
-                    Chrome: 30,
-                    Opera: 15,
-                    IE: 10
-                  }
-                });
+              checkBrowser({
+                once: false,
+                warningEl: '.old-browser-warning',
+                closeBtnName: '#close-old-browser-warning',
+                duration: 1200,
+                easing: 'swing',
+                browsers: {
+                  Firefox: 27,
+                  Chrome: 30,
+                  Opera: 15,
+                  IE: 10
+                }
               });
           p In this option you can change amount of show
           pre
             code.language-javascript.
-              $('body').checkBrowser({
-                once: 'No'
+              checkBrowser({
+                once: false
               });
           pre
             code.language-javascript.
-              $('body').checkBrowser({
-                warningBoxName: '.old-browser-warning'
+              checkBrowser({
+                warningEl: '.old-browser-warning'
               });
           pre
             code.language-javascript.
-              $('body').checkBrowser({
+              checkBrowser({
                 closeBtnName: '#close-old-browser-warning'
               });
           pre
             code.language-javascript.
-              $('body').checkBrowser({
+              checkBrowser({
                 duration: 1200
               });
           pre
@@ -111,7 +103,7 @@ html(lang='en')
               });
           pre
             code.language-javascript.
-              $('body').checkBrowser({
+              checkBrowser({
                 browsers: {
                   Firefox: 27,
                   Chrome: 30,

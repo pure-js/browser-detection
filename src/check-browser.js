@@ -1,38 +1,38 @@
 const defaults = {
   once: true,
-  warningBox: '.old-browser-warning',
+  warningEl: '.old-browser-warning',
   closeBtn: '#close-old-browser-warning',
   duration: 1200,
   easing: 'swing',
   browsers: {
     Firefox: 27,
-    Chrome: 30,
+    Chrome: 60,
     Opera: 15,
     IE: 11
   }
 };
 
-function checkBrowser(
+function checkBrowser({
   once = defaults.once,
-  warningBox = document.querySelector(defaults.warningBox),
+  warningEl = document.querySelector(defaults.warningEl),
   closeBtn = document.querySelector(defaults.closeBtn),
   duration = defaults.duration,
   easing = defaults.easing,
-  browsers = defaults.browsers) {
-  'use strict';
+  browsers = defaults.browsers
+}) {
 
-  warningBox.classList.add('hide');
+  warningEl.classList.add('hide');
 
   // Old browser warning close button
-  closeBtn.onclick = hidePopUp();
+  closeBtn.addEventListener('click', hidePopup);
 
-  function hidePopUp() {
+  function hidePopup() {
     // Check if parameter is setup we will save user press close button
-    if($once) {
-      sessionStorage.setItem('DoNotShowMeItAgain', 'true');
+    if(once) {
+      sessionStorage.setItem('browserWarningClose', true);
     }
 
-    warningBox.classList.add('hide');
+    warningEl.classList.add('hide');
   }
 
   // Detecting browser version
@@ -57,21 +57,28 @@ function checkBrowser(
     return M;
   })();
 
+  let currentBrowser = {
+    name: browserDetect[0],
+    version: Number(browserDetect[1])
+  }
 
-  var checkBrowser = function(takesBrowsers) {
-    let storage = sessionStorage.getItem('DoNotShowMeItAgain');
+  function findBrowser(browsers) {
+    let close = sessionStorage.getItem('browserWarningClose');
 
-    // Check if user press close button
-    if(storage === 'true') {
+    // Check if user press on close button
+    if(close === 'true') {
       return false;
     }
 
-    // If version of browser more old you will see window
-    for(let name in takesBrowsers) {
-      if(browserDetect.indexOf(name) !== -1 && takesBrowsers[name] > browserDetect[1]) {
-        warningBox.show();
+    // If version of browser is older - you will see the window
+    for(let name in browsers) {
+      let version = browsers[name];
+      if(name === currentBrowser.name && version > currentBrowser.version) {
+        warningEl.classList.remove('hide');
         break;
       }
     }
-  }(browsers);
-};
+  }
+
+  findBrowser(browsers);
+}
