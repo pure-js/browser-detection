@@ -11,7 +11,8 @@
     "url": "git+https://github.com/pure-js/check-browser.git"
   },
   "keywords": [
-    "js"
+    "js",
+    "detect"
   ],
   "author": "pure-js",
   "license": "MIT",

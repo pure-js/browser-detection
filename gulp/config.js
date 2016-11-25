@@ -2,7 +2,7 @@ module.exports = {
   paths: {
     pug: 'demo/index.pug',
     pugWatch: [
-      'demo/index.pug',
+      'demo/index.pug'
     ],
     styl: [
       'stylesheets/old-browser.styl'

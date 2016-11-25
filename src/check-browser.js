@@ -36,7 +36,7 @@ function checkBrowser({
   }
 
   // Detecting browser version
-  let browserDetect = (function () {
+  function browserDetect() {
     let ua = navigator.userAgent, tem,
       M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 
@@ -54,13 +54,15 @@ function checkBrowser({
 
     if ((tem = ua.match(/version\/(\d+)/i)) !== null) M.splice(1, 1, tem[1]);
 
-    return M;
-  })();
+    let browser = {
+      name: M[0],
+      version: M[1]
+    }
 
-  let currentBrowser = {
-    name: browserDetect[0],
-    version: Number(browserDetect[1])
+    return browser;
   }
+
+  let currentBrowser = browserDetect();
 
   function findBrowser(browsers) {
     let close = sessionStorage.getItem('browserWarningClose');
@@ -72,10 +74,12 @@ function checkBrowser({
 
     // If version of browser is older - you will see the window
     for(let name in browsers) {
-      let version = browsers[name];
-      if(name === currentBrowser.name && version > currentBrowser.version) {
-        warningEl.classList.remove('hide');
-        break;
+      if (browsers.hasOwnProperty(name)) {
+        let version = browsers[name];
+        if(name === currentBrowser.name && currentBrowser.version < version) {
+          warningEl.classList.remove('hide');
+          break;
+        }
       }
     }
   }
