@@ -1,6 +1,6 @@
 {
   "name": "check-browser",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "script to check browser version",
   "main": "src/check-browser.js",
   "scripts": {
