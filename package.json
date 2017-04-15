@@ -1,10 +1,13 @@
 {
   "name": "check-browser",
   "version": "1.0.0",
-  "description": "script to check browser version",
+  "description": "script for checking the browser version",
   "main": "src/check-browser.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp dev",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
   },
   "homepage": "https://github.com/pure-js/check-browser#readme",
   "devDependencies": {
+    "bower": "^1.8.0",
     "del": "^2.2.2",
     "gulp-load-plugins": "^1.4.0",
     "jshint": "^2.8.0",

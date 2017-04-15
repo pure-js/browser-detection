@@ -22,4 +22,5 @@ function watch() {
 
 // The default task (called when you run `gulp` from cli)
 const dev = gulp.parallel(tasks.build, watch);
+gulp.task('dev', dev);
 gulp.task('default', dev);
