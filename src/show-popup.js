@@ -18,24 +18,26 @@ function showPopup({
   closeBtn = document.querySelector(defaults.closeBtn),
   duration = defaults.duration,
   easing = defaults.easing,
-  browsers = defaults.browsers
+  browsers = defaults.browsers,
 }) {
-  if(browserIsDeprecated(browsers)) {
+
+  if (once) {
+    const close = sessionStorage.getItem('browserWarningClose');
+
+    // Check if user press on close button
+    if(close === 'true') {
+      hidePopup();
+      return false;
+    }
+  }
+
+  if (browserIsDeprecated(browsers)) {
     warningEl.classList.remove('hide');
   } else {
     warningEl.classList.add('hide');
   }
 
-  const close = sessionStorage.getItem('browserWarningClose');
-
-  // Check if user press on close button
-  if(close === true) {
-    // return false;
-  }
-
-
   function hidePopup() {
-    console.log('works');
     warningEl.classList.add('hide');
 
     // Check if parameter is setup we will save user press close button
