@@ -1,8 +1,8 @@
 const gulp = require('gulp'),
-  config = require('../config').build,
+  config = require('../config').dev,
   plugins = require('gulp-load-plugins')();
 
-const build = gulp.parallel(html, css, copy);
+const dev = gulp.parallel(html, css, copy, watch);
 
 function html() {
   return gulp.src(config.pug)
@@ -13,7 +13,7 @@ function html() {
 }
 
 function css() {
-  return gulp.src(config.styl)
+  return gulp.src(config.paths.styl)
     .pipe(plugins.stylus({
       'include css': true
     }))
@@ -21,8 +21,13 @@ function css() {
 }
 
 function copy() {
-  return gulp.src(config.copy)
+  return gulp.src(config.paths.copy)
     .pipe(gulp.dest(config.dest));
 }
 
-module.exports = build;
+function watch() {
+  gulp.watch(config.pugWatch, html);
+  gulp.watch(config.stylusWatch, css);
+}
+
+module.exports = dev;
