@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp dev",
     "build": "gulp build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d build",
     "clean": "gulp clean",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install"
