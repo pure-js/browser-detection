@@ -1,10 +1,7 @@
-const gulp = require('gulp'),
-  del = require('del'),
+const del = require('del'),
   config = require('./gulp/config'),
   dev = require('./gulp/tasks/dev'),
-  build = require('./gulp/tasks/build'),
-  plugins = require('gulp-load-plugins')();
-
+  build = require('./gulp/tasks/build');
 
 const clean = () => del([config.dev.dest, config.build.dest]);
 

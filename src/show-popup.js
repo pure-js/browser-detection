@@ -12,37 +12,6 @@ const defaults = {
   }
 };
 
-function browserDeprecated({
-  once = defaults.once,
-  warningEl = document.querySelector(defaults.warningEl),
-  closeBtn = document.querySelector(defaults.closeBtn),
-  duration = defaults.duration,
-  easing = defaults.easing,
-  browsers = defaults.browsers
-}) {
-  function findBrowser(browsers) {
-    let close = sessionStorage.getItem('browserWarningClose');
-
-    // Check if user press on close button
-    if(close === 'true') {
-      return false;
-    }
-
-    // If version of browser is older - you will see the window
-    for(let name in browsers) {
-      if (browsers.hasOwnProperty(name)) {
-        let version = browsers[name];
-        if(name === currentBrowser.name && currentBrowser.version < version) {
-          warningEl.classList.remove('hide');
-          break;
-        }
-      }
-    }
-  }
-
-  findBrowser(browsers);
-}
-
 function showPopup({
   once = defaults.once,
   warningEl = document.querySelector(defaults.warningEl),
@@ -51,18 +20,29 @@ function showPopup({
   easing = defaults.easing,
   browsers = defaults.browsers
 }) {
-  console.log(browserIsDeprecated(browsers));
-  warningEl.classList.add('hide');
+  if(browserIsDeprecated(browsers)) {
+    warningEl.classList.remove('hide');
+  } else {
+    warningEl.classList.add('hide');
+  }
 
-  // Old browser warning close button
-  closeBtn.addEventListener('click', hidePopup);
+  const close = sessionStorage.getItem('browserWarningClose');
+
+  // Check if user press on close button
+  if(close === true) {
+    // return false;
+  }
+
 
   function hidePopup() {
+    console.log('works');
+    warningEl.classList.add('hide');
+
     // Check if parameter is setup we will save user press close button
     if(once) {
       sessionStorage.setItem('browserWarningClose', true);
     }
-
-    warningEl.classList.add('hide');
   }
+
+  closeBtn.addEventListener('click', hidePopup);
 }

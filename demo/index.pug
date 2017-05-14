@@ -2,9 +2,10 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title Check browser plugin demonstration
+    title Check browser demonstration
     //- Latest compiled and minified Bootstrap CSS
-    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ' crossorigin='anonymous')
+
     //- Styles for design of warning block
     link(rel='stylesheet', href='old-browser.css')
     //- SyntaxHighlighter style
@@ -34,7 +35,7 @@ html(lang='en')
     main.container
       .row
         .col-md-12
-          h1#home The check browser version plugin
+          h1#home The check browser version
           p Latest version is 1.0.0
           p You can use default view of this plugin look like so (See under) or create himself warning block
       .old-browser-warning
@@ -58,11 +59,11 @@ html(lang='en')
           p And inicialize plugin
           pre
             code.language-javascript.
-              checkBrowser();
+              showPopup();
           p All supported params:
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 once: false,
                 warningEl: '.old-browser-warning',
                 closeBtnName: '#close-old-browser-warning',
@@ -78,32 +79,32 @@ html(lang='en')
           p In this option you can change amount of show
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 once: false
               });
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 warningEl: '.old-browser-warning'
               });
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 closeBtnName: '#close-old-browser-warning'
               });
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 duration: 1200
               });
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 easing: 'swing'
               });
           pre
             code.language-javascript.
-              checkBrowser({
+              showPopup({
                 browsers: {
                   Firefox: 27,
                   Chrome: 30,

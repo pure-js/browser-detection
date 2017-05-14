@@ -8,10 +8,10 @@ const dev = {
     'demo/index.pug'
   ],
   styl: [
-    'stylesheets/old-browser.styl'
+    'src/styles/old-browser.styl'
   ],
   stylWatch: [
-    'src/blocks/**/*.styl'
+    'src/**/*.styl'
   ],
   js: [
     'src/*.js'
@@ -27,7 +27,7 @@ const dev = {
 const build = {
   pug: common.pug,
   styl: [
-    'stylesheets/old-browser.styl'
+    'src/styles/old-browser.styl'
   ],
   js: [
     'src/*.js'
