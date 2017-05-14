@@ -22,7 +22,7 @@ const dev = {
 // dev.copy = dev.copyJs.concat(common.copy);
 
 const build = {
-  pug: 'common.pug',
+  pug: common.pug,
   styl: [
     'stylesheets/old-browser.styl'
   ],

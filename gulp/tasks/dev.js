@@ -13,7 +13,7 @@ function html() {
 }
 
 function css() {
-  return gulp.src(config.paths.styl)
+  return gulp.src(config.styl)
     .pipe(plugins.stylus({
       'include css': true
     }))
@@ -21,7 +21,7 @@ function css() {
 }
 
 function copy() {
-  return gulp.src(config.paths.copy)
+  return gulp.src(config.copy)
     .pipe(gulp.dest(config.dest));
 }
 
