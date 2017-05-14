@@ -112,15 +112,16 @@ html(lang='en')
                 }
               });
     //- Add plugin Check browser
-    script(src='check-browser.js')
+    script(src='browser-deprecated.js')
+    script(src='show-popup.js')
     //- Syntax highlighter Prism js
     script(src='prism.js')
     //- Own main javascript file
     script.
-      checkBrowser({
-        once: true,
+      showPopup({
+        once: false,
         duration: 1000,
         browsers: {
-          Chrome: 17
+          Chrome: 77
         }
       });

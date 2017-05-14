@@ -13,7 +13,10 @@ const dev = {
   stylWatch: [
     'src/blocks/**/*.styl'
   ],
-  copy: ['bower_components/prism/prism.js', 'bower_components/prism/themes/prism.css', 'src/check-browser.js'],
+  js: [
+    'src/*.js'
+  ],
+  copy: ['bower_components/prism/prism.js', 'bower_components/prism/themes/prism.css'],
   css: 'app.min.css',
   dest: '.tmp/'
 };
@@ -26,7 +29,10 @@ const build = {
   styl: [
     'stylesheets/old-browser.styl'
   ],
-  copy: ['bower_components/prism/prism.js', 'bower_components/prism/themes/prism.css', 'src/check-browser.js'],
+  js: [
+    'src/*.js'
+  ],
+  copy: ['bower_components/prism/prism.js', 'bower_components/prism/themes/prism.css'],
   css: 'app.min.css',
   dest: 'build/'
 };
