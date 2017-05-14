@@ -5,37 +5,28 @@ html(lang='en')
     title Check browser demonstration
     //- Latest compiled and minified Bootstrap CSS
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css', integrity='sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ' crossorigin='anonymous')
-
     //- Styles for design of warning block
     link(rel='stylesheet', href='old-browser.css')
     //- SyntaxHighlighter style
     link(rel='stylesheet', href='prism.css')
   body(data-spy='scroll', data-target='#bs-example-navbar-collapse-1', data-offset='170')
     header.header
-      nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
-        .container
-          //- Brand and toggle get grouped for better mobile display
-          .navbar-header
-            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-              span.sr-only Toggle navigation
-              - var n = 0
-              while n < 3
-                span.icon-bar= n++
+      nav.navbar.navbar-toggleable-md.navbar-inverse.bg-primary.fixed-top
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target="#navbarToggler" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        #navbarToggler
+          .navbar-collapse
             a.navbar-brand(href='#') Browser Version
-          //- Collect the nav links, forms, and other content for toggling
-          #bs-example-navbar-collapse-1.collapse.navbar-collapse
-            ul.nav.navbar-nav.navbar-right
-              each val in [{link: '#home', text: 'Description'}, {link: '#examples', text: 'Examples'}, {link: '#options', text: 'Options'}, {link: '#faq', text: 'FAQ'}]
+            ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+              each val in [{link: '#home', text: 'Description'}, {link: '#examples', text: 'Examples'}, {link: '#params', text: 'Params'}, {link: '#faq', text: 'FAQ'}]
                 li
-                  a(href=val.link, data-offset='70')= val.text
-              //- Provides extra visual weight and identifies the primary action in a set of buttons
-              li
-                button.navbar-btn.btn.btn-primary(type='button') Download
-
+                  a.nav-link(href=val.link)= val.text
+              form.form-inline.my-2.my-lg-0
+                button.btn.btn-outline-success.my-2.my-sm-0(type='button') Download
     main.container
       .row
         .col-md-12
-          h1#home The check browser version
+          h1#home Check browser version
           p Latest version is 1.0.0
           p You can use default view of this plugin look like so (See under) or create himself warning block
       .old-browser-warning
@@ -60,7 +51,7 @@ html(lang='en')
           pre
             code.language-javascript.
               showPopup();
-          p All supported params:
+          h2#params All supported params:
           pre
             code.language-javascript.
               showPopup({
