@@ -31,6 +31,8 @@
     "gulp-pug": "^3.1.0",
     "gulp-stylus": "^2.6.0",
     "jshint": "^2.8.0",
+    "prismjs": "^1.6.0",
     "require-dir": "^0.3.1"
-  }
+  },
+  "dependencies": {}
 }

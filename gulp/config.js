@@ -16,7 +16,7 @@ const dev = {
   js: [
     'src/*.js'
   ],
-  copy: ['bower_components/prism/prism.js', 'bower_components/prism/themes/prism.css'],
+  copy: ['node_modules/prismjs/prism.js', 'node_modules/prismjs/themes/prism.css'],
   css: 'app.min.css',
   dest: '.tmp/'
 };
