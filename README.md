@@ -2,11 +2,11 @@
 Check browser version and show pop-up if version is less then recommended
 
 ## Development
-    npm i
-    npm start
+    yarn install
+    yarn run start
 
 ## Production ready build
-    npm run build
+    yarn run build
 
 ## Deploy
-    npm run deploy
+    yarn run deploy
