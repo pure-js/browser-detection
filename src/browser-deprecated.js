@@ -1,17 +1,18 @@
-function browserIsDeprecated (browsers) {
+function browserIsDeprecated(browsers) {
   const defaults = {
     browsers: {
       Firefox: 27,
       Chrome: 60,
       Opera: 15,
-      IE: 11
-    }
+      IE: 11,
+    },
   };
 
   // Detecting browser version
   function detectBrowser() {
-    let ua = navigator.userAgent, tem,
-      M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    let ua = navigator.userAgent;
+    let tem;
+    let M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
 
     if (/trident/i.test(M[1])) {
       tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
@@ -29,8 +30,8 @@ function browserIsDeprecated (browsers) {
 
     let browser = {
       name: M[0],
-      version: M[1]
-    }
+      version: M[1],
+    };
 
     return browser;
   }

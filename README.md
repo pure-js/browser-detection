@@ -8,5 +8,8 @@ Check browser version and show pop-up if version is less then recommended
 ## Production ready build
     yarn run build
 
+## Test
+    yarn test
+
 ## Deploy
     yarn run deploy

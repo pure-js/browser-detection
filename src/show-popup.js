@@ -8,8 +8,8 @@ const defaults = {
     Firefox: 27,
     Chrome: 60,
     Opera: 15,
-    IE: 11
-  }
+    IE: 11,
+  },
 };
 
 function showPopup({
@@ -20,7 +20,6 @@ function showPopup({
   easing = defaults.easing,
   browsers = defaults.browsers,
 }) {
-
   if (once) {
     const close = sessionStorage.getItem('browserWarningClose');
 
