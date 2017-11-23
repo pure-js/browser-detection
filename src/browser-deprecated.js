@@ -1,5 +1,6 @@
 /**
  * Detects browser version
+ * @param {string} userAgent
  * @return {Object} The new Circle object.
  */
 function detectBrowser(userAgent) {
@@ -11,12 +12,20 @@ function detectBrowser(userAgent) {
 
   if (/trident/i.test(M[1])) {
     tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
-    return 'IE ' + (tem[1] || '');
+    return {
+      name: 'IE',
+      version: Number((tem[1] || '')),
+    };
   }
 
   if (M[1] === 'Chrome') {
     tem = ua.match(/\bOPR\/(\d+)/);
-    if (tem !== null) return 'Opera ' + tem[1];
+    if (tem !== null) {
+      return {
+        name: 'Opera',
+        version: Number(tem[1]),
+      };
+    }
   }
 
   M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
