@@ -2,8 +2,8 @@
  * Detects browser version
  * @return {Object} The new Circle object.
  */
-function detectBrowser() {
-  let ua = navigator.userAgent;
+function detectBrowser(userAgent) {
+  let ua = userAgent;
   let tem;
   let M = ua.match(
     /(opera|chrome|safari|firefox|msie|edge|trident(?=\/))\/?\s*(\d+)/i
@@ -25,7 +25,7 @@ function detectBrowser() {
 
   return {
     name: M[0],
-    version: M[1],
+    version: Number(M[1]),
   };
 }
 
@@ -44,7 +44,7 @@ const defaults = {
  * @return {Object} The new Circle object.
  */
 function browserIsDeprecated(browsers = defaults.browsers) {
-  let currentBrowser = detectBrowser();
+  let currentBrowser = detectBrowser(navigator.userAgent);
   let name = currentBrowser.name;
 
   if (browsers.hasOwnProperty(name)) {
@@ -54,4 +54,9 @@ function browserIsDeprecated(browsers = defaults.browsers) {
     console.log('browser not found');
     return false;
   }
+}
+
+// Export node module.
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') ) {
+  module.exports = detectBrowser;
 }

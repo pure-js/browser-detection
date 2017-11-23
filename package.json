@@ -9,7 +9,7 @@
     "deploy": "gh-pages -d build",
     "clean": "gulp clean",
     "lint": "eslint src/**/*.js",
-    "test": "jasmine init"
+    "test": "jasmine"
   },
   "repository": "git+https://github.com/pure-js/check-browser.git",
   "keywords": [
