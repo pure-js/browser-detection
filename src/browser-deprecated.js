@@ -7,7 +7,7 @@ function detectBrowser(userAgent) {
   let ua = userAgent;
   let tem;
   let M = ua.match(
-    /(opera|chrome|safari|firefox|msie|edge|trident(?=\/))\/?\s*(\d+)/i
+    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
   if (/trident/i.test(M[1])) {
@@ -19,11 +19,11 @@ function detectBrowser(userAgent) {
   }
 
   if (M[1] === 'Chrome') {
-    tem = ua.match(/\bOPR\/(\d+)/);
+    tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
     if (tem !== null) {
       return {
-        name: 'Opera',
-        version: Number(tem[1]),
+        name: tem[1].replace('OPR', 'Opera'),
+        version: Number(tem[2]),
       };
     }
   }

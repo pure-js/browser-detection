@@ -34,7 +34,7 @@ describe('Browser detection', () => {
 
     expect(detectBrowser(EdgeUserAgent)).toEqual({
       name: 'Edge',
-      version: 57,
+      version: 15,
     });
 
     expect(detectBrowser(OperaUserAgent)).toEqual({
