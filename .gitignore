@@ -9,9 +9,6 @@
 # Node
 node_modules
 
-# Bower
-bower_components
-
 # Build
 .tmp/
 build
