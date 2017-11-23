@@ -1,8 +1,6 @@
-const gulp = require('gulp'),
-  config = require('../config').build,
-  plugins = require('gulp-load-plugins')();
-
-const build = gulp.parallel(html, css, js, copy);
+const gulp = require('gulp');
+const config = require('../config').build;
+const plugins = require('gulp-load-plugins')();
 
 function html() {
   return gulp.src(config.pug)
@@ -31,4 +29,5 @@ function copy() {
     .pipe(gulp.dest(config.dest));
 }
 
+const build = gulp.parallel(html, css, js, copy);
 module.exports = build;
