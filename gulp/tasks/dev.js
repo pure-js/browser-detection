@@ -7,6 +7,7 @@ const dev = gulp.parallel(html, css, js, copy, watch);
 function html() {
   return gulp.src(config.pug)
     .pipe(plugins.pug({
+      compileDebug: true,
       pretty: true,
     }))
     .pipe(gulp.dest(config.dest));
