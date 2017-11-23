@@ -1,8 +1,13 @@
-// Detecting browser version
+/**
+ * Detects browser version
+ * @return {Object} The new Circle object.
+ */
 function detectBrowser() {
   let ua = navigator.userAgent;
   let tem;
-  let M = ua.match(/(opera|chrome|safari|firefox|msie|edge|trident(?=\/))\/?\s*(\d+)/i) || [];
+  let M = ua.match(
+    /(opera|chrome|safari|firefox|msie|edge|trident(?=\/))\/?\s*(\d+)/i
+  ) || [];
 
   if (/trident/i.test(M[1])) {
     tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
@@ -24,6 +29,21 @@ function detectBrowser() {
   };
 }
 
+function browserDeprecated(
+  browsers = defaults.browsers
+) {
+  let currentBrowser = detectBrowser();
+  let name = currentBrowser.name;
+
+  if (browsers.hasOwnProperty(name)) {
+    let version = browsers[name];
+    return (currentBrowser.version < version);
+  } else {
+    console.log('browser not found');
+    return false;
+  }
+}
+
 function browserIsDeprecated(browsers) {
   const defaults = {
     browsers: {
@@ -33,23 +53,6 @@ function browserIsDeprecated(browsers) {
       IE: 11,
     },
   };
-
-
-
-  function browserDeprecated(
-    browsers = defaults.browsers
-  ) {
-    let currentBrowser = detectBrowser();
-    let name = currentBrowser.name;
-
-    if (browsers.hasOwnProperty(name)) {
-      let version = browsers[name];
-      return (currentBrowser.version < version);
-    } else {
-      console.log('browser not found');
-      return false;
-    }
-  }
 
   return browserDeprecated(browsers);
 }
