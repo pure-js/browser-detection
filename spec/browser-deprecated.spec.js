@@ -22,6 +22,10 @@ describe('Browser detection', () => {
       Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
       .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`;
 
+    const SafariUserAgent = `Mozilla/5.0 (Macintosh; 
+      Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko) 
+      Version/11.0.1 Safari/604.3.5`;
+
     expect(detectBrowser(ChromeUserAgent)).toEqual({
       name: 'Chrome',
       version: 62,
@@ -44,6 +48,11 @@ describe('Browser detection', () => {
 
     expect(detectBrowser(IEUserAgent)).toEqual({
       name: 'IE',
+      version: 11,
+    });
+
+    expect(detectBrowser(SafariUserAgent)).toEqual({
+      name: 'Safari',
       version: 11,
     });
   });
