@@ -40,7 +40,7 @@ function showPopup({
     warningEl.classList.add('hide');
 
     // Check if parameter is setup we will save user press close button
-    if(once) {
+    if (once) {
       sessionStorage.setItem('browserWarningClose', true);
     }
   }

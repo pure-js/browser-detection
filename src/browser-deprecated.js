@@ -29,14 +29,21 @@ function detectBrowser() {
   };
 }
 
+const defaults = {
+  browsers: {
+    Firefox: 27,
+    Chrome: 60,
+    Opera: 15,
+    IE: 11,
+  },
+};
+
 /**
  * Compare current browser version & version from passed array
  * @param {Array} browsers
  * @return {Object} The new Circle object.
  */
-function browserVersionIsLeesThanNeeded(
-  browsers = defaults.browsers
-) {
+function browserIsDeprecated(browsers = defaults.browsers) {
   let currentBrowser = detectBrowser();
   let name = currentBrowser.name;
 
@@ -47,17 +54,4 @@ function browserVersionIsLeesThanNeeded(
     console.log('browser not found');
     return false;
   }
-}
-
-function browserIsDeprecated(browsers) {
-  const defaults = {
-    browsers: {
-      Firefox: 27,
-      Chrome: 60,
-      Opera: 15,
-      IE: 11,
-    },
-  };
-
-  return browserVersionIsLeesThanNeeded(browsers);
 }
