@@ -1,8 +1,6 @@
-const gulp = require('gulp'),
-  config = require('../config').dev,
-  plugins = require('gulp-load-plugins')();
-
-const dev = gulp.parallel(html, css, js, copy, watch);
+const gulp = require('gulp');
+const config = require('../config').dev;
+const plugins = require('gulp-load-plugins')();
 
 function html() {
   return gulp.src(config.pug)
@@ -37,4 +35,5 @@ function watch() {
   gulp.watch(config.js, js);
 }
 
+const dev = gulp.parallel(html, css, js, copy, watch);
 module.exports = dev;
