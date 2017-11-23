@@ -7,7 +7,7 @@ const dev = gulp.parallel(html, css, js, copy, watch);
 function html() {
   return gulp.src(config.pug)
     .pipe(plugins.pug({
-      pretty: true
+      pretty: true,
     }))
     .pipe(gulp.dest(config.dest));
 }
@@ -15,7 +15,7 @@ function html() {
 function css() {
   return gulp.src(config.styl)
     .pipe(plugins.stylus({
-      'include css': true
+      'include css': true,
     }))
     .pipe(gulp.dest(config.dest));
 }
