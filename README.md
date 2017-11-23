@@ -1,4 +1,5 @@
 # Check browser
+[![Build Status](https://travis-ci.org/pure-js/check-browser.svg?branch=master)](https://travis-ci.org/pure-js/check-browser)
 Check browser version and show pop-up if version is less then recommended.
 Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
 
