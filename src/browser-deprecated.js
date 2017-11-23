@@ -29,7 +29,12 @@ function detectBrowser() {
   };
 }
 
-function browserDeprecated(
+/**
+ * Compare current browser version & version from passed array
+ * @param {Array} browsers
+ * @return {Object} The new Circle object.
+ */
+function browserVersionIsLeesThanNeeded(
   browsers = defaults.browsers
 ) {
   let currentBrowser = detectBrowser();
@@ -54,5 +59,5 @@ function browserIsDeprecated(browsers) {
     },
   };
 
-  return browserDeprecated(browsers);
+  return browserVersionIsLeesThanNeeded(browsers);
 }
