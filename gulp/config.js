@@ -18,7 +18,7 @@ const dev = {
   ],
   copy: [
     'node_modules/prismjs/prism.js',
-    'node_modules/prismjs/themes/prism.css',
+    'demo/img/*.png',
   ],
   css: 'app.min.css',
   dest: '.tmp/',
@@ -37,6 +37,7 @@ const build = {
   ],
   copy: [
     'node_modules/prismjs/prism.js',
+    'demo/img/*.png',
   ],
   css: 'app.min.css',
   dest: 'build/',
