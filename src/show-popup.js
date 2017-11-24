@@ -24,7 +24,7 @@ function showPopup({
     const close = sessionStorage.getItem('browserWarningClose');
 
     // Check if user press on close button
-    if(close === 'true') {
+    if (close === 'true') {
       hidePopup();
       return false;
     }
