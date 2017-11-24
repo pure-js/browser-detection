@@ -49,23 +49,22 @@ const defaults = {
 
 /**
  * Compare current browser version & version from passed array
- * @param {Array} browsers
+ * @param {Object} currentBrowser
+ * @param {Object} supportedBrowsers - list of supported browsers
  * @return {Object} The new Circle object.
  */
-function browserIsDeprecated(browsers = defaults.browsers) {
-  let currentBrowser = detectBrowser(navigator.userAgent);
-  let name = currentBrowser.name;
+function browserIsDeprecated(currentBrowser,
+                             supportedBrowsers = defaults.browsers) {
+  const browserName = Object.keys(currentBrowser)[0];
 
-  if (browsers.hasOwnProperty(name)) {
-    let version = browsers[name];
-    return (currentBrowser.version < version);
+  if (supportedBrowsers.hasOwnProperty(browserName)) {
+    return (currentBrowser[browserName] < supportedBrowsers[browserName]);
   } else {
-    console.log('browser not found');
     return false;
   }
 }
 
 // Export node module.
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') ) {
-  module.exports = detectBrowser;
+  module.exports = {detectBrowser, browserIsDeprecated};
 }

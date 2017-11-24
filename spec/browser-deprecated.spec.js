@@ -1,5 +1,6 @@
 describe('Browser detection', () => {
-  const detectBrowser = require('../src/browser-deprecated');
+  const {detectBrowser,
+    browserIsDeprecated} = require('../src/browser-deprecated');
 
   it('should be able to detect a browser', () => {
     const userAgents = {
@@ -57,5 +58,44 @@ describe('Browser detection', () => {
       name: 'Safari',
       version: 11,
     });
+  });
+
+  it('should be able to detect deprecated browser', () => {
+    const supportedBrowsers = {
+      Firefox: 27,
+      Chrome: 60,
+      Opera: 15,
+      IE: 11,
+    };
+
+    let browser = {
+      Firefox: 25,
+    };
+
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+
+    browser = {
+      Chrome: 12,
+    };
+
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+
+    browser = {
+      Chrome: 63,
+    };
+
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+
+    browser = {
+      IE: 9,
+    };
+
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+
+    browser = {
+      Opera: 49,
+    };
+
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
   });
 });
