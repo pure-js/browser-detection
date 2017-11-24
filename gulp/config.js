@@ -10,7 +10,7 @@ const dev = {
   styl: [
     'src/styles/old-browser.styl',
   ],
-  stylWatch: [
+  stylusWatch: [
     'src/**/*.styl',
   ],
   js: [
