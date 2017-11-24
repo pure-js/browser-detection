@@ -36,8 +36,7 @@ const build = {
     'src/*.js',
   ],
   copy: [
-    'bower_components/prism/prism.js',
-    'bower_components/prism/themes/prism.css',
+    'node_modules/prismjs/prism.js',
   ],
   css: 'app.min.css',
   dest: 'build/',

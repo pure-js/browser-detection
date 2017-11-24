@@ -29,6 +29,7 @@
     "eslint-config-google": "^0.9.1",
     "gh-pages": "^1.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-clean-css": "~3.9.0",
     "gulp-load-plugins": "^1.4.0",
     "gulp-pug": "^3.1.0",
     "gulp-stylus": "^2.6.0",

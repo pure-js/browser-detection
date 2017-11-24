@@ -14,7 +14,11 @@ function html() {
 function css() {
   return gulp.src(config.styl)
     .pipe(plugins.stylus({
+      'compress': true,
       'include css': true,
+    }))
+    .pipe(plugins.cleanCss({
+      level: 2,
     }))
     .pipe(gulp.dest(config.dest));
 }
