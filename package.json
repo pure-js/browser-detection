@@ -4,7 +4,7 @@
   "description": "script for checking browser version",
   "main": "src/check-browser.js",
   "scripts": {
-    "start": "uglifyjs src/browser-detection.js -o dist/browser-detection.min.js",
+    "start": "uglifyjs src/browser-detection.js -o dist/browser-detection.min.js -ecma 8",
     "clean": "trash dist/",
     "lint": "eslint src/**/*.js",
     "test": "jasmine"
