@@ -4,37 +4,38 @@
  * @return {Object} The new Circle object.
  */
 function detectBrowser(userAgent) {
-  let ua = userAgent;
-  let tem;
-  let M = ua.match(
+  let temp;
+  let found = userAgent.match(
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
-  if (/trident/i.test(M[1])) {
-    tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
+  if (/trident/i.test(found[1])) {
+    temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
     return {
       name: 'IE',
-      version: Number((tem[1] || '')),
+      version: Number((temp[1] || '')),
     };
   }
 
-  if (M[1] === 'Chrome') {
-    tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-    if (tem !== null) {
+  if (found[1] === 'Chrome') {
+    temp = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
+    if (temp !== null) {
       return {
-        name: tem[1].replace('OPR', 'Opera'),
-        version: Number(tem[2]),
+        name: temp[1].replace('OPR', 'Opera'),
+        version: Number(temp[2]),
       };
     }
   }
 
-  M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
+  found = found[2] ? [found[1],
+    found[2]] : [navigator.appName, navigator.appVersion, '-?'];
 
-  if ((tem = ua.match(/version\/(\d+)/i)) !== null) M.splice(1, 1, tem[1]);
+  if ((temp = userAgent.match(/version\/(\d+)/i))
+    !== null) found.splice(1, 1, temp[1]);
 
   return {
-    name: M[0],
-    version: Number(M[1]),
+    name: found[0],
+    version: Number(found[1]),
   };
 }
 
