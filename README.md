@@ -13,8 +13,5 @@ Minificated script located in ```dist/``` folder
     yarn install
     yarn run start
 
-## Production ready build
-    yarn run build
-
 ## Test
     yarn test
