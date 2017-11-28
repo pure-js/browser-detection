@@ -17,6 +17,3 @@ Note: also it's possible to use npm instead of yarn.
 
 ## Test
     yarn test
-
-## Deploy
-    yarn run deploy
