@@ -4,9 +4,8 @@
   "description": "script for checking browser version",
   "main": "src/check-browser.js",
   "scripts": {
-    "start": "gulp dev",
-    "build": "gulp build",
-    "clean": "gulp clean",
+    "start": "uglifyjs src/browser-detection.js -o dist/browser-detection.min.js",
+    "clean": "trash dist/",
     "lint": "eslint src/**/*.js",
     "test": "jasmine"
   },
@@ -21,14 +20,12 @@
   },
   "homepage": "https://github.com/pure-js/check-browser#readme",
   "devDependencies": {
-    "bower": "^1.8.0",
-    "del": "~3.0.0",
     "eslint": "~4.12.0",
     "eslint-config-google": "^0.9.1",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-load-plugins": "^1.4.0",
-    "jasmine": "~2.8.0",
-    "require-dir": "^0.3.1"
+    "jasmine": "~2.8.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "trash-cli": "~1.4.0",
+    "uglify-es": "~3.2.0"
+  }
 }

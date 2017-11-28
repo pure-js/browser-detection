@@ -9,9 +9,5 @@
 # Node
 node_modules
 
-# Build
-.tmp/
-build
-
 # macOS specific files
 .DS_store
