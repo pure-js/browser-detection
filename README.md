@@ -4,7 +4,13 @@
 [![Test Coverage](https://codeclimate.com/github/pure-js/check-browser/badges/coverage.svg)](https://codeclimate.com/github/pure-js/check-browser/coverage)
 [![Issue Count](https://codeclimate.com/github/pure-js/check-browser/badges/issue_count.svg)](https://codeclimate.com/github/pure-js/check-browser)
 
-Check browser version and show pop-up if version is less then recommended.
+Returns object with browser name and version, for example:
+```javascript
+{
+  name: 'Chrome',
+  version: 62,
+}
+```
 Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
 
 Note: also it's possible to use npm instead of yarn.
