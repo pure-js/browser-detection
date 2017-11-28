@@ -1,6 +1,6 @@
 describe('Browser detection', () => {
   const {detectBrowser,
-    browserIsDeprecated} = require('../src/browser-deprecated');
+    browserIsDeprecated} = require('../src/browser-detection');
 
   it('should be able to detect a browser', () => {
     const userAgents = {

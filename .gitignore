@@ -13,5 +13,5 @@ node_modules
 .tmp/
 build
 
-# OSX
+# macOS specific files
 .DS_store
