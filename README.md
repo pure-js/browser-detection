@@ -1,9 +1,11 @@
-# Check browser
+# Detect browser
 [![Build Status](https://travis-ci.org/pure-js/check-browser.svg?branch=master)](https://travis-ci.org/pure-js/check-browser)
 [![Code Climate](https://codeclimate.com/github/pure-js/check-browser/badges/gpa.svg)](https://codeclimate.com/github/pure-js/check-browser)
 [![Test Coverage](https://codeclimate.com/github/pure-js/check-browser/badges/coverage.svg)](https://codeclimate.com/github/pure-js/check-browser/coverage)
 [![Issue Count](https://codeclimate.com/github/pure-js/check-browser/badges/issue_count.svg)](https://codeclimate.com/github/pure-js/check-browser)
-
+```
+npm i browser-version-detection
+```
 Returns object with browser name and version, for example:
 ```javascript
 {
