@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>22/22</span>
+        <span class='fraction'>26/26</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>5/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>22/22</span>
+        <span class='fraction'>25/25</span>
       </div>
     </div>
   </div>
@@ -144,7 +144,21 @@
 99
 100
 101
-102</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,17 +189,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,6 +210,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -251,29 +279,36 @@
 &nbsp;
   it('should be able to detect a browser', () =&gt; {
     const userAgents = {
-      chrome: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+      chrome: {
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
         AppleWebKit/537.36 (KHTML, like Gecko) 
         Chrome/62.0.3202.94 Safari/537.36`,
-&nbsp;
-      firefox: `Mozilla/5.0 
-        (Windows NT 10.0; Win64; x64; rv:57.0) 
-        Gecko/20100101 Firefox/57.0`,
-&nbsp;
-      edge: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
-        AppleWebKit/537.36 (KHTML, like Gecko) 
-        Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063`,
-&nbsp;
-      opera: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
-        AppleWebKit/537.36 (KHTML, like Gecko) 
-        Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39`,
-&nbsp;
-      ie: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
-        Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
-        .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
-&nbsp;
-      safari: `Mozilla/5.0 (Macintosh; 
-        Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko) 
-        Version/11.0.1 Safari/604.3.5`,
+      },
+      firefox: {
+        userAgent: `Mozilla/5.0 
+          (Windows NT 10.0; Win64; x64; rv:57.0) 
+          Gecko/20100101 Firefox/57.0`,
+      },
+      edge: {
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+          AppleWebKit/537.36 (KHTML, like Gecko) 
+          Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063`,
+      },
+      opera: {
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+          AppleWebKit/537.36 (KHTML, like Gecko) 
+          Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39`,
+      },
+      ie: {
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
+          Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
+          .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
+      },
+      safari: {
+        userAgent: `Mozilla/5.0 (Macintosh; 
+          Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko) 
+          Version/11.0.1 Safari/604.3.5`,
+        },
     };
 &nbsp;
     expect(detectBrowser(userAgents.chrome)).toEqual({
@@ -305,6 +340,13 @@
       name: 'Safari',
       version: 11,
     });
+  });
+&nbsp;
+  it('should work correctly if user agent is invalid', () =&gt; {
+    const emptyValue = '';
+&nbsp;
+    // expect(detectBrowser(emptyValue)).toThrowError(Error, 'navigator is not defined');
+    expect(() =&gt; detectBrowser(emptyValue)).toThrow(new Error('UserAgent is not presented'));
   });
 &nbsp;
   it('should be able to detect deprecated browser', () =&gt; {
@@ -352,7 +394,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 18:43:17 GMT+0300 (Russia TZ 2 Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 20:56:58 GMT+0300 (Russia TZ 2 Standard Time)
 </div>
 </div>
 <script src="..\prettify.js"></script>

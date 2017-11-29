@@ -1,9 +1,13 @@
 /**
  * Detects browser version
- * @param {string} userAgent
+ * @param {Object} nav
  * @return {Object} The new Circle object.
  */
-function detectBrowser(userAgent) {
+function detectBrowser(nav) {
+  const {userAgent} = nav;
+  if (typeof userAgent === 'undefined') {
+    throw new TypeError('UserAgent is not presented');
+  }
   let temp;
   let found = userAgent.match(
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
@@ -28,7 +32,7 @@ function detectBrowser(userAgent) {
   }
 
   found = found[2] ? [found[1],
-    found[2]] : [navigator.appName, navigator.appVersion, '-?'];
+    found[2]] : [nav.appName, nav.appVersion, '-?'];
 
   if ((temp = userAgent.match(/version\/(\d+)/i))
     !== null) found.splice(1, 1, temp[1]);
