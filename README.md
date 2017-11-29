@@ -4,6 +4,7 @@
 [![Test Coverage](https://codeclimate.com/github/pure-js/check-browser/badges/coverage.svg)](https://codeclimate.com/github/pure-js/check-browser/coverage)
 [![Issue Count](https://codeclimate.com/github/pure-js/check-browser/badges/issue_count.svg)](https://codeclimate.com/github/pure-js/check-browser)
 ## Usage
+Installation
 ```
 npm i browser-version-detection
 ```
@@ -13,6 +14,10 @@ Script returns object with browser name and version, for example:
   name: 'Chrome',
   version: 62,
 }
+```
+Call it where you want
+```javascript
+detectBrowser(navigator.userAgent);
 ```
 Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
 
