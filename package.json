@@ -10,6 +10,12 @@
     "lint": "eslint src/**/*.js",
     "test": "nyc --reporter=lcov --reporter=text jasmine"
   },
+  "nyc": {
+    "exclude": [
+      "**/*.spec.js",
+      "dist"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pure-js/check-browser.git"
