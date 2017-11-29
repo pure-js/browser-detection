@@ -26,8 +26,7 @@
   "devDependencies": {
     "eslint": "~4.12.0",
     "eslint-config-google": "^0.9.1",
-    "jasmine": "~2.8.0",
-    "nyc": "~11.3.0"
+    "jasmine": "~2.8.0"
   },
   "dependencies": {
     "make-dir-cli": "~1.0.0",
