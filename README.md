@@ -28,4 +28,5 @@ Minificated script located in ```dist/``` folder
     yarn run start
 
 ## Test
+    npm i -g nyc
     yarn test
