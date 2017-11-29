@@ -7,6 +7,6 @@ dist/
 # Travis CI customization file
 .travis.yml
 
-# Test Coverage
+# Istanbul Test Coverage
 .nyc_output
 coverage/

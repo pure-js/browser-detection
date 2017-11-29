@@ -14,3 +14,7 @@ node_modules/
 
 # Distribution folder
 dist/
+
+# Istanbul Test Coverage
+.nyc_output
+coverage/
