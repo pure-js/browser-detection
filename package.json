@@ -4,7 +4,8 @@
   "description": "detect the name and the version of a browser",
   "main": "src/check-browser.js",
   "scripts": {
-    "start": "uglifyjs src/browser-detection.js -o dist/browser-detection.min.js -ecma 8",
+    "start": "make-dir dist && uglifyjs src/browser-detection.js -o dist/browser-detection.min.js -ecma 8",
+    "postinstall": "npm start",
     "clean": "trash dist/",
     "lint": "eslint src/**/*.js",
     "test": "jasmine"
@@ -28,6 +29,7 @@
     "jasmine": "~2.8.0"
   },
   "dependencies": {
+    "make-dir-cli": "~1.0.0",
     "trash-cli": "~1.4.0",
     "uglify-es": "~3.2.0"
   }
