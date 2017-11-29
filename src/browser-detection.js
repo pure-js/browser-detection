@@ -5,9 +5,6 @@
  */
 function detectBrowser(nav) {
   const {userAgent} = nav;
-  if (typeof userAgent === 'undefined') {
-    throw new TypeError('UserAgent is not presented');
-  }
   let temp;
   let found = userAgent.match(
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
