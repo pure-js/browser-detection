@@ -3,3 +3,6 @@
 
 # Distribution folder
 dist/
+
+# Travis CI customization file
+.travis.yml
