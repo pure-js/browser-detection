@@ -68,10 +68,14 @@ describe('Browser detection', () => {
   });
 
   it('should work correctly if user agent is invalid', () => {
-    const emptyValue = '';
+    const emptyUserAgent = {
+      userAgent: '',
+    };
 
-    // expect(detectBrowser(emptyValue)).toThrowError(Error, 'navigator is not defined');
-    expect(() => detectBrowser(emptyValue)).toThrow(new Error('UserAgent is not presented'));
+    expect(detectBrowser(emptyUserAgent)).toEqual({
+      name: undefined,
+      version: NaN,
+    });
   });
 
   it('should be able to detect deprecated browser', () => {
@@ -108,6 +112,14 @@ describe('Browser detection', () => {
 
     browser = {
       Opera: 49,
+    };
+
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+
+    expect(browserIsDeprecated(browser)).toEqual(false);
+
+    browser = {
+      Bear: 1,
     };
 
     expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
