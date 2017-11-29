@@ -4,3 +4,7 @@ node_js:
   - "node"
 before_install:
   - npm i -g nyc
+  - npm i -g codecov
+script:
+  - npm test
+  - codecov
