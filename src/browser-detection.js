@@ -1,4 +1,22 @@
 /**
+ * Detects IE browser
+ * @param {string} str
+ * @param {string} userAgent
+ * @return {Object} The new Circle object.
+ */
+function isIE(str, userAgent) {
+  if (/trident/i.test(str)) {
+    let temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+    return {
+      name: 'IE',
+      version: Number((temp[1] || '')),
+    };
+  } else {
+    return false;
+  }
+}
+
+/**
  * Detects browser version
  * @param {Object} nav
  * @return {Object} The new Circle object.
@@ -10,13 +28,7 @@ function detectBrowser(nav) {
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
-  if (/trident/i.test(found[1])) {
-    temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
-    return {
-      name: 'IE',
-      version: Number((temp[1] || '')),
-    };
-  }
+  if (isIE(found[1], userAgent)) return isIE(found[1], userAgent);
 
   if (found[1] === 'Chrome') {
     temp = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
