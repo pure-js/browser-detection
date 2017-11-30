@@ -66,9 +66,4 @@ function browserIsDeprecated(currentBrowser,
   }
 }
 
-// Export node module.
-// if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') ) {
-//   module.exports = {detectBrowser, browserIsDeprecated};
-// } else {
-// }
 export {detectBrowser, browserIsDeprecated};
