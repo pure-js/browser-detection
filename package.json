@@ -8,7 +8,8 @@
     "postinstall": "npm start",
     "clean": "trash dist/",
     "lint": "eslint src/**/*.js",
-    "test": "nyc --reporter=lcov --reporter=text jasmine"
+    "kek": "nyc --reporter=lcov --reporter=text jasmine",
+    "test": "jest --coverage"
   },
   "nyc": {
     "exclude": [
@@ -35,7 +36,8 @@
     "babel-register": "~6.26.0",
     "eslint": "~4.12.1",
     "eslint-config-google": "^0.9.1",
-    "jasmine": "~2.8.0"
+    "jasmine": "~2.8.0",
+    "jest": "^21.2.1"
   },
   "dependencies": {
     "make-dir-cli": "~1.0.0",
