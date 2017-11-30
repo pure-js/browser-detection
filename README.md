@@ -18,7 +18,7 @@ Script returns object with browser name and version, for example:
 ```
 Call it where you want
 ```javascript
-detectBrowser(navigator.userAgent);
+detectBrowser(window.navigator);
 ```
 Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
 

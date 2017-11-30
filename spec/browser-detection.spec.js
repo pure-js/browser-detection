@@ -1,7 +1,7 @@
-describe('Browser detection', () => {
-  const {detectBrowser,
-    browserIsDeprecated} = require('../src/browser-detection');
+import {detectBrowser,
+  browserIsDeprecated} from '../src/browser-detection';
 
+describe('Browser detection', () => {
   it('should be able to detect a browser', () => {
     const userAgents = {
       chrome: {
@@ -28,6 +28,11 @@ describe('Browser detection', () => {
         userAgent: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
           Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
           .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
+      },
+      ieWithoutVersion: {
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
+          Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
+          .NET CLR 3.0.30729; .NET CLR 3.5.30729) like Gecko`,
       },
       safari: {
         userAgent: `Mozilla/5.0 (Macintosh; 
@@ -59,6 +64,11 @@ describe('Browser detection', () => {
     expect(detectBrowser(userAgents.ie)).toEqual({
       name: 'IE',
       version: 11,
+    });
+
+    expect(detectBrowser(userAgents.ieWithoutVersion)).toEqual({
+      name: 'IE',
+      version: 0,
     });
 
     expect(detectBrowser(userAgents.safari)).toEqual({

@@ -2,7 +2,7 @@
   "name": "browser-version-detection",
   "version": "2.1.0",
   "description": "detect the name and the version of a browser",
-  "main": "src/check-browser.js",
+  "main": "src/browser-detection.js",
   "scripts": {
     "start": "make-dir dist && uglifyjs src/browser-detection.js -o dist/browser-detection.min.js -ecma 8",
     "postinstall": "npm start",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pure-js/check-browser.git"
+    "url": "git+https://github.com/pure-js/browser-detection.git"
   },
   "keywords": [
     "browser detection"
@@ -26,11 +26,14 @@
   "author": "pure-js",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pure-js/check-browser/issues"
+    "url": "https://github.com/pure-js/browser-detection/issues"
   },
-  "homepage": "https://github.com/pure-js/check-browser#readme",
+  "homepage": "https://github.com/pure-js/browser-detection#readme",
   "devDependencies": {
-    "eslint": "~4.12.0",
+    "babel-cli": "~6.26.0",
+    "babel-preset-env": "~1.6.1",
+    "babel-register": "~6.26.0",
+    "eslint": "~4.12.1",
     "eslint-config-google": "^0.9.1",
     "jasmine": "~2.8.0"
   },
