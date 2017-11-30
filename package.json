@@ -30,6 +30,9 @@
   },
   "homepage": "https://github.com/pure-js/browser-detection#readme",
   "devDependencies": {
+    "babel-cli": "~6.26.0",
+    "babel-preset-env": "~1.6.1",
+    "babel-register": "~6.26.0",
     "eslint": "~4.12.0",
     "eslint-config-google": "^0.9.1",
     "jasmine": "~2.8.0"
