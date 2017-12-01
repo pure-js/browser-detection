@@ -14,6 +14,17 @@ describe('Should correctly detect', () => {
       name: 'Chrome',
       version: 62,
     });
+
+    const chromeMobile = {
+      userAgent: `Mozilla/5.0 (Linux; Android 6.0; 
+        Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, 
+        like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36`,
+    };
+
+    expect(detectBrowserNameAndVersion(chromeMobile)).toEqual({
+      name: 'Chrome',
+      version: 62,
+    });
   });
 
   test('Safari', () => {
@@ -102,7 +113,7 @@ describe('Should correctly detect', () => {
     };
 
     expect(detectBrowserNameAndVersion(android)).toEqual({
-      name: 'Safari',
+      name: 'Android Browser',
       version: 4,
     });
   });

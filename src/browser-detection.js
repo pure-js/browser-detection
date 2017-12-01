@@ -1,7 +1,7 @@
 /**
  * Detects Chrome browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isChrome(userAgent) {
   return userAgent.includes('Chrome') &&
@@ -14,17 +14,19 @@ function isChrome(userAgent) {
 /**
  * Detects Safari browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isSafari(userAgent) {
   return userAgent.includes('Safari') &&
-   !userAgent.includes('Chrome') && !userAgent.includes('Chromium');
+    !userAgent.includes('Chrome') &&
+    !userAgent.includes('Chromium') &&
+    !userAgent.includes('Android');
 }
 
 /**
  * Detects UC browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isUCBrowser(userAgent) {
   return userAgent.includes('UCBrowser');
@@ -33,7 +35,7 @@ function isUCBrowser(userAgent) {
 /**
  * Detects Firefox browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isFirefox(userAgent) {
   return userAgent.includes('Firefox') && !userAgent.includes('Seamonkey');
@@ -42,7 +44,7 @@ function isFirefox(userAgent) {
 /**
  * Detects IE browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isIE(userAgent) {
   return (/trident/i.test(userAgent));
@@ -51,34 +53,36 @@ function isIE(userAgent) {
 /**
  * Detects Opera browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isOpera(userAgent) {
   return userAgent.includes('OPR');
 }
 
 /**
- * Detects IE browser
+ * Detects Samsung browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isSamsungInternet(userAgent) {
   return userAgent.includes('SamsungBrowser');
 }
 
 /**
- * Detects IE browser
+ * Detects Android browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isAndroidBrowser(userAgent) {
-  return (/trident/i.test(userAgent));
+  return userAgent.includes('Android') &&
+    !userAgent.includes('Chrome') &&
+    userAgent.includes('AppleWebKit');
 }
 
 /**
  * Detects Edge browser
  * @param {string} userAgent
- * @return {boolean} The new Circle object.
+ * @return {boolean}
  */
 function isEdge(userAgent) {
   return userAgent.includes('Edge') && userAgent.includes('Chrome');
