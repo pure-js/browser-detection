@@ -1,11 +1,7 @@
 import {
-  detectBrowserName,
-  detectBrowserVersion,
-  detectBrowserNameAndVersion,
   detectRenderingEngineName,
   detectRenderingEngineVersion,
-  browserIsDeprecated,
-} from '../src/browser-detection';
+} from 'rendering-engine-detection';
 
 describe('Should correctly detect', () => {
   test('Chrome', () => {

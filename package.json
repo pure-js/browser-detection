@@ -1,7 +1,7 @@
 {
   "name": "browser-version-detection",
   "version": "2.1.1",
-  "description": "detect the name and the version of a browser",
+  "description": "Browser detection using the user agent, returns the name and version of the browser",
   "main": "src/browser-detection.js",
   "scripts": {
     "start": "make-dir dist && minify src/browser-detection.js -d dist",

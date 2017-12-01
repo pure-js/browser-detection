@@ -25,12 +25,20 @@ function isEdge(userAgent) {
   return (/\b(Edge)\/(\d+)/.test(userAgent));
 }
 
+function detectBrowserName() {
+
+}
+
+function detectBrowserVersion() {
+
+}
+
 /**
  * Detects browser version
  * @param {Object} nav
  * @return {Object} The new Circle object.
  */
-function detectBrowser(nav) {
+function detectBrowserNameAndVersion(nav) {
   const {userAgent} = nav;
   let temp;
   let found = userAgent.match(
@@ -75,30 +83,18 @@ function detectBrowser(nav) {
   };
 }
 
-const defaults = {
-  browsers: {
-    Firefox: 27,
-    Chrome: 60,
-    Opera: 15,
-    IE: 11,
-  },
-};
+function detectRenderingEngineName() {
 
-/**
- * Compare current browser version & version from passed array
- * @param {Object} currentBrowser
- * @param {Object} supportedBrowsers - list of supported browsers
- * @return {Object} The new Circle object.
- */
-function browserIsDeprecated(currentBrowser,
-                             supportedBrowsers = defaults.browsers) {
-  const browserName = Object.keys(currentBrowser)[0];
-
-  if (supportedBrowsers.hasOwnProperty(browserName)) {
-    return (currentBrowser[browserName] < supportedBrowsers[browserName]);
-  } else {
-    return false;
-  }
 }
 
-export {detectBrowser, browserIsDeprecated};
+function detectRenderingEngineVersion() {
+
+}
+
+export {
+  detectBrowserName,
+  detectBrowserVersion,
+  detectBrowserNameAndVersion,
+  detectRenderingEngineName,
+  detectRenderingEngineVersion,
+};

@@ -6,8 +6,10 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/594328cbb539ab26149e/test_coverage)](https://codeclimate.com/github/pure-js/browser-detection/test_coverage)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pure-js/browser-detection.svg)](https://greenkeeper.io/)
 
+Browser detection using the user agent.
 Tested on most popular browser in the World on October 2017, statistic gets from StatCounter.
-> Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
+
+> It's worth re-iterating: it's very rarely a good idea to use user agent sniffing. You can almost always find a better, more broadly compatible way to solve your problem!
 
 ## Usage
 Installation
