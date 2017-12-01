@@ -22,7 +22,9 @@
     "url": "git+https://github.com/pure-js/browser-detection.git"
   },
   "keywords": [
-    "browser detection"
+    "browser detection",
+    "browser version",
+    "rendering engine detection"
   ],
   "author": "pure-js",
   "license": "MIT",

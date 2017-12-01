@@ -1,3 +1,6 @@
+os:
+  - linux
+  - osx
 env:
   global:
     - CC_TEST_REPORTER_ID=14ce615013d7275c111478c9c9dc29720f272829a46d7b77d69a4770f72faeb6
@@ -6,7 +9,6 @@ node_js:
   - "lts/*"
   - "node"
 before_install:
-  - npm i -g nyc
   - npm i -g codecov
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
