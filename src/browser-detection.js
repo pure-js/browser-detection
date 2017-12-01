@@ -1,19 +1,28 @@
 /**
  * Detects IE browser
  * @param {string} str
- * @param {string} userAgent
- * @return {Object} The new Circle object.
+ * @return {boolean} The new Circle object.
  */
-function isIE(str, userAgent) {
-  if (/trident/i.test(str)) {
-    let temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
-    return {
-      name: 'IE',
-      version: Number((temp[1] || '')),
-    };
-  } else {
-    return false;
-  }
+function isIE(str) {
+  return (/trident/i.test(str));
+}
+
+/**
+ * Detects Opera browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isOpera(userAgent) {
+  return (/\b(OPR)\/(\d+)/.test(userAgent));
+}
+
+/**
+ * Detects Edge browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isEdge(userAgent) {
+  return (/\b(Edge)\/(\d+)/.test(userAgent));
 }
 
 /**
@@ -28,13 +37,27 @@ function detectBrowser(nav) {
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
-  if (isIE(found[1], userAgent)) return isIE(found[1], userAgent);
+  if (isIE(found[1])) {
+    let temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+    return {
+      name: 'IE',
+      version: Number(temp[1]) || null,
+    };
+  }
 
   if (found[1] === 'Chrome') {
-    temp = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
-    if (temp !== null) {
+    if (isOpera(userAgent)) {
+      let temp = userAgent.match(/\b(OPR)\/(\d+)/);
       return {
-        name: temp[1].replace('OPR', 'Opera'),
+        name: 'Opera',
+        version: Number(temp[2]),
+      };
+    }
+
+    if (isEdge(userAgent)) {
+      let temp = userAgent.match(/\b(Edge)\/(\d+)/);
+      return {
+        name: 'Edge',
         version: Number(temp[2]),
       };
     }

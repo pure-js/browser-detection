@@ -91,7 +91,7 @@ describe('Should work correctly', () => {
 
     expect(detectBrowser(ieWithoutVersion)).toEqual({
       name: 'IE',
-      version: 0,
+      version: null,
     });
   });
 
