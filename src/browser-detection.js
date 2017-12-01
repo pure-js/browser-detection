@@ -59,7 +59,7 @@ function detectBrowserName(nav) {
  * Detects browser version
  * @param {string} nav
  * @param {string} name
- * @return {Object} The new Circle object.
+ * @return {number} browser version
  */
 function detectBrowserVersion(nav, name) {
   const {userAgent} = nav;
@@ -68,21 +68,18 @@ function detectBrowserVersion(nav, name) {
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
-  if (isIE(found[1])) {
-    let temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
-    return Number(temp[1]) || null;
-  }
+  switch (name) {
+    case 'IE':
+      temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+      return Number(temp[1]) || null;
 
-  if (found[1] === 'Chrome') {
-    if (isOpera(userAgent)) {
-      let temp = userAgent.match(/\b(OPR)\/(\d+)/);
+    case 'Opera':
+      temp = userAgent.match(/\b(OPR)\/(\d+)/);
       return Number(temp[2]);
-    }
 
-    if (isEdge(userAgent)) {
-      let temp = userAgent.match(/\b(Edge)\/(\d+)/);
+    case 'Edge':
+      temp = userAgent.match(/\b(Edge)\/(\d+)/);
       return Number(temp[2]);
-    }
   }
 
   found = found[2] ? [found[1],
@@ -96,13 +93,15 @@ function detectBrowserVersion(nav, name) {
 
 /**
  * Detects browser name & version
- * @param {Object} nav
- * @return {Object} The new Circle object.
+ * @param {object} nav
+ * @return {object} browser name & version
  */
 function detectBrowserNameAndVersion(nav) {
+  const name = detectBrowserName(nav);
+
   return {
-    name: detectBrowserName(nav),
-    version: detectBrowserVersion(nav, detectBrowserName(nav)),
+    name: name,
+    version: detectBrowserVersion(nav, name),
   };
 }
 
