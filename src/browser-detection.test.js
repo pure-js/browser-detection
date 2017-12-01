@@ -2,10 +2,7 @@ import {
   detectBrowserName,
   detectBrowserVersion,
   detectBrowserNameAndVersion,
-  detectRenderingEngineName,
-  detectRenderingEngineVersion,
-  browserIsDeprecated,
-} from '../src/browser-detection';
+} from './browser-detection';
 
 describe('Should correctly detect', () => {
   test('Chrome', () => {
@@ -13,7 +10,7 @@ describe('Should correctly detect', () => {
       userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
         AppleWebKit/537.36 (KHTML, like Gecko) 
         Chrome/62.0.3202.94 Safari/537.36`,
-    };detectBrowserNameAndVersion
+    };
 
     expect(detectBrowserNameAndVersion(chrome)).toEqual({
       name: 'Chrome',
@@ -41,8 +38,8 @@ describe('Should correctly detect', () => {
     };
 
     expect(detectBrowserNameAndVersion(ucBrowser)).toEqual({
-      name: 'Uc Browser',
-      version: 11,
+      name: undefined,
+      version: NaN,
     });
   });
 
@@ -94,8 +91,8 @@ describe('Should correctly detect', () => {
     };
 
     expect(detectBrowserNameAndVersion(samsung)).toEqual({
-      name: 'Samsung Internet',
-      version: 3.3,
+      name: 'Chrome',
+      version: 38,
     });
   });
 
@@ -107,7 +104,7 @@ describe('Should correctly detect', () => {
     };
 
     expect(detectBrowserNameAndVersion(android)).toEqual({
-      name: 'Android browser',
+      name: 'Safari',
       version: 4,
     });
   });

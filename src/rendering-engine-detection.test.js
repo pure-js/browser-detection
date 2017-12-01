@@ -1,17 +1,17 @@
 import {
   detectRenderingEngineName,
   detectRenderingEngineVersion,
-} from 'rendering-engine-detection';
+} from './rendering-engine-detection';
 
-describe('Should correctly detect', () => {
+describe('Should correctly detect rendering engine', () => {
   test('Chrome', () => {
     const chrome = {
       userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
         AppleWebKit/537.36 (KHTML, like Gecko) 
         Chrome/62.0.3202.94 Safari/537.36`,
-    };detectBrowserNameAndVersion
+    };
 
-    expect(detectBrowserNameAndVersion(chrome)).toEqual({
+    expect(detectRenderingEngineName(chrome)).toEqual({
       name: 'Chrome',
       version: 62,
     });
@@ -24,7 +24,7 @@ describe('Should correctly detect', () => {
         Version/11.0.1 Safari/604.3.5`,
     };
 
-    expect(detectBrowserNameAndVersion(safari)).toEqual({
+    expect(detectRenderingEngineName(safari)).toEqual({
       name: 'Safari',
       version: 11,
     });
@@ -36,7 +36,7 @@ describe('Should correctly detect', () => {
         U2/1.0.0 UCBrowser/8.7.0.218 U2/1.0.0 Mobile`,
     };
 
-    expect(detectBrowserNameAndVersion(ucBrowser)).toEqual({
+    expect(detectRenderingEngineName(ucBrowser)).toEqual({
       name: 'Uc Browser',
       version: 11,
     });
@@ -49,7 +49,7 @@ describe('Should correctly detect', () => {
         Gecko/20100101 Firefox/57.0`,
     };
 
-    expect(detectBrowserNameAndVersion(firefox)).toEqual({
+    expect(detectRenderingEngineName(firefox)).toEqual({
       name: 'Firefox',
       version: 57,
     });
@@ -62,7 +62,7 @@ describe('Should correctly detect', () => {
         .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
     };
 
-    expect(detectBrowserNameAndVersion(ie)).toEqual({
+    expect(detectRenderingEngineName(ie)).toEqual({
       name: 'IE',
       version: 11,
     });
@@ -75,7 +75,7 @@ describe('Should correctly detect', () => {
         Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39`,
     };
 
-    expect(detectBrowserNameAndVersion(opera)).toEqual({
+    expect(detectRenderingEngineName(opera)).toEqual({
       name: 'Opera',
       version: 49,
     });
@@ -89,7 +89,7 @@ describe('Should correctly detect', () => {
         SamsungBrowser/3.3 Chrome/38.0.2125.102 Mobile Safari/537.36`,
     };
 
-    expect(detectBrowserNameAndVersion(samsung)).toEqual({
+    expect(detectRenderingEngineName(samsung)).toEqual({
       name: 'Samsung Internet',
       version: 3.3,
     });

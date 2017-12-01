@@ -83,18 +83,8 @@ function detectBrowserNameAndVersion(nav) {
   };
 }
 
-function detectRenderingEngineName() {
-
-}
-
-function detectRenderingEngineVersion() {
-
-}
-
 export {
   detectBrowserName,
   detectBrowserVersion,
   detectBrowserNameAndVersion,
-  detectRenderingEngineName,
-  detectRenderingEngineVersion,
 };

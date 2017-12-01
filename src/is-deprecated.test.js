@@ -1,4 +1,4 @@
-import {browserIsDeprecated} from 'is-deprecated';
+import {browserIsDeprecated} from './is-deprecated';
 
 test('Should be able to detect deprecated browser from object', () => {
   const supportedBrowsers = {
