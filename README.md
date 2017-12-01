@@ -10,7 +10,7 @@ Browser detection using the user agent.
 Tested on most popular browser in the World on October 2017, statistic gets from StatCounter.
 
 > It's worth re-iterating: it's very rarely a good idea to use user agent sniffing. You can almost always find a better, more broadly compatible way to solve your problem!
-> > More details [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch)
+> > More details [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent)
 
 ## Usage
 Installation
@@ -26,7 +26,7 @@ const output = {
 ```
 Call it where you want
 ```javascript
-detectBrowser(window.navigator);
+detectBrowserNameAndVersion(window.navigator);
 ```
 Note: also it's possible to use npm instead of yarn.
 Minificated script located in ```dist/``` folder
