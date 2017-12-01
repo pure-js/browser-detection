@@ -6,6 +6,9 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/594328cbb539ab26149e/test_coverage)](https://codeclimate.com/github/pure-js/browser-detection/test_coverage)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pure-js/browser-detection.svg)](https://greenkeeper.io/)
 
+Tested on most popular browser in the World on October 2017, statistic gets from StatCounter.
+> Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
+
 ## Usage
 Installation
 ```
@@ -22,8 +25,6 @@ Call it where you want
 ```javascript
 detectBrowser(window.navigator);
 ```
-Use it if it's truly necessary, such as showing browser-specific instructions to install an extension. Use feature detection when possible.
-
 Note: also it's possible to use npm instead of yarn.
 Minificated script located in ```dist/``` folder
 ## Contribution
