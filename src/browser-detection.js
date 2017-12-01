@@ -1,10 +1,51 @@
 /**
- * Detects IE browser
- * @param {string} str
+ * Detects Chrome browser
+ * @param {string} userAgent
  * @return {boolean} The new Circle object.
  */
-function isIE(str) {
-  return (/trident/i.test(str));
+function isChrome(userAgent) {
+  return userAgent.includes('Chrome') &&
+    !userAgent.includes('Chromium') &&
+    !userAgent.includes('OPR') &&
+    !userAgent.includes('Edge') &&
+    !userAgent.includes('SamsungBrowser');
+}
+
+/**
+ * Detects Safari browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isSafari(userAgent) {
+  return userAgent.includes('Safari') &&
+   !userAgent.includes('Chrome') && !userAgent.includes('Chromium');
+}
+
+/**
+ * Detects UC browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isUCBrowser(userAgent) {
+  return userAgent.includes('UCBrowser');
+}
+
+/**
+ * Detects Firefox browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isFirefox(userAgent) {
+  return userAgent.includes('Firefox') && !userAgent.includes('Seamonkey');
+}
+
+/**
+ * Detects IE browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isIE(userAgent) {
+  return (/trident/i.test(userAgent));
 }
 
 /**
@@ -13,7 +54,25 @@ function isIE(str) {
  * @return {boolean} The new Circle object.
  */
 function isOpera(userAgent) {
-  return (/\b(OPR)\/(\d+)/.test(userAgent));
+  return userAgent.includes('OPR');
+}
+
+/**
+ * Detects IE browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isSamsungInternet(userAgent) {
+  return userAgent.includes('SamsungBrowser');
+}
+
+/**
+ * Detects IE browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isAndroidBrowser(userAgent) {
+  return (/trident/i.test(userAgent));
 }
 
 /**
@@ -22,37 +81,24 @@ function isOpera(userAgent) {
  * @return {boolean} The new Circle object.
  */
 function isEdge(userAgent) {
-  return (/\b(Edge)\/(\d+)/.test(userAgent));
+  return userAgent.includes('Edge') && userAgent.includes('Chrome');
 }
 
 /**
  * Detects browser name
- * @param {object} nav - window.navigator
+ * @param {string} userAgent - window.navigator
  * @return {string} browser name
  */
-function detectBrowserName(nav) {
-  const {userAgent} = nav;
-
-  let found = userAgent.match(
-    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
-  ) || [];
-
-  if (isIE(found[1])) return 'IE';
-
-  if (found[1] === 'Chrome') {
-    if (isOpera(userAgent)) return 'Opera';
-
-    if (isEdge(userAgent)) return 'Edge';
-  }
-
-  found = found[2] ? [found[1],
-    found[2]] : [nav.appName, nav.appVersion, '-?'];
-
-  let temp;
-  if ((temp = userAgent.match(/version\/(\d+)/i))
-    !== null) found.splice(1, 1, temp[1]);
-
-  return found[0];
+function detectBrowserName(userAgent) {
+  if (isChrome(userAgent)) return 'Chrome';
+  if (isSafari(userAgent)) return 'Safari';
+  if (isUCBrowser(userAgent)) return 'UC Browser';
+  if (isFirefox(userAgent)) return 'Firefox';
+  if (isIE(userAgent)) return 'IE';
+  if (isOpera(userAgent)) return 'Opera';
+  if (isSamsungInternet(userAgent)) return 'Samsung Internet';
+  if (isAndroidBrowser(userAgent)) return 'Android Browser';
+  if (isEdge(userAgent)) return 'Edge';
 }
 
 /**
@@ -97,7 +143,7 @@ function detectBrowserVersion(nav, name) {
  * @return {object} browser name & version
  */
 function detectBrowserNameAndVersion(nav) {
-  const name = detectBrowserName(nav);
+  const name = detectBrowserName(nav.userAgent);
 
   return {
     name: name,

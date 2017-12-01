@@ -1,6 +1,4 @@
 import {
-  detectBrowserName,
-  detectBrowserVersion,
   detectBrowserNameAndVersion,
 } from './browser-detection';
 
@@ -38,7 +36,7 @@ describe('Should correctly detect', () => {
     };
 
     expect(detectBrowserNameAndVersion(ucBrowser)).toEqual({
-      name: undefined,
+      name: 'UC Browser',
       version: NaN,
     });
   });
@@ -91,7 +89,7 @@ describe('Should correctly detect', () => {
     };
 
     expect(detectBrowserNameAndVersion(samsung)).toEqual({
-      name: 'Chrome',
+      name: 'Samsung Internet',
       version: 38,
     });
   });
