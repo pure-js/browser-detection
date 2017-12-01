@@ -1,31 +1,85 @@
 /**
- * Detects browser version
- * @param {Object} nav
- * @return {Object} The new Circle object.
+ * Detects IE browser
+ * @param {string} str
+ * @return {boolean} The new Circle object.
  */
-function detectBrowser(nav) {
+function isIE(str) {
+  return (/trident/i.test(str));
+}
+
+/**
+ * Detects Opera browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isOpera(userAgent) {
+  return (/\b(OPR)\/(\d+)/.test(userAgent));
+}
+
+/**
+ * Detects Edge browser
+ * @param {string} userAgent
+ * @return {boolean} The new Circle object.
+ */
+function isEdge(userAgent) {
+  return (/\b(Edge)\/(\d+)/.test(userAgent));
+}
+
+/**
+ * Detects browser name
+ * @param {object} nav - window.navigator
+ * @return {string} browser name
+ */
+function detectBrowserName(nav) {
+  const {userAgent} = nav;
+
+  let found = userAgent.match(
+    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+  ) || [];
+
+  if (isIE(found[1])) return 'IE';
+
+  if (found[1] === 'Chrome') {
+    if (isOpera(userAgent)) return 'Opera';
+
+    if (isEdge(userAgent)) return 'Edge';
+  }
+
+  found = found[2] ? [found[1],
+    found[2]] : [nav.appName, nav.appVersion, '-?'];
+
+  let temp;
+  if ((temp = userAgent.match(/version\/(\d+)/i))
+    !== null) found.splice(1, 1, temp[1]);
+
+  return found[0];
+}
+
+/**
+ * Detects browser version
+ * @param {string} nav
+ * @param {string} name
+ * @return {number} browser version
+ */
+function detectBrowserVersion(nav, name) {
   const {userAgent} = nav;
   let temp;
   let found = userAgent.match(
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
-  if (/trident/i.test(found[1])) {
-    temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
-    return {
-      name: 'IE',
-      version: Number((temp[1] || '')),
-    };
-  }
+  switch (name) {
+    case 'IE':
+      temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+      return Number(temp[1]) || null;
 
-  if (found[1] === 'Chrome') {
-    temp = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
-    if (temp !== null) {
-      return {
-        name: temp[1].replace('OPR', 'Opera'),
-        version: Number(temp[2]),
-      };
-    }
+    case 'Opera':
+      temp = userAgent.match(/\b(OPR)\/(\d+)/);
+      return Number(temp[2]);
+
+    case 'Edge':
+      temp = userAgent.match(/\b(Edge)\/(\d+)/);
+      return Number(temp[2]);
   }
 
   found = found[2] ? [found[1],
@@ -34,36 +88,25 @@ function detectBrowser(nav) {
   if ((temp = userAgent.match(/version\/(\d+)/i))
     !== null) found.splice(1, 1, temp[1]);
 
+  return Number(found[1]);
+}
+
+/**
+ * Detects browser name & version
+ * @param {object} nav
+ * @return {object} browser name & version
+ */
+function detectBrowserNameAndVersion(nav) {
+  const name = detectBrowserName(nav);
+
   return {
-    name: found[0],
-    version: Number(found[1]),
+    name: name,
+    version: detectBrowserVersion(nav, name),
   };
 }
 
-const defaults = {
-  browsers: {
-    Firefox: 27,
-    Chrome: 60,
-    Opera: 15,
-    IE: 11,
-  },
+export {
+  detectBrowserName,
+  detectBrowserVersion,
+  detectBrowserNameAndVersion,
 };
-
-/**
- * Compare current browser version & version from passed array
- * @param {Object} currentBrowser
- * @param {Object} supportedBrowsers - list of supported browsers
- * @return {Object} The new Circle object.
- */
-function browserIsDeprecated(currentBrowser,
-                             supportedBrowsers = defaults.browsers) {
-  const browserName = Object.keys(currentBrowser)[0];
-
-  if (supportedBrowsers.hasOwnProperty(browserName)) {
-    return (currentBrowser[browserName] < supportedBrowsers[browserName]);
-  } else {
-    return false;
-  }
-}
-
-export {detectBrowser, browserIsDeprecated};
