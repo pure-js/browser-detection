@@ -1,10 +1,10 @@
 # Detect browser
 
 [![Build Status](https://travis-ci.org/pure-js/browser-detection.svg?branch=master)](https://travis-ci.org/pure-js/browser-detection)
-[![Maintainability](https://api.codeclimate.com/v1/badges/594328cbb539ab26149e/maintainability)](https://codeclimate.com/github/pure-js/browser-detection/maintainability)
 [![codecov](https://codecov.io/gh/pure-js/browser-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/pure-js/browser-detection)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/594328cbb539ab26149e/test_coverage)](https://codeclimate.com/github/pure-js/browser-detection/test_coverage)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pure-js/browser-detection.svg)](https://greenkeeper.io/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/594328cbb539ab26149e/maintainability)](https://codeclimate.com/github/pure-js/browser-detection/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/594328cbb539ab26149e/test_coverage)](https://codeclimate.com/github/pure-js/browser-detection/test_coverage)
 
 Browser detection using the user agent.
 Tested on most popular browser in the World on October 2017, statistic gets from StatCounter.
