@@ -48,7 +48,19 @@ describe('Should correctly detect', () => {
 
     expect(detectBrowserNameAndVersion(ucBrowser)).toEqual({
       name: 'UC Browser',
-      version: NaN,
+      version: 8.7,
+    });
+
+    const ucBrowser11 = {
+      userAgent: `Mozilla/5.0 (Linux; U; Android 4.2.2; en-US;
+        Micromax A102 Build/MicromaxA102) AppleWebKit/534.30 
+        (KHTML, like Gecko) Version/4.0 UCBrowser/11.1.0.882 U3/0.8.0 
+        Mobile Safari/534.30`,
+    };
+
+    expect(detectBrowserNameAndVersion(ucBrowser11)).toEqual({
+      name: 'UC Browser',
+      version: 11,
     });
   });
 
@@ -101,7 +113,7 @@ describe('Should correctly detect', () => {
 
     expect(detectBrowserNameAndVersion(samsung)).toEqual({
       name: 'Samsung Internet',
-      version: 38,
+      version: 3,
     });
   });
 

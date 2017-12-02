@@ -106,6 +106,29 @@ function detectBrowserName(userAgent) {
 }
 
 /**
+ * Retrive browser version
+ * @param {string} name
+ * @param {string} str
+ * @return {number} browser version
+ */
+function retriveVersion(name, str) {
+  name = name + '/';
+  let start = str.indexOf(name);
+  let preNum = str.substring(start + name.length);
+  preNum = preNum.substring(0, preNum.indexOf(' '));
+
+  let end;
+  if (preNum.indexOf('.', 2) > 0) {
+    end = preNum.indexOf('.', 2);
+  } else {
+    end = preNum.indexOf('.', 1);
+  }
+
+  let num = preNum.substring(0, end);
+  return Number(num);
+}
+
+/**
  * Detects browser version
  * @param {string} nav
  * @param {string} name
@@ -130,6 +153,15 @@ function detectBrowserVersion(nav, name) {
     case 'Edge':
       temp = userAgent.match(/\b(Edge)\/(\d+)/);
       return Number(temp[2]);
+
+    case 'UC Browser': {
+      const browserName = 'UCBrowser';
+      return retriveVersion(browserName, userAgent);
+    }
+
+    case 'Samsung Internet':
+      const browserName = 'SamsungBrowser';
+      return retriveVersion(browserName, userAgent);
   }
 
   found = found[2] ? [found[1],
