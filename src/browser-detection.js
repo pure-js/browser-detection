@@ -115,9 +115,10 @@ function retriveVersion(name, str) {
   name = name + '/';
   let start = str.indexOf(name);
   let preNum = str.substring(start + name.length);
-  preNum = preNum.substring(0, preNum.indexOf(' '));
-
+  const index = preNum.indexOf(' ');
+  if (index > 0) preNum = preNum.substring(0, index);
   let end;
+
   if (preNum.indexOf('.', 2) > 0) {
     end = preNum.indexOf('.', 2);
   } else {
@@ -142,26 +143,30 @@ function detectBrowserVersion(nav, name) {
   ) || [];
 
   switch (name) {
-    case 'IE':
+    case 'IE': {
       temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
       return Number(temp[1]) || null;
+    }
 
-    case 'Opera':
-      temp = userAgent.match(/\b(OPR)\/(\d+)/);
-      return Number(temp[2]);
+    case 'Opera': {
+      const browserName = 'OPR';
+      return retriveVersion(browserName, userAgent);
+    }
 
-    case 'Edge':
+    case 'Edge': {
       temp = userAgent.match(/\b(Edge)\/(\d+)/);
       return Number(temp[2]);
+    }
 
     case 'UC Browser': {
       const browserName = 'UCBrowser';
       return retriveVersion(browserName, userAgent);
     }
 
-    case 'Samsung Internet':
+    case 'Samsung Internet': {
       const browserName = 'SamsungBrowser';
       return retriveVersion(browserName, userAgent);
+    }
   }
 
   found = found[2] ? [found[1],
