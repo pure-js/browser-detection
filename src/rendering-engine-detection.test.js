@@ -1,6 +1,4 @@
 import {
-  detectRenderingEngineName,
-  detectRenderingEngineVersion,
   detectRenderingEngineNameAndVersion,
 } from './rendering-engine-detection';
 

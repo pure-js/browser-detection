@@ -1,29 +1,29 @@
 /**
  * Detects browser version
- * @param {Object} nav
- * @return {Object} The new Circle object.
+ * @param {string} userAgent
+ * @return {number}
  */
-function detectRenderingEngineName() {
-
+function detectRenderingEngineName(userAgent) {
+  return 'Blink';
 }
 
 /**
  * Detects browser version
- * @param {Object} nav
- * @return {Object} The new Circle object.
+ * @param {string} userAgent
+ * @return {number}
  */
-function detectRenderingEngineVersion() {
-
+function detectRenderingEngineVersion(userAgent) {
+  return 62;
 }
 /**
  * Detects browser version
- * @param {Object} nav
- * @return {Object} The new Circle object.
+ * @param {string} userAgent
+ * @return {object}
  */
-function detectRenderingEngineNameAndVersion() {
+function detectRenderingEngineNameAndVersion(userAgent) {
   return {
-    name: 'Blink',
-    version: 62,
+    name: detectRenderingEngineName(),
+    version: detectRenderingEngineVersion(),
   };
 }
 
