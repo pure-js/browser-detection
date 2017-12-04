@@ -111,7 +111,7 @@ function detectBrowserName(userAgent) {
  * @param {string} str
  * @return {number} browser version
  */
-function retriveVersion(name, str) {
+function retrieveVersion(name, str) {
   name = name + '/';
   let start = str.indexOf(name);
   let preNum = str.substring(start + name.length);
@@ -142,32 +142,32 @@ function detectBrowserVersion(nav, name) {
     /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
+  let browserName;
+
   switch (name) {
-    case 'IE': {
+    case 'IE':
       temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
       return Number(temp[1]) || null;
-    }
 
-    case 'Opera': {
-      const browserName = 'OPR';
-      return retriveVersion(browserName, userAgent);
-    }
+    case 'Opera':
+      browserName = 'OPR';
+      break;
 
-    case 'Edge': {
+    case 'Edge':
       temp = userAgent.match(/\b(Edge)\/(\d+)/);
       return Number(temp[2]);
-    }
 
-    case 'UC Browser': {
-      const browserName = 'UCBrowser';
-      return retriveVersion(browserName, userAgent);
-    }
+    case 'UC Browser':
+      browserName = 'UCBrowser';
+      break;
 
-    case 'Samsung Internet': {
-      const browserName = 'SamsungBrowser';
-      return retriveVersion(browserName, userAgent);
-    }
+    case 'Samsung Internet':
+      browserName = 'SamsungBrowser';
+      break;
   }
+
+  if (browserName) return retrieveVersion(browserName, userAgent);
+
 
   found = found[2] ? [found[1],
     found[2]] : [nav.appName, nav.appVersion, '-?'];
