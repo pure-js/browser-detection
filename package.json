@@ -1,6 +1,6 @@
 {
   "name": "browser-version-detection",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Browser detection using the user agent, returns the name and version of the browser",
   "main": "src/browser-detection.js",
   "scripts": {
