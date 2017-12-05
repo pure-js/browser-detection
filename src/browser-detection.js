@@ -106,7 +106,7 @@ function detectBrowserName(userAgent) {
 }
 
 /**
- * Retrive browser version
+ * Retrieve browser version
  * @param {string} name
  * @param {string} str
  * @return {number} browser version
@@ -130,32 +130,16 @@ function retrieveVersion(name, str) {
 }
 
 /**
- * Detects browser version
- * @param {string} nav
+ * Returns Association
  * @param {string} name
- * @return {number} browser version
+ * @return {string} browser name
  */
-function detectBrowserVersion(nav, name) {
-  const {userAgent} = nav;
-  let temp;
-  let found = userAgent.match(
-    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
-  ) || [];
-
+function getBeautifulName(name) {
   let browserName;
-
   switch (name) {
-    case 'IE':
-      temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
-      return Number(temp[1]) || null;
-
     case 'Opera':
       browserName = 'OPR';
       break;
-
-    case 'Edge':
-      temp = userAgent.match(/\b(Edge)\/(\d+)/);
-      return Number(temp[2]);
 
     case 'UC Browser':
       browserName = 'UCBrowser';
@@ -165,13 +149,42 @@ function detectBrowserVersion(nav, name) {
       browserName = 'SamsungBrowser';
       break;
   }
+  return browserName;
+}
+
+/**
+ * Detects browser version
+ * @param {string} nav
+ * @param {string} name
+ * @return {number} browser version
+ */
+function detectBrowserVersion(nav, name) {
+  const {userAgent} = nav;
+
+  switch (name) {
+    case 'IE': {
+      let temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+      return Number(temp[1]) || null;
+    }
+
+    case 'Edge': {
+      let temp = userAgent.match(/\b(Edge)\/(\d+)/);
+      return Number(temp[2]);
+    }
+  }
+
+  const browserName = getBeautifulName(name);
 
   if (browserName) return retrieveVersion(browserName, userAgent);
 
+  let found = userAgent.match(
+    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+  ) || [];
 
   found = found[2] ? [found[1],
     found[2]] : [nav.appName, nav.appVersion, '-?'];
 
+  let temp;
   if ((temp = userAgent.match(/version\/(\d+)/i))
     !== null) found.splice(1, 1, temp[1]);
 
