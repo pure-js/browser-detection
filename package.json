@@ -39,7 +39,7 @@
     "babel-register": "~6.26.0",
     "eslint": "~4.13.1",
     "eslint-config-google": "^0.9.1",
-    "jest": "^21.2.1"
+    "jest": "^22.0.0"
   },
   "dependencies": {
     "make-dir-cli": "~1.0.0",
