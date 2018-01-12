@@ -29,7 +29,7 @@ Call it where you want
 detectBrowserNameAndVersion(window.navigator);
 ```
 Note: also it's possible to use npm instead of yarn.
-Minificated script located in ```dist/``` folder
+Minified script located in ```dist/``` folder
 ## Contribution
     yarn install
     yarn run start
