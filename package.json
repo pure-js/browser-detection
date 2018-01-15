@@ -47,5 +47,6 @@
   "dependencies": {
     "make-dir-cli": "~1.0.0",
     "trash-cli": "~1.4.0"
-  }
+  },
+  "dependencies": {}
 }
