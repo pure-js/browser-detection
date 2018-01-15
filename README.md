@@ -26,7 +26,7 @@ const output = {
 ```
 Call it where you want
 ```javascript
-detectBrowserNameAndVersion(window.navigator);
+browserDetection.detectBrowserNameAndVersion(window.navigator);
 ```
 Note: also it's possible to use npm instead of yarn.
 Minified script located in ```dist/``` folder

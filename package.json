@@ -2,11 +2,10 @@
   "name": "browser-version-detection",
   "version": "2.1.2",
   "description": "Browser detection using the user agent, returns the name and version of the browser",
-  "main": "src/browser-detection.js",
+  "main": "dist/browser-detection.js",
   "scripts": {
-    "start": "make-dir dist && minify src/browser-detection.js -d dist",
+    "start": "webpack --config webpack.config.js",
     "postinstall": "npm start",
-    "clean": "trash dist/",
     "lint": "eslint src/**/*.js",
     "kek": "nyc --reporter=lcov --reporter=text jasmine",
     "test": "jest --coverage"
@@ -35,13 +34,14 @@
   "devDependencies": {
     "babel-cli": "~6.26.0",
     "babel-minify": "^0.2.0",
+    "babel-minify-webpack-plugin": "~0.2.0",
     "babel-preset-env": "~1.6.1",
     "babel-register": "~6.26.0",
+    "clean-webpack-plugin": "~0.1.17",
     "eslint": "~4.15.0",
     "eslint-config-google": "^0.9.1",
-    "jest": "^22.0.6",
-    "make-dir-cli": "~1.0.0",
-    "trash-cli": "~1.4.0"
+    "jest": "~22.1.1",
+    "webpack": "~3.10.0"
   },
   "dependencies": {}
 }
