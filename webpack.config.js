@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: './src/browser-detection.js',
   output: {
-    filename: 'browser-detection.js',
+    filename: 'browser-detection.min.js',
     library: 'browserDetection',
     path: path.resolve(__dirname, 'dist'),
   },
