@@ -5,9 +5,7 @@
   "main": "dist/browser-detection.js",
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "postinstall": "npm start",
     "lint": "eslint src/**/*.js",
-    "kek": "nyc --reporter=lcov --reporter=text jasmine",
     "test": "jest --coverage"
   },
   "nyc": {
