@@ -154,7 +154,7 @@ function getBeautifulName(name) {
 
 /**
  * Detects browser version
- * @param {string} nav
+ * @param {object} nav
  * @param {string} name
  * @return {number} browser version
  */
