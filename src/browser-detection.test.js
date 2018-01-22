@@ -1,8 +1,10 @@
 import {
+  detectBrowserName,
+  detectBrowserVersion,
   detectBrowserNameAndVersion,
 } from './browser-detection';
 
-describe('Should correctly detect', () => {
+describe('Should correctly detect name & version of', () => {
   test('Chrome', () => {
     const chrome = {
       userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
@@ -167,5 +169,27 @@ describe('Should work correctly', () => {
       name: undefined,
       version: NaN,
     });
+  });
+});
+
+describe('Should correctly detect name of', () => {
+  test('Chrome', () => {
+    const chrome = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+      AppleWebKit/537.36 (KHTML, like Gecko) 
+      Chrome/62.0.3202.94 Safari/537.36`;
+
+    expect(detectBrowserName(chrome)).toEqual('Chrome');
+  });
+});
+
+describe('Should correctly detect version of', () => {
+  test('UC Browser', () => {
+    const ucBrowser = {
+      userAgent: `UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37)
+        U2/1.0.0 UCBrowser/8.7.0.218 U2/1.0.0 Mobile`,
+    };
+    const name = 'UC Browser';
+
+    expect(detectBrowserVersion(ucBrowser, name)).toEqual(8.7);
   });
 });
