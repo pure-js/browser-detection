@@ -12,9 +12,8 @@ Tested on most popular browser in the World on October 2017, statistic gets from
 > It's worth re-iterating: it's very rarely a good idea to use user agent sniffing. You can almost always find a better, more broadly compatible way to solve your problem!
 > > More details [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent)
 
-## Usage
+## Installation
 
-Installation
 ```
 npm i browser-version-detection
 ```
@@ -25,23 +24,40 @@ const output = {
   version: 62,
 }
 ```
-Call it where you want
+
+## API
+### Get browser name and version 
 ```javascript
 browserDetection.detectBrowser(window.navigator);
 ```
-in case if you need only name
+output
+```javascript
+const output = {
+  name: 'Chrome',
+  version: 64,
+}
+```
+### Get browser name
 ```javascript
 browserDetection.detectBrowserName(window.navigator.userAgent)
 ````
-in case if you need only version
+output
+```javascript
+const output = 'Chrome';
+```
+### Get browser version
 ```javascript
 const name = browserDetection.detectBrowserName(window.navigator.userAgent);
 browserDetection.detectBrowserVersion(window.navigator, name)
 ````
-Note: also it's possible to use npm instead of yarn.
+output
+```javascript
+const output = 64;
+```
 Minified script located in ```dist/``` folder
 
 ## Contribution
+Note: also it's possible to use npm instead of yarn.
 
     yarn install
     yarn run start
