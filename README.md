@@ -29,6 +29,15 @@ Call it where you want
 ```javascript
 browserDetection.detectBrowser(window.navigator);
 ```
+in case if you need only name
+```javascript
+browserDetection.detectBrowserName(window.navigator.userAgent)
+````
+in case if you need only version
+```javascript
+const name = browserDetection.detectBrowserName(window.navigator.userAgent);
+browserDetection.detectBrowserVersion(window.navigator, name)
+````
 Note: also it's possible to use npm instead of yarn.
 Minified script located in ```dist/``` folder
 
