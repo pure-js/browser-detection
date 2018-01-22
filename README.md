@@ -13,6 +13,7 @@ Tested on most popular browser in the World on October 2017, statistic gets from
 > > More details [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent)
 
 ## Usage
+
 Installation
 ```
 npm i browser-version-detection
@@ -26,13 +27,16 @@ const output = {
 ```
 Call it where you want
 ```javascript
-browserDetection.detectBrowserNameAndVersion(window.navigator);
+browserDetection.detectBrowser(window.navigator);
 ```
 Note: also it's possible to use npm instead of yarn.
 Minified script located in ```dist/``` folder
+
 ## Contribution
+
     yarn install
     yarn run start
 
 ## Test
+
     yarn test

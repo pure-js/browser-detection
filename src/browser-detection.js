@@ -205,8 +205,11 @@ function detectBrowserNameAndVersion(nav) {
   };
 }
 
+const detectBrowser = detectBrowserNameAndVersion;
+
 export {
   detectBrowserName,
   detectBrowserVersion,
   detectBrowserNameAndVersion,
+  detectBrowser,
 };
