@@ -39,7 +39,7 @@
     "eslint": "~4.17.0",
     "eslint-config-google": "^0.9.1",
     "jest": "~22.1.4",
-    "webpack": "~3.10.0"
+    "webpack": "~3.11.0"
   },
   "dependencies": {}
 }
