@@ -28,7 +28,9 @@ const output = {
 ## API
 ### Get browser name and version 
 ```javascript
-browserDetection.detectBrowser(window.navigator);
+import { detectBrowser } from 'browser-version-detection';
+
+detectBrowser(window.navigator);
 ```
 output
 ```javascript
@@ -39,7 +41,9 @@ const output = {
 ```
 ### Get browser name
 ```javascript
-browserDetection.detectBrowserName(window.navigator.userAgent)
+import { detectBrowserName } from 'browser-version-detection';
+
+detectBrowserName(window.navigator.userAgent);
 ````
 output
 ```javascript
@@ -47,8 +51,10 @@ const output = 'Chrome';
 ```
 ### Get browser version
 ```javascript
-const name = browserDetection.detectBrowserName(window.navigator.userAgent);
-browserDetection.detectBrowserVersion(window.navigator, name)
+import { detectBrowserName, detectBrowserVersion } from 'browser-version-detection';
+
+const name = detectBrowserName(window.navigator.userAgent);
+detectBrowserVersion(window.navigator, name);
 ````
 output
 ```javascript
