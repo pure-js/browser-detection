@@ -15,7 +15,7 @@ Tested on most popular browser in the World on October 2017, statistic gets from
 ## Installation
 
 ```
-npm i browser-version-detection
+npm i browser-version-detection --save
 ```
 Script returns object with browser name and version, for example:
 ```javascript
