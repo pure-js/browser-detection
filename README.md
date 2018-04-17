@@ -57,11 +57,10 @@ const output = 64;
 Minified script located in ```dist/``` folder
 
 ## Contribution
-Note: also it's possible to use npm instead of yarn.
 
-    yarn install
-    yarn run start
+    npm i
+    npm start
 
 ## Test
 
-    yarn test
+    npm test
