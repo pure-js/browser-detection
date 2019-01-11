@@ -113,7 +113,7 @@ function detectBrowserName(userAgent) {
  */
 function retrieveVersion(name, str) {
   name = name + '/';
-  let start = str.indexOf(name);
+  const start = str.indexOf(name);
   let preNum = str.substring(start + name.length);
   const index = preNum.indexOf(' ');
   if (index > 0) preNum = preNum.substring(0, index);
@@ -125,7 +125,7 @@ function retrieveVersion(name, str) {
     end = preNum.indexOf('.', 1);
   }
 
-  let num = preNum.substring(0, end);
+  const num = preNum.substring(0, end);
   return Number(num);
 }
 
@@ -163,12 +163,12 @@ function detectBrowserVersion(nav, name) {
 
   switch (name) {
     case 'IE': {
-      let temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+      const temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
       return Number(temp[1]) || null;
     }
 
     case 'Edge': {
-      let temp = userAgent.match(/\b(Edge)\/(\d+)/);
+      const temp = userAgent.match(/\b(Edge)\/(\d+)/);
       return Number(temp[2]);
     }
   }
@@ -178,7 +178,7 @@ function detectBrowserVersion(nav, name) {
   if (browserName) return retrieveVersion(browserName, userAgent);
 
   let found = userAgent.match(
-    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+      /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
   ) || [];
 
   found = found[2] ? [found[1],
