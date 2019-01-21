@@ -6,7 +6,7 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 
-# Node
+# Node.js package manager
 node_modules/
 
 # macOS specific files
