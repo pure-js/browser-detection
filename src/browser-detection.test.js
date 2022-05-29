@@ -8,13 +8,13 @@ describe('Should correctly detect name & version of', () => {
   test('Chrome', () => {
     const chrome = {
       userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
-        AppleWebKit/537.36 (KHTML, like Gecko) 
-        Chrome/62.0.3202.94 Safari/537.36`,
+      AppleWebKit/537.36 (KHTML, like Gecko) 
+      Chrome/101.0.4951.54 Safari/537.36`,
     };
 
     expect(detectBrowserNameAndVersion(chrome)).toEqual({
       name: 'Chrome',
-      version: 62,
+      version: 101,
     });
 
     const chromeMobile = {
