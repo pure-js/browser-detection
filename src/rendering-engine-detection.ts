@@ -22,8 +22,8 @@ function detectRenderingEngineVersion(userAgent) {
  */
 function detectRenderingEngineNameAndVersion(userAgent) {
   return {
-    name: detectRenderingEngineName(),
-    version: detectRenderingEngineVersion(),
+    name: detectRenderingEngineName(userAgent),
+    version: detectRenderingEngineVersion(userAgent),
   };
 }
 
