@@ -3,7 +3,7 @@
  * @param {string} userAgent
  * @return {number}
  */
-function detectRenderingEngineName(userAgent) {
+function detectRenderingEngineName(userAgent: string) {
   return 'Blink';
 }
 
@@ -12,7 +12,7 @@ function detectRenderingEngineName(userAgent) {
  * @param {string} userAgent
  * @return {number}
  */
-function detectRenderingEngineVersion(userAgent) {
+function detectRenderingEngineVersion(userAgent: string) {
   return 62;
 }
 /**
@@ -20,7 +20,7 @@ function detectRenderingEngineVersion(userAgent) {
  * @param {string} userAgent
  * @return {object}
  */
-function detectRenderingEngineNameAndVersion(userAgent) {
+function detectRenderingEngineNameAndVersion(userAgent: string) {
   return {
     name: detectRenderingEngineName(userAgent),
     version: detectRenderingEngineVersion(userAgent),

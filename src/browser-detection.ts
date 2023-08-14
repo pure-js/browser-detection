@@ -3,7 +3,7 @@
  * @param {string} userAgent
  * @return {boolean}
  */
-function isChrome(userAgent) {
+function isChrome(userAgent: string) {
   return userAgent.includes('Chrome') &&
     !userAgent.includes('Chromium') &&
     !userAgent.includes('OPR') &&
@@ -16,7 +16,7 @@ function isChrome(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isSafari(userAgent) {
+function isSafari(userAgent: string) {
   return userAgent.includes('Safari') &&
     !userAgent.includes('Chrome') &&
     !userAgent.includes('Chromium') &&
@@ -28,7 +28,7 @@ function isSafari(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isUCBrowser(userAgent) {
+function isUCBrowser(userAgent: string) {
   return userAgent.includes('UCBrowser');
 }
 
@@ -37,7 +37,7 @@ function isUCBrowser(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isFirefox(userAgent) {
+function isFirefox(userAgent: string) {
   return userAgent.includes('Firefox') && !userAgent.includes('Seamonkey');
 }
 
@@ -46,7 +46,7 @@ function isFirefox(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isIE(userAgent) {
+function isIE(userAgent: string) {
   return (/trident/i.test(userAgent));
 }
 
@@ -55,7 +55,7 @@ function isIE(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isOpera(userAgent) {
+function isOpera(userAgent: string) {
   return userAgent.includes('OPR');
 }
 
@@ -64,7 +64,7 @@ function isOpera(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isSamsungInternet(userAgent) {
+function isSamsungInternet(userAgent: string) {
   return userAgent.includes('SamsungBrowser');
 }
 
@@ -73,7 +73,7 @@ function isSamsungInternet(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isAndroidBrowser(userAgent) {
+function isAndroidBrowser(userAgent: string) {
   return userAgent.includes('Android') &&
     !userAgent.includes('Chrome') &&
     userAgent.includes('AppleWebKit');
@@ -84,7 +84,7 @@ function isAndroidBrowser(userAgent) {
  * @param {string} userAgent
  * @return {boolean}
  */
-function isEdge(userAgent) {
+function isEdge(userAgent: string) {
   return userAgent.includes('Edge') && userAgent.includes('Chrome');
 }
 
@@ -93,7 +93,7 @@ function isEdge(userAgent) {
  * @param {string} userAgent - window.navigator
  * @return {string} browser name
  */
-function detectBrowserName(userAgent) {
+function detectBrowserName(userAgent: string) {
   if (isChrome(userAgent)) return 'Chrome';
   if (isSafari(userAgent)) return 'Safari';
   if (isUCBrowser(userAgent)) return 'UC Browser';
@@ -134,7 +134,7 @@ function retrieveVersion(name, str) {
  * @param {string} name
  * @return {string} browser name
  */
-function getBeautifulName(name) {
+function getBeautifulName(name: string) {
   let browserName;
   switch (name) {
     case 'Opera':
@@ -158,7 +158,7 @@ function getBeautifulName(name) {
  * @param {string} name
  * @return {number} browser version
  */
-function detectBrowserVersion(nav, name) {
+function detectBrowserVersion(nav, name: string): number | null {
   const {userAgent} = nav;
 
   switch (name) {
