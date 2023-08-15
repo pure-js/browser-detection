@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import {describe, expect, test} from 'vitest';
 
 import {
   detectRenderingEngineNameAndVersion,
@@ -18,7 +18,7 @@ describe('Should correctly detect rendering engine', () => {
     });
   });
 
-  // test('WebKit', () => {
+  // Test('WebKit', () => {
   //   const safari = {
   //     userAgent: `Mozilla/5.0 (Macintosh;
   //       Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko)

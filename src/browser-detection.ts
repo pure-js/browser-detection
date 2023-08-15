@@ -4,11 +4,11 @@
  * @return {boolean}
  */
 function isChrome(userAgent: string) {
-  return userAgent.includes('Chrome') &&
-    !userAgent.includes('Chromium') &&
-    !userAgent.includes('OPR') &&
-    !userAgent.includes('Edge') &&
-    !userAgent.includes('SamsungBrowser');
+  return userAgent.includes('Chrome')
+    && !userAgent.includes('Chromium')
+    && !userAgent.includes('OPR')
+    && !userAgent.includes('Edge')
+    && !userAgent.includes('SamsungBrowser');
 }
 
 /**
@@ -17,10 +17,10 @@ function isChrome(userAgent: string) {
  * @return {boolean}
  */
 function isSafari(userAgent: string) {
-  return userAgent.includes('Safari') &&
-    !userAgent.includes('Chrome') &&
-    !userAgent.includes('Chromium') &&
-    !userAgent.includes('Android');
+  return userAgent.includes('Safari')
+    && !userAgent.includes('Chrome')
+    && !userAgent.includes('Chromium')
+    && !userAgent.includes('Android');
 }
 
 /**
@@ -74,9 +74,9 @@ function isSamsungInternet(userAgent: string) {
  * @return {boolean}
  */
 function isAndroidBrowser(userAgent: string) {
-  return userAgent.includes('Android') &&
-    !userAgent.includes('Chrome') &&
-    userAgent.includes('AppleWebKit');
+  return userAgent.includes('Android')
+    && !userAgent.includes('Chrome')
+    && userAgent.includes('AppleWebKit');
 }
 
 /**
@@ -94,15 +94,41 @@ function isEdge(userAgent: string) {
  * @return {string} browser name
  */
 function detectBrowserName(userAgent: string) {
-  if (isChrome(userAgent)) return 'Chrome';
-  if (isSafari(userAgent)) return 'Safari';
-  if (isUCBrowser(userAgent)) return 'UC Browser';
-  if (isFirefox(userAgent)) return 'Firefox';
-  if (isIE(userAgent)) return 'IE';
-  if (isOpera(userAgent)) return 'Opera';
-  if (isSamsungInternet(userAgent)) return 'Samsung Internet';
-  if (isAndroidBrowser(userAgent)) return 'Android Browser';
-  if (isEdge(userAgent)) return 'Edge';
+  if (isChrome(userAgent)) {
+    return 'Chrome';
+  }
+
+  if (isSafari(userAgent)) {
+    return 'Safari';
+  }
+
+  if (isUCBrowser(userAgent)) {
+    return 'UC Browser';
+  }
+
+  if (isFirefox(userAgent)) {
+    return 'Firefox';
+  }
+
+  if (isIE(userAgent)) {
+    return 'IE';
+  }
+
+  if (isOpera(userAgent)) {
+    return 'Opera';
+  }
+
+  if (isSamsungInternet(userAgent)) {
+    return 'Samsung Internet';
+  }
+
+  if (isAndroidBrowser(userAgent)) {
+    return 'Android Browser';
+  }
+
+  if (isEdge(userAgent)) {
+    return 'Edge';
+  }
 }
 
 /**
@@ -112,11 +138,14 @@ function detectBrowserName(userAgent: string) {
  * @return {number} browser version
  */
 function retrieveVersion(name, str) {
-  name = name + '/';
+  name += '/';
   const start = str.indexOf(name);
   let preNum = str.substring(start + name.length);
   const index = preNum.indexOf(' ');
-  if (index > 0) preNum = preNum.substring(0, index);
+  if (index > 0) {
+    preNum = preNum.substring(0, index);
+  }
+
   let end;
 
   if (preNum.indexOf('.', 2) > 0) {
@@ -149,6 +178,7 @@ function getBeautifulName(name: string) {
       browserName = 'SamsungBrowser';
       break;
   }
+
   return browserName;
 }
 
@@ -158,7 +188,7 @@ function getBeautifulName(name: string) {
  * @param {string} name
  * @return {number} browser version
  */
-function detectBrowserVersion(nav, name: string): number | null {
+function detectBrowserVersion(nav, name: string): number | undefined {
   const {userAgent} = nav;
 
   switch (name) {
@@ -175,10 +205,12 @@ function detectBrowserVersion(nav, name: string): number | null {
 
   const browserName = getBeautifulName(name);
 
-  if (browserName) return retrieveVersion(browserName, userAgent);
+  if (browserName) {
+    return retrieveVersion(browserName, userAgent);
+  }
 
   let found = userAgent.match(
-      /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i,
   ) || [];
 
   found = found[2] ? [found[1],
@@ -186,7 +218,9 @@ function detectBrowserVersion(nav, name: string): number | null {
 
   let temp;
   if ((temp = userAgent.match(/version\/(\d+)/i))
-    !== null) found.splice(1, 1, temp[1]);
+    !== null) {
+    found.splice(1, 1, temp[1]);
+  }
 
   return Number(found[1]);
 }
@@ -200,7 +234,7 @@ function detectBrowserNameAndVersion(nav) {
   const name = detectBrowserName(nav.userAgent);
 
   return {
-    name: name,
+    name,
     version: detectBrowserVersion(nav, name),
   };
 }

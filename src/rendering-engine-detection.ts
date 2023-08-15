@@ -15,6 +15,7 @@ function detectRenderingEngineName(userAgent: string) {
 function detectRenderingEngineVersion(userAgent: string) {
   return 62;
 }
+
 /**
  * Detects browser version
  * @param {string} userAgent
