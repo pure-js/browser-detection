@@ -26,6 +26,9 @@ devDependencies:
   typescript:
     specifier: ^5.1.6
     version: 5.1.6
+  vite:
+    specifier: ^4.4.9
+    version: 4.4.9(@types/node@20.5.0)
   vitest:
     specifier: ^0.34.1
     version: 0.34.1

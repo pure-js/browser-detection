@@ -141,7 +141,7 @@ function retrieveVersion(name: string, str: string): number {
  * Returns Association
  */
 function getBeautifulName(name: string): string {
-  let browserName: string;
+  let browserName = '';
   // eslint-disable-next-line default-case
   switch (name) {
     case 'Opera':
