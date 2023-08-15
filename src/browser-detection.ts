@@ -167,7 +167,7 @@ function detectBrowserVersion(nav: {userAgent: string}, name: string): number | 
   // eslint-disable-next-line default-case
   switch (name) {
     case 'IE': {
-      const temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+      const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
       return Number(temp[1]) || null;
     }
 
@@ -183,7 +183,7 @@ function detectBrowserVersion(nav: {userAgent: string}, name: string): number | 
     return retrieveVersion(browserName, userAgent);
   }
 
-  let found = (/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i.exec(userAgent)) || [];
+  let found = (/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i.exec(userAgent)) ?? [];
 
   found = found[2] ? [found[1],
     found[2]] : [nav.appName, nav.appVersion, '-?'];
