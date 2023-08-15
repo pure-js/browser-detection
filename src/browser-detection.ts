@@ -1,9 +1,7 @@
 /**
  * Detects Chrome browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isChrome(userAgent: string) {
+function isChrome(userAgent: string): boolean {
   return userAgent.includes('Chrome')
     && !userAgent.includes('Chromium')
     && !userAgent.includes('OPR')
@@ -13,10 +11,8 @@ function isChrome(userAgent: string) {
 
 /**
  * Detects Safari browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isSafari(userAgent: string) {
+function isSafari(userAgent: string): boolean {
   return userAgent.includes('Safari')
     && !userAgent.includes('Chrome')
     && !userAgent.includes('Chromium')
@@ -25,55 +21,43 @@ function isSafari(userAgent: string) {
 
 /**
  * Detects UC browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isUCBrowser(userAgent: string) {
+function isUcBrowser(userAgent: string): boolean {
   return userAgent.includes('UCBrowser');
 }
 
 /**
  * Detects Firefox browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isFirefox(userAgent: string) {
+function isFirefox(userAgent: string): boolean {
   return userAgent.includes('Firefox') && !userAgent.includes('Seamonkey');
 }
 
 /**
  * Detects IE browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isIE(userAgent: string) {
+function isIe(userAgent: string): boolean {
   return (/trident/i.test(userAgent));
 }
 
 /**
  * Detects Opera browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isOpera(userAgent: string) {
+function isOpera(userAgent: string): boolean {
   return userAgent.includes('OPR');
 }
 
 /**
  * Detects Samsung browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isSamsungInternet(userAgent: string) {
+function isSamsungInternet(userAgent: string): boolean {
   return userAgent.includes('SamsungBrowser');
 }
 
 /**
  * Detects Android browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isAndroidBrowser(userAgent: string) {
+function isAndroidBrowser(userAgent: string): boolean {
   return userAgent.includes('Android')
     && !userAgent.includes('Chrome')
     && userAgent.includes('AppleWebKit');
@@ -81,10 +65,8 @@ function isAndroidBrowser(userAgent: string) {
 
 /**
  * Detects Edge browser
- * @param {string} userAgent
- * @return {boolean}
  */
-function isEdge(userAgent: string) {
+function isEdge(userAgent: string): boolean {
   return userAgent.includes('Edge') && userAgent.includes('Chrome');
 }
 
@@ -102,7 +84,7 @@ function detectBrowserName(userAgent: string) {
     return 'Safari';
   }
 
-  if (isUCBrowser(userAgent)) {
+  if (isUcBrowser(userAgent)) {
     return 'UC Browser';
   }
 
@@ -110,7 +92,7 @@ function detectBrowserName(userAgent: string) {
     return 'Firefox';
   }
 
-  if (isIE(userAgent)) {
+  if (isIe(userAgent)) {
     return 'IE';
   }
 
@@ -133,11 +115,8 @@ function detectBrowserName(userAgent: string) {
 
 /**
  * Retrieve browser version
- * @param {string} name
- * @param {string} str
- * @return {number} browser version
  */
-function retrieveVersion(name, str) {
+function retrieveVersion(name: string, str: string): number {
   name += '/';
   const start = str.indexOf(name);
   let preNum = str.substring(start + name.length);
@@ -160,20 +139,17 @@ function retrieveVersion(name, str) {
 
 /**
  * Returns Association
- * @param {string} name
- * @return {string} browser name
  */
-function getBeautifulName(name: string) {
-  let browserName;
+function getBeautifulName(name: string): string {
+  let browserName: string;
+  // eslint-disable-next-line default-case
   switch (name) {
     case 'Opera':
       browserName = 'OPR';
       break;
-
     case 'UC Browser':
       browserName = 'UCBrowser';
       break;
-
     case 'Samsung Internet':
       browserName = 'SamsungBrowser';
       break;
@@ -184,13 +160,11 @@ function getBeautifulName(name: string) {
 
 /**
  * Detects browser version
- * @param {object} nav
- * @param {string} name
- * @return {number} browser version
  */
-function detectBrowserVersion(nav, name: string): number | undefined {
+function detectBrowserVersion(nav: {userAgent: string}, name: string): number | undefined {
   const {userAgent} = nav;
 
+  // eslint-disable-next-line default-case
   switch (name) {
     case 'IE': {
       const temp = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
@@ -198,7 +172,7 @@ function detectBrowserVersion(nav, name: string): number | undefined {
     }
 
     case 'Edge': {
-      const temp = userAgent.match(/\b(Edge)\/(\d+)/);
+      const temp = /\b(Edge)\/(\d+)/.exec(userAgent);
       return Number(temp[2]);
     }
   }
@@ -209,15 +183,13 @@ function detectBrowserVersion(nav, name: string): number | undefined {
     return retrieveVersion(browserName, userAgent);
   }
 
-  let found = userAgent.match(
-    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i,
-  ) || [];
+  let found = (/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i.exec(userAgent)) || [];
 
   found = found[2] ? [found[1],
     found[2]] : [nav.appName, nav.appVersion, '-?'];
 
   let temp;
-  if ((temp = userAgent.match(/version\/(\d+)/i))
+  if ((temp = /version\/(\d+)/i.exec(userAgent))
     !== null) {
     found.splice(1, 1, temp[1]);
   }
@@ -227,10 +199,8 @@ function detectBrowserVersion(nav, name: string): number | undefined {
 
 /**
  * Detects browser name & version
- * @param {object} nav
- * @return {object} browser name & version
  */
-function detectBrowserNameAndVersion(nav) {
+function detectBrowserNameAndVersion(nav: {userAgent: string}): {name: string | undefined; version: number | undefined} {
   const name = detectBrowserName(nav.userAgent);
 
   return {

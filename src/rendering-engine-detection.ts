@@ -1,27 +1,21 @@
 /**
  * Detects browser version
- * @param {string} userAgent
- * @return {number}
  */
-function detectRenderingEngineName(userAgent: string) {
+function detectRenderingEngineName(userAgent: string): string {
   return 'Blink';
 }
 
 /**
  * Detects browser version
- * @param {string} userAgent
- * @return {number}
  */
-function detectRenderingEngineVersion(userAgent: string) {
+function detectRenderingEngineVersion(userAgent: string): number {
   return 62;
 }
 
 /**
  * Detects browser version
- * @param {string} userAgent
- * @return {object}
  */
-function detectRenderingEngineNameAndVersion(userAgent: string) {
+function detectRenderingEngineNameAndVersion(userAgent: string): {name: string; version: number} {
   return {
     name: detectRenderingEngineName(userAgent),
     version: detectRenderingEngineVersion(userAgent),

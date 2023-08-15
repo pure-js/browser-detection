@@ -12,7 +12,7 @@ describe('Should correctly detect rendering engine', () => {
         Chrome/62.0.3202.94 Safari/537.36`,
     };
 
-    expect(detectRenderingEngineNameAndVersion(chrome)).toEqual({
+    expect(detectRenderingEngineNameAndVersion(chrome.userAgent)).toEqual({
       name: 'Blink',
       version: 62,
     });

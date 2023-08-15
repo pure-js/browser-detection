@@ -1,50 +1,59 @@
-import {expect, test} from 'vitest';
+import {describe, expect, test} from 'vitest';
 
 import {browserIsDeprecated} from './is-deprecated';
 
-test('Should be able to detect deprecated browser from object', () => {
+describe('Should be able to detect deprecated browser from object', () => {
   const supportedBrowsers = {
-    Firefox: 27,
-    Chrome: 60,
-    Opera: 15,
-    IE: 11,
+    firefox: 27,
+    chrome: 60,
+    opera: 15,
+    ie: 11,
   };
 
-  let browser = {
-    Firefox: 25,
-  };
+  test('Firefox', () => {
+    const browser = {
+      firefox: 25,
+    };
 
-  expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+  });
 
-  browser = {
-    Chrome: 12,
-  };
+  test('Chrome', () => {
+    let browser = {
+      chrome: 12,
+    };
 
-  expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
 
-  browser = {
-    Chrome: 63,
-  };
+    browser = {
+      chrome: 63,
+    };
 
-  expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+  });
 
-  browser = {
-    IE: 9,
-  };
+  test('IE', () => {
+    const browser = {
+      ie: 9,
+    };
 
-  expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(true);
+  });
 
-  browser = {
-    Opera: 49,
-  };
+  test('Opera', () => {
+    const browser = {
+      opera: 49,
+    };
 
-  expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+    expect(browserIsDeprecated(browser)).toEqual(false);
+  });
 
-  expect(browserIsDeprecated(browser)).toEqual(false);
+  test('Non-existing browser - Bear', () => {
+    const browser = {
+      bear: 1,
+    };
 
-  browser = {
-    Bear: 1,
-  };
-
-  expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+    expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
+  });
 });
