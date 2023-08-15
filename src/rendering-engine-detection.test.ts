@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import {describe, expect, test} from 'vitest';
 
 import {
   detectRenderingEngineNameAndVersion,
@@ -12,13 +12,13 @@ describe('Should correctly detect rendering engine', () => {
         Chrome/62.0.3202.94 Safari/537.36`,
     };
 
-    expect(detectRenderingEngineNameAndVersion(chrome)).toEqual({
+    expect(detectRenderingEngineNameAndVersion(chrome.userAgent)).toEqual({
       name: 'Blink',
       version: 62,
     });
   });
 
-  // test('WebKit', () => {
+  // Test('WebKit', () => {
   //   const safari = {
   //     userAgent: `Mozilla/5.0 (Macintosh;
   //       Intel Mac OS X 10_13_1) AppleWebKit/604.3.5 (KHTML, like Gecko)

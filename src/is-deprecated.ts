@@ -1,9 +1,9 @@
 const defaults = {
   browsers: {
-    Firefox: 27,
-    Chrome: 60,
-    Opera: 15,
-    IE: 11,
+    firefox: 27,
+    chrome: 60,
+    opera: 15,
+    ie: 11,
   },
 };
 
@@ -14,16 +14,16 @@ const defaults = {
  * @return {Object} The new Circle object.
  */
 function browserIsDeprecated(
-    currentBrowser,
-    supportedBrowsers = defaults.browsers
+  currentBrowser,
+  supportedBrowsers = defaults.browsers,
 ) {
   const browserName = Object.keys(currentBrowser)[0];
 
-  if (supportedBrowsers.hasOwnProperty(browserName)) {
+  if (Object.prototype.hasOwnProperty.call(supportedBrowsers, browserName)) {
     return (currentBrowser[browserName] < supportedBrowsers[browserName]);
-  } else {
-    return false;
   }
+
+  return false;
 }
 
 export {
