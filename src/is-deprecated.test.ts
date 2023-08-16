@@ -54,6 +54,8 @@ describe('Should be able to detect deprecated browser from object', () => {
       bear: 1,
     };
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     expect(browserIsDeprecated(browser, supportedBrowsers)).toEqual(false);
   });
 });
