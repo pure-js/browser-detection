@@ -10,7 +10,7 @@
     "lint": "eslint src/**/* --ext .ts",
     "test": "vitest --coverage --run",
     "test:watch": "vitest --coverage",
-    "doc": "typedoc src/browser-detection.ts"
+    "doc": "typedoc src/browser-detection.ts --basePath /browser-detection/"
   },
   "repository": {
     "type": "git",
