@@ -75,7 +75,7 @@ function isEdge(userAgent: string): boolean {
  * @param {string} userAgent - window.navigator
  * @return {string} browser name
  */
-function detectBrowserName(userAgent: string) {
+function detectBrowserName(userAgent: string): string | undefined {
   if (isChrome(userAgent)) {
     return 'Chrome';
   }
@@ -111,6 +111,8 @@ function detectBrowserName(userAgent: string) {
   if (isEdge(userAgent)) {
     return 'Edge';
   }
+
+  return undefined;
 }
 
 /**
@@ -140,19 +142,23 @@ function retrieveVersion(name: string, str: string): number {
 /**
  * Returns Association
  */
-function getBeautifulName(name: string): string {
-  let browserName = '';
-  // eslint-disable-next-line default-case
-  switch (name) {
-    case 'Opera':
-      browserName = 'OPR';
-      break;
-    case 'UC Browser':
-      browserName = 'UCBrowser';
-      break;
-    case 'Samsung Internet':
-      browserName = 'SamsungBrowser';
-      break;
+function getBeautifulName(name: string | undefined): string | undefined {
+  let browserName;
+
+  if (name) {
+    switch (name) {
+      case 'Opera':
+        browserName = 'OPR';
+        break;
+      case 'UC Browser':
+        browserName = 'UCBrowser';
+        break;
+      case 'Samsung Internet':
+        browserName = 'SamsungBrowser';
+        break;
+      default:
+        return undefined;
+    }
   }
 
   return browserName;
@@ -161,19 +167,21 @@ function getBeautifulName(name: string): string {
 /**
  * Detects browser version
  */
-function detectBrowserVersion(nav: {userAgent: string}, name: string): number | undefined {
+function detectBrowserVersion(nav: {userAgent: string; appName?: string; appVersion?: string}, name: string | undefined): number | undefined {
   const {userAgent} = nav;
 
+  if (name) {
   // eslint-disable-next-line default-case
-  switch (name) {
-    case 'IE': {
-      const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
-      return Number(temp[1]) || undefined;
-    }
+    switch (name) {
+      case 'IE': {
+        const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
+        return Number(temp[1]) || undefined;
+      }
 
-    case 'Edge': {
-      const temp = /\b(Edge)\/(\d+)/.exec(userAgent);
-      return temp ? Number(temp[2]) : undefined;
+      case 'Edge': {
+        const temp = /\b(Edge)\/(\d+)/.exec(userAgent);
+        return temp ? Number(temp[2]) : undefined;
+      }
     }
   }
 
@@ -185,6 +193,8 @@ function detectBrowserVersion(nav: {userAgent: string}, name: string): number | 
 
   let found = (/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i.exec(userAgent)) ?? [];
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
+  // @ts-ignore
   found = found[2] ? [found[1],
     found[2]] : [nav.appName, nav.appVersion, '-?'];
 
