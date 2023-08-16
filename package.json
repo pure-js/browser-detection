@@ -8,7 +8,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src/**/* --ext .ts",
-    "test": "vitest --coverage --run"
+    "test": "vitest --coverage --run",
+    "test:watch": "vitest --coverage"
   },
   "repository": {
     "type": "git",

@@ -158,7 +158,7 @@ describe('Should work correctly', () => {
 
     expect(detectBrowserNameAndVersion(ieWithoutVersion)).toEqual({
       name: 'IE',
-      version: null,
+      version: undefined,
     });
   });
 
@@ -169,7 +169,7 @@ describe('Should work correctly', () => {
 
     expect(detectBrowserNameAndVersion(emptyUserAgent)).toEqual({
       name: undefined,
-      version: NaN,
+      version: undefined,
     });
   });
 });
