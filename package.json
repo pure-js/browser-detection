@@ -5,7 +5,6 @@
   "main": "dist/browser-detection.js",
   "type": "module",
   "scripts": {
-    "prepare": "npm run build",
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src/**/* --ext .ts",
