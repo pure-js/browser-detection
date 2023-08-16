@@ -17,6 +17,7 @@ function browserIsDeprecated(
   currentBrowser,
   supportedBrowsers = defaults.browsers,
 ) {
+  /* eslint-disable @typescript-eslint/no-unsafe-argument */
   const browserName = Object.keys(currentBrowser)[0];
 
   if (Object.prototype.hasOwnProperty.call(supportedBrowsers, browserName)) {
