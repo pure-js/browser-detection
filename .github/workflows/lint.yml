@@ -2,7 +2,6 @@ name: Code Linting
 
 on:
   push:
-  workflow_call:
 
 jobs:
   eslint:
