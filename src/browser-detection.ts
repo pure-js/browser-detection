@@ -168,12 +168,12 @@ function detectBrowserVersion(nav: {userAgent: string}, name: string): number | 
   switch (name) {
     case 'IE': {
       const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
-      return Number(temp[1]) || null;
+      return Number(temp[1]) || undefined;
     }
 
     case 'Edge': {
       const temp = /\b(Edge)\/(\d+)/.exec(userAgent);
-      return Number(temp[2]);
+      return temp ? Number(temp[2]) : undefined;
     }
   }
 
@@ -194,7 +194,7 @@ function detectBrowserVersion(nav: {userAgent: string}, name: string): number | 
     found.splice(1, 1, temp[1]);
   }
 
-  return Number(found[1]);
+  return found[1] ? Number(found[1]) : undefined;
 }
 
 /**
