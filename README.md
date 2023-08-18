@@ -1,7 +1,7 @@
 # Detect browser
 
-[![Build Status](https://github.com/github/docs/actions/workflows/build.yml/badge.svg)]
-[![Test Coverage](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)]
+![Build Status](https://github.com/pure-js/browser-detection/actions/workflows/build.yml/badge.svg)
+![Test Coverage](https://github.com/pure-js/browser-detection/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/gh/pure-js/browser-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/pure-js/browser-detection)
 [![Greenkeeper badge](https://badges.greenkeeper.io/pure-js/browser-detection.svg)](https://greenkeeper.io/)
 
