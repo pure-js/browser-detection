@@ -1,4 +1,11 @@
 # Changelog
+## [2.2.1](https://github.com/pure-js/browser-detection/compare/v2.2.0...v2.2.1) (2023-08-18)
+
+
+### Bug Fixes
+
+* type errors for the build ([5587a55](https://github.com/pure-js/browser-detection/commit/5587a556c20f6706fffa2e3f18f83d1e39807dd8))
+
 ## [2.2.0](https://github.com/pure-js/browser-detection/compare/v2.1.6...v2.2.0) (2023-08-16)
 
 
