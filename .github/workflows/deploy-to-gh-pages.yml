@@ -9,8 +9,7 @@ on:
 
 jobs:
 
-  # Build job
-  build:
+  generate-documentation:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,13 +26,12 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Run Lint checking
+      - name: Generate Documentation
         run: pnpm run doc
 
-  # Deploy job
   deploy:
     # Add a dependency to the build job
-    needs: build
+    needs: generate-documentation
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
