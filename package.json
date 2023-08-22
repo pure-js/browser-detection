@@ -5,6 +5,7 @@
   "main": "lib/browser-detection.js",
   "types": "lib/browser-detection.d.ts",
   "type": "module",
+  "packageManager": "^pnpm@8.6.12",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
