@@ -2,7 +2,8 @@
   "name": "browser-version-detection",
   "version": "2.2.1",
   "description": "Browser detection using the user agent, returns the name and version of the browser",
-  "main": "dist/browser-detection.js",
+  "main": "lib/browser-detection.js",
+  "types": "lib/browser-detection.d.ts",
   "type": "module",
   "scripts": {
     "start": "vite",
