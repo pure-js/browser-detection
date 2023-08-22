@@ -63,6 +63,8 @@ function isAndroidBrowser(userAgent: string): boolean {
     && userAgent.includes('AppleWebKit');
 }
 
+export type BrowserName = 'Chrome' | 'Safari' | 'UC Browser' | 'Firefox' | 'IE' | 'Opera' | 'Samsung Internet' | 'Android Browser' | 'Edge';
+
 /**
  * Detects Edge browser
  */
@@ -75,7 +77,7 @@ function isEdge(userAgent: string): boolean {
  * @param {string} userAgent - window.navigator
  * @return {string} browser name
  */
-function detectBrowserName(userAgent: string): string | undefined {
+function detectBrowserName(userAgent: string): BrowserName | undefined {
   if (isChrome(userAgent)) {
     return 'Chrome';
   }
@@ -142,7 +144,7 @@ function retrieveVersion(name: string, str: string): number {
 /**
  * Returns Association
  */
-function getBeautifulName(name: string | undefined): string | undefined {
+function getBeautifulName(name: BrowserName | undefined): string | undefined {
   let browserName;
 
   if (name) {
@@ -167,11 +169,13 @@ function getBeautifulName(name: string | undefined): string | undefined {
 /**
  * Detects browser version
  */
-function detectBrowserVersion(nav: {userAgent: string; appName?: string; appVersion?: string}, name: string | undefined): number | undefined {
+function detectBrowserVersion(nav: {
+  userAgent: string; appName?: string; appVersion?: string;
+}, name: BrowserName | undefined): number | undefined {
   const {userAgent} = nav;
 
   if (name) {
-  // eslint-disable-next-line default-case
+  // eslint-disable-next-line default-case, @typescript-eslint/switch-exhaustiveness-check
     switch (name) {
       case 'IE': {
         const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
@@ -210,7 +214,7 @@ function detectBrowserVersion(nav: {userAgent: string; appName?: string; appVers
 /**
  * Detects browser name & version
  */
-function detectBrowserNameAndVersion(nav: {userAgent: string}): {name: string | undefined; version: number | undefined} {
+function detectBrowserNameAndVersion(nav: {userAgent: string}): {name: BrowserName | undefined; version: number | undefined} {
   const name = detectBrowserName(nav.userAgent);
 
   return {
