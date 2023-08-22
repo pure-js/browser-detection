@@ -1,18 +1,10 @@
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
-
-# User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
-
 # Node.js package manager
 node_modules/
 
 # macOS specific files
 .DS_store
 
-# Distribution folder
+# Distribution folders
 dist/
 lib/
 

@@ -1,6 +1,6 @@
-import {describe, expect, test} from 'vitest';
+import { describe, expect, test } from 'vitest';
 
-import {isBrowserDeprecated} from './is-deprecated';
+import { isBrowserDeprecated } from './is-deprecated';
 
 describe('Should be able to detect deprecated browser from object', () => {
   const supportedBrowsers = {
