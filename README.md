@@ -3,7 +3,6 @@
 ![Build Status](https://github.com/pure-js/browser-detection/actions/workflows/build.yml/badge.svg)
 ![Test Coverage](https://github.com/pure-js/browser-detection/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/gh/pure-js/browser-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/pure-js/browser-detection)
-[![Greenkeeper badge](https://badges.greenkeeper.io/pure-js/browser-detection.svg)](https://greenkeeper.io/)
 
 Browser detection using the user agent.
 Tested on most popular browser in the World on October 2017, statistic gets from StatCounter.

@@ -5,18 +5,25 @@ const browsers = {
   ie: 11,
 };
 
-type BrowserType = {firefox: number} | {chrome: number} | {opera: number} | {ie: number};
+export type BrowserType = {
+  firefox: number;
+} | {
+  chrome: number;
+} | {
+  opera: number;
+} | {
+  ie: number;
+} | {
+  ucbrowser: number;
+};
 
 /**
  * Compare current browser version & version from passed array
- * @param {Object} currentBrowser
- * @param {Object} supportedBrowsers - list of supported browsers
- * @return {Object} The new Circle object.
  */
-function browserIsDeprecated(
+function isBrowserDeprecated(
   currentBrowser: BrowserType,
   supportedBrowsers = browsers,
-) {
+): boolean {
   const browserName = Object.keys(currentBrowser)[0];
 
   if (Object.prototype.hasOwnProperty.call(supportedBrowsers, browserName)) {
@@ -27,5 +34,5 @@ function browserIsDeprecated(
 }
 
 export {
-  browserIsDeprecated,
+  isBrowserDeprecated,
 };

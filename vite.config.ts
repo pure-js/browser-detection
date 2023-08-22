@@ -10,5 +10,6 @@ export default defineConfig({
       // the proper extensions will be added
       fileName: 'browser-detection',
     },
+    outDir: 'lib'
   },
 })

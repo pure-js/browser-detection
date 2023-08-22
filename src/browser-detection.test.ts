@@ -31,6 +31,18 @@ describe('Should correctly detect name & version of', () => {
     });
   });
 
+  test('Safari 17', () => {
+    const safari = {
+      userAgent: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) 
+        AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15`,
+    };
+
+    expect(detectBrowserNameAndVersion(safari)).toEqual({
+      name: 'Safari',
+      version: 17,
+    });
+  });
+
   test('Safari', () => {
     const safari = {
       userAgent: `Mozilla/5.0 (Macintosh; 
@@ -94,16 +106,18 @@ describe('Should correctly detect name & version of', () => {
     });
   });
 
-  test('Opera', () => {
-    const opera = {
-      userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
-        AppleWebKit/537.36 (KHTML, like Gecko) 
-        Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39`,
-    };
+  describe('Opera', () => {
+    test('Blink-based', () => {
+      const opera = {
+        userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+          AppleWebKit/537.36 (KHTML, like Gecko) 
+          Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39`,
+      };
 
-    expect(detectBrowserNameAndVersion(opera)).toEqual({
-      name: 'Opera',
-      version: 49,
+      expect(detectBrowserNameAndVersion(opera)).toEqual({
+        name: 'Opera',
+        version: 49,
+      });
     });
   });
 
@@ -148,7 +162,7 @@ describe('Should correctly detect name & version of', () => {
   });
 });
 
-describe('Should work correctly', () => {
+describe('Should not fail', () => {
   test('If can not find a version', () => {
     const ieWithoutVersion = {
       userAgent: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
