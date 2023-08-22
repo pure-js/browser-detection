@@ -1,4 +1,4 @@
-name: Deploy Release Build to GitHub pages
+name: Deploy Documentation Build to GitHub pages
 
 on:
   push:
@@ -28,6 +28,10 @@ jobs:
         run: pnpm install
       - name: Generate Documentation
         run: pnpm run doc
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'docs/'
 
   deploy:
     # Add a dependency to the build job
