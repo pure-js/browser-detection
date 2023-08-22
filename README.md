@@ -11,6 +11,7 @@ Tested on most popular browser in the World on October 2017 (and updated on July
 >
 > > More details [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent)
 
+## [Documentation](http://pure-js.github.io/browser-detection/)
 ## Installation
 
 ```
