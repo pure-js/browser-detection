@@ -15,7 +15,10 @@ function detectRenderingEngineVersion(): number {
 /**
  * Detects browser version
  */
-function detectRenderingEngineNameAndVersion(): {name: string; version: number} {
+function detectRenderingEngineNameAndVersion(): {
+  name: string;
+  version: number;
+} {
   return {
     name: detectRenderingEngineName(),
     version: detectRenderingEngineVersion(),

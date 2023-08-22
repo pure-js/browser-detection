@@ -1,23 +1,29 @@
+import { retrieveVersion } from './retrieve-version';
+
 /**
  * Detects Chrome browser
  */
 function isChrome(userAgent: string): boolean {
-  return userAgent.includes('Chrome')
-    && !userAgent.includes('Chromium')
-    && !userAgent.includes('SamsungBrowser')
-    && !userAgent.includes('OPR')
-    && !userAgent.includes('MQQBrowser')
-    && !userAgent.includes('Edge');
+  return (
+    userAgent.includes('Chrome') &&
+    !userAgent.includes('Chromium') &&
+    !userAgent.includes('SamsungBrowser') &&
+    !userAgent.includes('OPR') &&
+    !userAgent.includes('MQQBrowser') &&
+    !userAgent.includes('Edge')
+  );
 }
 
 /**
  * Detects Safari browser
  */
 function isSafari(userAgent: string): boolean {
-  return userAgent.includes('Safari')
-    && !userAgent.includes('Chrome')
-    && !userAgent.includes('Chromium')
-    && !userAgent.includes('Android');
+  return (
+    userAgent.includes('Safari') &&
+    !userAgent.includes('Chrome') &&
+    !userAgent.includes('Chromium') &&
+    !userAgent.includes('Android')
+  );
 }
 
 /**
@@ -45,9 +51,11 @@ function isUcBrowser(userAgent: string): boolean {
  * Detects Android browser
  */
 function isAndroidBrowser(userAgent: string): boolean {
-  return userAgent.includes('Android')
-    && !userAgent.includes('Chrome')
-    && userAgent.includes('AppleWebKit');
+  return (
+    userAgent.includes('Android') &&
+    !userAgent.includes('Chrome') &&
+    userAgent.includes('AppleWebKit')
+  );
 }
 
 /**
@@ -68,10 +76,20 @@ function isQqBrowser(userAgent: string): boolean {
  * Detects IE browser
  */
 function isIe(userAgent: string): boolean {
-  return (/trident/i.test(userAgent));
+  return /trident/i.test(userAgent);
 }
 
-export type BrowserName = 'Chrome' | 'Safari' | 'Samsung Internet' | 'Opera' | 'UC Browser' | 'Android Browser' | 'Firefox' | 'QQ Browser' | 'Edge' | 'IE';
+export type BrowserName =
+  | 'Chrome'
+  | 'Safari'
+  | 'Samsung Internet'
+  | 'Opera'
+  | 'UC Browser'
+  | 'Android Browser'
+  | 'Firefox'
+  | 'QQ Browser'
+  | 'Edge'
+  | 'IE';
 
 /**
  * Detects Edge browser
@@ -127,36 +145,18 @@ function detectBrowserName(userAgent: string): BrowserName | undefined {
   return undefined;
 }
 
-/**
- * Retrieve browser version
- */
-function retrieveVersion(browserName: string, userAgent: string): number {
-  const name = `${browserName}/`;
-  const start = userAgent.indexOf(name);
-  let preNum = userAgent.substring(start + name.length);
-  const index = preNum.indexOf(' ');
-  if (index > 0) {
-    preNum = preNum.substring(0, index);
-  }
-
-  let end;
-
-  if (preNum.indexOf('.', 2) > 0) {
-    end = preNum.indexOf('.', 2);
-  } else {
-    end = preNum.indexOf('.', 1);
-  }
-
-  const num = preNum.substring(0, end);
-  return Number(num);
-}
-
-export type UaBrowserName = 'SamsungBrowser' | 'OPR' | 'UCBrowser' | 'MQQBrowser';
+export type UaBrowserName =
+  | 'SamsungBrowser'
+  | 'OPR'
+  | 'UCBrowser'
+  | 'MQQBrowser';
 
 /**
  * Returns Association
  */
-function getBrowserUaName(name: BrowserName | undefined): UaBrowserName | undefined {
+function getBrowserUaName(
+  name: BrowserName | undefined,
+): UaBrowserName | undefined {
   if (name) {
     switch (name) {
       case 'Opera':
@@ -176,22 +176,27 @@ function getBrowserUaName(name: BrowserName | undefined): UaBrowserName | undefi
 /**
  * Detects browser version
  */
-function detectBrowserVersion(nav: {
-  userAgent: string; appName?: string; appVersion?: string;
-}, name: BrowserName | undefined): number | undefined {
-  const {userAgent} = nav;
+function detectBrowserVersion(
+  nav: {
+    userAgent: string;
+    appName?: string;
+    appVersion?: string;
+  },
+  name: BrowserName | undefined,
+): number | undefined {
+  const { userAgent } = nav;
 
   if (name) {
-  // eslint-disable-next-line default-case, @typescript-eslint/switch-exhaustiveness-check
+    // eslint-disable-next-line default-case, @typescript-eslint/switch-exhaustiveness-check
     switch (name) {
-      case 'IE': {
-        const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
-        return Number(temp[1]) || undefined;
-      }
-
       case 'Edge': {
         const temp = /\b(Edge)\/(\d+)/.exec(userAgent);
         return temp ? Number(temp[2]) : undefined;
+      }
+
+      case 'IE': {
+        const temp = /\brv[ :]+(\d+)/g.exec(userAgent) ?? [];
+        return Number(temp[1]) || undefined;
       }
     }
   }
@@ -202,16 +207,17 @@ function detectBrowserVersion(nav: {
     return retrieveVersion(browserName, userAgent);
   }
 
-  let found = (/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i.exec(userAgent)) ?? [];
+  let found =
+    /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i.exec(
+      userAgent,
+    ) ?? [];
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment, @typescript-eslint/prefer-ts-expect-error
   // @ts-ignore
-  found = found[2] ? [found[1],
-    found[2]] : [nav.appName, nav.appVersion, '-?'];
+  found = found[2] ? [found[1], found[2]] : [nav.appName, nav.appVersion, '-?'];
 
   let temp;
-  if ((temp = /version\/(\d+)/i.exec(userAgent))
-    !== null) {
+  if ((temp = /version\/(\d+)/i.exec(userAgent)) !== null) {
     found.splice(1, 1, temp[1]);
   }
 
@@ -221,7 +227,10 @@ function detectBrowserVersion(nav: {
 /**
  * Detects browser name & version
  */
-function detectBrowserNameAndVersion(nav: {userAgent: string}): {name: BrowserName | undefined; version: number | undefined} {
+function detectBrowserNameAndVersion(nav: { userAgent: string }): {
+  name: BrowserName | undefined;
+  version: number | undefined;
+} {
   const name = detectBrowserName(nav.userAgent);
 
   return {
