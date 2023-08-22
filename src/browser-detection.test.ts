@@ -56,6 +56,20 @@ describe('Should correctly detect name & version of', () => {
     });
   });
 
+  test('Samsung Internet', () => {
+    const samsung = {
+      userAgent: `Mozilla/5.0 (Linux; Android 5.1.1; 
+        SAMSUNG SM-G360T1 Build/LMY47X)
+        AppleWebKit/537.36 (KHTML, like Gecko)
+        SamsungBrowser/3.3 Chrome/38.0.2125.102 Mobile Safari/537.36`,
+    };
+
+    expect(detectBrowserNameAndVersion(samsung)).toEqual({
+      name: 'Samsung Internet',
+      version: 3,
+    });
+  });
+
   test('UC Browser', () => {
     const ucBrowser = {
       userAgent: `UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37)
@@ -93,16 +107,17 @@ describe('Should correctly detect name & version of', () => {
     });
   });
 
-  test('Internet Explorer', () => {
-    const ie = {
-      userAgent: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
-        Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
-        .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
+  test('QQ Browser', () => {
+    const qqbrowser = {
+      userAgent: `Mozilla/5.0 (Linux; U; Android 11; zh-cn; 21091116UC Build/RP1A.200720.011) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 
+        Chrome/66.0.3359.126 MQQBrowser/10.8 Mobile Safari/537.36`,
     };
 
-    expect(detectBrowserNameAndVersion(ie)).toEqual({
-      name: 'IE',
-      version: 11,
+    expect(detectBrowserNameAndVersion(qqbrowser)).toEqual({
+      name: 'QQ Browser',
+      // Version: 10.8, // TODO: add version after dot
+      version: 10,
     });
   });
 
@@ -118,20 +133,6 @@ describe('Should correctly detect name & version of', () => {
         name: 'Opera',
         version: 49,
       });
-    });
-  });
-
-  test('Samsung Internet', () => {
-    const samsung = {
-      userAgent: `Mozilla/5.0 (Linux; Android 5.1.1; 
-        SAMSUNG SM-G360T1 Build/LMY47X)
-        AppleWebKit/537.36 (KHTML, like Gecko)
-        SamsungBrowser/3.3 Chrome/38.0.2125.102 Mobile Safari/537.36`,
-    };
-
-    expect(detectBrowserNameAndVersion(samsung)).toEqual({
-      name: 'Samsung Internet',
-      version: 3,
     });
   });
 
@@ -158,6 +159,19 @@ describe('Should correctly detect name & version of', () => {
     expect(detectBrowserNameAndVersion(edge)).toEqual({
       name: 'Edge',
       version: 15,
+    });
+  });
+
+  test('Internet Explorer', () => {
+    const ie = {
+      userAgent: `Mozilla/5.0 (Windows NT 10.0; WOW64; 
+        Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; 
+        .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
+    };
+
+    expect(detectBrowserNameAndVersion(ie)).toEqual({
+      name: 'IE',
+      version: 11,
     });
   });
 });

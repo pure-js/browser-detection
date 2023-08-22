@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/pure-js/browser-detection/branch/master/graph/badge.svg)](https://codecov.io/gh/pure-js/browser-detection)
 
 Browser detection using the user agent.
-Tested on most popular browser in the World on October 2017, statistic gets from StatCounter.
+Tested on most popular browser in the World on October 2017 (and updated on July 2023), statistic gets from StatCounter.
 
 > It's worth re-iterating: it's very rarely a good idea to use user agent sniffing. You can almost always find a better, more broadly compatible way to solve your problem!
 >

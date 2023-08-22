@@ -4,9 +4,10 @@
 function isChrome(userAgent: string): boolean {
   return userAgent.includes('Chrome')
     && !userAgent.includes('Chromium')
+    && !userAgent.includes('SamsungBrowser')
     && !userAgent.includes('OPR')
-    && !userAgent.includes('Edge')
-    && !userAgent.includes('SamsungBrowser');
+    && !userAgent.includes('MQQBrowser')
+    && !userAgent.includes('Edge');
 }
 
 /**
@@ -20,24 +21,10 @@ function isSafari(userAgent: string): boolean {
 }
 
 /**
- * Detects UC browser
+ * Detects Samsung browser
  */
-function isUcBrowser(userAgent: string): boolean {
-  return userAgent.includes('UCBrowser');
-}
-
-/**
- * Detects Firefox browser
- */
-function isFirefox(userAgent: string): boolean {
-  return userAgent.includes('Firefox') && !userAgent.includes('Seamonkey');
-}
-
-/**
- * Detects IE browser
- */
-function isIe(userAgent: string): boolean {
-  return (/trident/i.test(userAgent));
+function isSamsungInternet(userAgent: string): boolean {
+  return userAgent.includes('SamsungBrowser');
 }
 
 /**
@@ -48,10 +35,10 @@ function isOpera(userAgent: string): boolean {
 }
 
 /**
- * Detects Samsung browser
+ * Detects UC browser
  */
-function isSamsungInternet(userAgent: string): boolean {
-  return userAgent.includes('SamsungBrowser');
+function isUcBrowser(userAgent: string): boolean {
+  return userAgent.includes('UCBrowser');
 }
 
 /**
@@ -63,7 +50,28 @@ function isAndroidBrowser(userAgent: string): boolean {
     && userAgent.includes('AppleWebKit');
 }
 
-export type BrowserName = 'Chrome' | 'Safari' | 'UC Browser' | 'Firefox' | 'IE' | 'Opera' | 'Samsung Internet' | 'Android Browser' | 'Edge';
+/**
+ * Detects Firefox browser
+ */
+function isFirefox(userAgent: string): boolean {
+  return userAgent.includes('Firefox') && !userAgent.includes('Seamonkey');
+}
+
+/**
+ * Detects QQ browser
+ */
+function isQqBrowser(userAgent: string): boolean {
+  return userAgent.includes('MQQBrowser');
+}
+
+/**
+ * Detects IE browser
+ */
+function isIe(userAgent: string): boolean {
+  return (/trident/i.test(userAgent));
+}
+
+export type BrowserName = 'Chrome' | 'Safari' | 'Samsung Internet' | 'Opera' | 'UC Browser' | 'Android Browser' | 'Firefox' | 'QQ Browser' | 'Edge' | 'IE';
 
 /**
  * Detects Edge browser
@@ -74,8 +82,6 @@ function isEdge(userAgent: string): boolean {
 
 /**
  * Detects browser name
- * @param {string} userAgent - window.navigator
- * @return {string} browser name
  */
 function detectBrowserName(userAgent: string): BrowserName | undefined {
   if (isChrome(userAgent)) {
@@ -86,32 +92,36 @@ function detectBrowserName(userAgent: string): BrowserName | undefined {
     return 'Safari';
   }
 
-  if (isUcBrowser(userAgent)) {
-    return 'UC Browser';
-  }
-
-  if (isFirefox(userAgent)) {
-    return 'Firefox';
-  }
-
-  if (isIe(userAgent)) {
-    return 'IE';
+  if (isSamsungInternet(userAgent)) {
+    return 'Samsung Internet';
   }
 
   if (isOpera(userAgent)) {
     return 'Opera';
   }
 
-  if (isSamsungInternet(userAgent)) {
-    return 'Samsung Internet';
+  if (isUcBrowser(userAgent)) {
+    return 'UC Browser';
   }
 
   if (isAndroidBrowser(userAgent)) {
     return 'Android Browser';
   }
 
+  if (isFirefox(userAgent)) {
+    return 'Firefox';
+  }
+
+  if (isQqBrowser(userAgent)) {
+    return 'QQ Browser';
+  }
+
   if (isEdge(userAgent)) {
     return 'Edge';
+  }
+
+  if (isIe(userAgent)) {
+    return 'IE';
   }
 
   return undefined;
@@ -120,10 +130,10 @@ function detectBrowserName(userAgent: string): BrowserName | undefined {
 /**
  * Retrieve browser version
  */
-function retrieveVersion(name: string, str: string): number {
-  name += '/';
-  const start = str.indexOf(name);
-  let preNum = str.substring(start + name.length);
+function retrieveVersion(browserName: string, userAgent: string): number {
+  const name = `${browserName}/`;
+  const start = userAgent.indexOf(name);
+  let preNum = userAgent.substring(start + name.length);
   const index = preNum.indexOf(' ');
   if (index > 0) {
     preNum = preNum.substring(0, index);
@@ -141,29 +151,26 @@ function retrieveVersion(name: string, str: string): number {
   return Number(num);
 }
 
+export type UaBrowserName = 'SamsungBrowser' | 'OPR' | 'UCBrowser' | 'MQQBrowser';
+
 /**
  * Returns Association
  */
-function getBeautifulName(name: BrowserName | undefined): string | undefined {
-  let browserName;
-
+function getBrowserUaName(name: BrowserName | undefined): UaBrowserName | undefined {
   if (name) {
     switch (name) {
       case 'Opera':
-        browserName = 'OPR';
-        break;
+        return 'OPR';
       case 'UC Browser':
-        browserName = 'UCBrowser';
-        break;
+        return 'UCBrowser';
       case 'Samsung Internet':
-        browserName = 'SamsungBrowser';
-        break;
+        return 'SamsungBrowser';
+      case 'QQ Browser':
+        return 'MQQBrowser';
       default:
         return undefined;
     }
   }
-
-  return browserName;
 }
 
 /**
@@ -189,7 +196,7 @@ function detectBrowserVersion(nav: {
     }
   }
 
-  const browserName = getBeautifulName(name);
+  const browserName = getBrowserUaName(name);
 
   if (browserName) {
     return retrieveVersion(browserName, userAgent);
