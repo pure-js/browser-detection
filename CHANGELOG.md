@@ -1,4 +1,11 @@
 # Changelog
+## [3.1.0](https://github.com/pure-js/browser-detection/compare/v3.0.0...v3.1.0) (2023-08-22)
+
+
+### Features
+
+* add qq browser support ([#509](https://github.com/pure-js/browser-detection/issues/509)) ([f3d6b0a](https://github.com/pure-js/browser-detection/commit/f3d6b0ad88da18f4f1b322a8f5f2f55c009f02d2))
+
 ## [3.0.0](https://github.com/pure-js/browser-detection/compare/v2.2.1...v3.0.0) (2023-08-22)
 
 
