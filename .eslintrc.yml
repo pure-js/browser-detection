@@ -6,6 +6,7 @@ overrides:
   - extends:
       - xo-typescript
       - xo-typescript/space
+      - prettier
     files:
       - '*.ts'
       - '*.tsx'
