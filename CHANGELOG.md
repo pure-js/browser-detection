@@ -1,4 +1,15 @@
 # Changelog
+## [3.0.0](https://github.com/pure-js/browser-detection/compare/v2.2.1...v3.0.0) (2023-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* rename browserIsDeprecated to isBrowserDeprecated ([#507](https://github.com/pure-js/browser-detection/issues/507))
+
+### Code Refactoring
+
+* rename browserIsDeprecated to isBrowserDeprecated ([#507](https://github.com/pure-js/browser-detection/issues/507)) ([fa475a1](https://github.com/pure-js/browser-detection/commit/fa475a1018fa0b429d6e413a6ead2dcbcd20b61f))
+
 ## [2.2.1](https://github.com/pure-js/browser-detection/compare/v2.2.0...v2.2.1) (2023-08-18)
 
 
