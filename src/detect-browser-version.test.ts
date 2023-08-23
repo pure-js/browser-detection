@@ -1,10 +1,7 @@
+/* eslint-disable no-warning-comments */
 import { describe, expect, test } from 'vitest';
 
-import {
-  detectBrowserName,
-  detectBrowserVersion,
-  detectBrowserNameAndVersion,
-} from './browser-detection';
+import { detectBrowserVersion } from './detect-browser-version';
 
 describe('Should correctly detect name & version of', () => {
   test('Chrome', () => {
@@ -14,10 +11,7 @@ describe('Should correctly detect name & version of', () => {
         Chrome/62.0.3202.94 Safari/537.36`,
     };
 
-    expect(detectBrowserNameAndVersion(chrome)).toEqual({
-      name: 'Chrome',
-      version: 62,
-    });
+    expect(detectBrowserVersion(chrome, 'Chrome')).toStrictEqual(62);
 
     const chromeMobile = {
       userAgent: `Mozilla/5.0 (Linux; Android 6.0; 
@@ -25,10 +19,7 @@ describe('Should correctly detect name & version of', () => {
         like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36`,
     };
 
-    expect(detectBrowserNameAndVersion(chromeMobile)).toEqual({
-      name: 'Chrome',
-      version: 62,
-    });
+    expect(detectBrowserVersion(chromeMobile, 'Chrome')).toStrictEqual(62);
   });
 
   test('Safari 17', () => {
@@ -37,10 +28,7 @@ describe('Should correctly detect name & version of', () => {
         AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15`,
     };
 
-    expect(detectBrowserNameAndVersion(safari)).toEqual({
-      name: 'Safari',
-      version: 17,
-    });
+    expect(detectBrowserVersion(safari, 'Safari')).toStrictEqual(17);
   });
 
   test('Safari', () => {
@@ -50,10 +38,15 @@ describe('Should correctly detect name & version of', () => {
         Version/11.0.1 Safari/604.3.5`,
     };
 
-    expect(detectBrowserNameAndVersion(safari)).toEqual({
-      name: 'Safari',
-      version: 11,
-    });
+    expect(detectBrowserVersion(safari, 'Safari')).toStrictEqual(11);
+  });
+
+  test('Safari iPad', () => {
+    const safari = {
+      userAgent:
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15',
+    };
+    expect(detectBrowserVersion(safari, 'Safari')).toStrictEqual(17);
   });
 
   test('Samsung Internet', () => {
@@ -64,10 +57,7 @@ describe('Should correctly detect name & version of', () => {
         SamsungBrowser/3.3 Chrome/38.0.2125.102 Mobile Safari/537.36`,
     };
 
-    expect(detectBrowserNameAndVersion(samsung)).toEqual({
-      name: 'Samsung Internet',
-      version: 3,
-    });
+    expect(detectBrowserVersion(samsung, 'Samsung Internet')).toStrictEqual(3);
   });
 
   test('UC Browser', () => {
@@ -76,10 +66,7 @@ describe('Should correctly detect name & version of', () => {
         U2/1.0.0 UCBrowser/8.7.0.218 U2/1.0.0 Mobile`,
     };
 
-    expect(detectBrowserNameAndVersion(ucBrowser)).toEqual({
-      name: 'UC Browser',
-      version: 8.7,
-    });
+    expect(detectBrowserVersion(ucBrowser, 'UC Browser')).toStrictEqual(8.7);
 
     const ucBrowser11 = {
       userAgent: `Mozilla/5.0 (Linux; U; Android 4.2.2; en-US;
@@ -88,10 +75,7 @@ describe('Should correctly detect name & version of', () => {
         Mobile Safari/534.30`,
     };
 
-    expect(detectBrowserNameAndVersion(ucBrowser11)).toEqual({
-      name: 'UC Browser',
-      version: 11,
-    });
+    expect(detectBrowserVersion(ucBrowser11, 'UC Browser')).toStrictEqual(11);
   });
 
   test('Firefox', () => {
@@ -101,10 +85,7 @@ describe('Should correctly detect name & version of', () => {
         Gecko/20100101 Firefox/57.0`,
     };
 
-    expect(detectBrowserNameAndVersion(firefox)).toEqual({
-      name: 'Firefox',
-      version: 57,
-    });
+    expect(detectBrowserVersion(firefox, 'Firefox')).toStrictEqual(57);
   });
 
   test('QQ Browser', () => {
@@ -113,12 +94,8 @@ describe('Should correctly detect name & version of', () => {
         AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 
         Chrome/66.0.3359.126 MQQBrowser/10.8 Mobile Safari/537.36`,
     };
-
-    expect(detectBrowserNameAndVersion(qqbrowser)).toEqual({
-      name: 'QQ Browser',
-      // Version: 10.8, // TODO: add version after dot
-      version: 10,
-    });
+    // TODO: change from 10 to 10.8
+    expect(detectBrowserVersion(qqbrowser, 'QQ Browser')).toStrictEqual(10);
   });
 
   describe('Opera', () => {
@@ -129,10 +106,7 @@ describe('Should correctly detect name & version of', () => {
           Chrome/62.0.3202.89 Safari/537.36 OPR/49.0.2725.39`,
       };
 
-      expect(detectBrowserNameAndVersion(opera)).toEqual({
-        name: 'Opera',
-        version: 49,
-      });
+      expect(detectBrowserVersion(opera, 'Opera')).toStrictEqual(49);
     });
   });
 
@@ -143,10 +117,7 @@ describe('Should correctly detect name & version of', () => {
        AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30`,
     };
 
-    expect(detectBrowserNameAndVersion(android)).toEqual({
-      name: 'Android Browser',
-      version: 4,
-    });
+    expect(detectBrowserVersion(android, 'Android Browser')).toStrictEqual(4);
   });
 
   test('Edge', () => {
@@ -156,10 +127,7 @@ describe('Should correctly detect name & version of', () => {
         Chrome/52.0.2743.116 Safari/537.36 Edge/15.15063`,
     };
 
-    expect(detectBrowserNameAndVersion(edge)).toEqual({
-      name: 'Edge',
-      version: 15,
-    });
+    expect(detectBrowserVersion(edge, 'Edge')).toStrictEqual(15);
   });
 
   test('Internet Explorer', () => {
@@ -169,10 +137,7 @@ describe('Should correctly detect name & version of', () => {
         .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko`,
     };
 
-    expect(detectBrowserNameAndVersion(ie)).toEqual({
-      name: 'IE',
-      version: 11,
-    });
+    expect(detectBrowserVersion(ie, 'IE')).toStrictEqual(11);
   });
 });
 
@@ -184,10 +149,7 @@ describe('Should not fail', () => {
         .NET CLR 3.0.30729; .NET CLR 3.5.30729) like Gecko`,
     };
 
-    expect(detectBrowserNameAndVersion(ieWithoutVersion)).toEqual({
-      name: 'IE',
-      version: undefined,
-    });
+    expect(detectBrowserVersion(ieWithoutVersion, 'IE')).toEqual(undefined);
   });
 
   test('if user agent is invalid', () => {
@@ -195,19 +157,29 @@ describe('Should not fail', () => {
       userAgent: '',
     };
 
-    expect(detectBrowserNameAndVersion(emptyUserAgent)).toEqual({
-      name: undefined,
-      version: undefined,
-    });
+    expect(detectBrowserVersion(emptyUserAgent, undefined)).toEqual(undefined);
   });
 });
 
 describe('Should correctly detect name of', () => {
   test('Chrome', () => {
-    const chrome = `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+    const chrome = {
+      userAgent: `Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
       AppleWebKit/537.36 (KHTML, like Gecko) 
-      Chrome/62.0.3202.94 Safari/537.36`;
+      Chrome/62.0.3202.94 Safari/537.36`,
+    };
 
-    expect(detectBrowserName(chrome)).toEqual('Chrome');
+    expect(detectBrowserVersion(chrome, 'Chrome')).toEqual(62);
+  });
+});
+
+describe('Should correctly detect version of', () => {
+  test('UC Browser', () => {
+    const ucBrowser = {
+      userAgent: `UCWEB/2.0 (Java; U; MIDP-2.0; Nokia203/20.37)
+        U2/1.0.0 UCBrowser/8.7.0.218 U2/1.0.0 Mobile`,
+    };
+
+    expect(detectBrowserVersion(ucBrowser, 'UC Browser')).toEqual(8.7);
   });
 });
