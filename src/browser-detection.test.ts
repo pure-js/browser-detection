@@ -2,7 +2,6 @@ import { describe, expect, test } from 'vitest';
 
 import {
   detectBrowserName,
-  detectBrowserVersion,
   detectBrowserNameAndVersion,
 } from './browser-detection';
 
